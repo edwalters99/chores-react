@@ -9,6 +9,7 @@
 body {
   font-family: 'Poppins', sans-serif;
   height: 100vh;
+  background: rgb(227, 241, 246);
 }
 
 a {
@@ -136,6 +137,10 @@ h3 {
   margin: 0 0 5px 3px;
 }
 
+.form-nonvalid {
+  background: rgb(245, 200, 200);
+}
+
 .btn {
   padding: 10px 20px;
   border: 1px solid rgb(231, 15, 15);
@@ -182,7 +187,7 @@ h3 {
 }
 
 .btn:hover {
-  transform: scale(0.98);
+  transform: scale(1.1);
 }
 
 

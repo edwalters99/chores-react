@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { FaUser } from 'react-icons/fa'
 
 function Register() {
+  const PASSWORD_REGEX = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
+  // Minimum eight characters, at least one letter and one number:
+  
   const [formData, setFormData] = useState( { 
     username: '',
     email: '',
@@ -11,21 +14,44 @@ function Register() {
     passwordconfirm: ''
   });
 
+  const [passwordValid, setPasswordValid] = useState(null); // for shading of form input
+
   const { username, email, familyname, password, passwordconfirm } = formData;  // destructuring for easy access in form
 
   const onChange = (e) => {
     setFormData(prevState => ({
       ...prevState,
       [e.target.name] : e.target.value
-    }));
+    }))
   };
 
+  useEffect(() => {
+    validatePassword();
+  },[formData])
 
+
+  const validatePasswordErrors = () => {
+    if(password.length === 0) {
+      toast.error('Password must be entered')
+    } else {
+      if (password !== passwordconfirm) {
+        toast.error("Passwords don't match!")
+      };
+      
+      if (!passwordValid) {
+        toast.error('Minimum eight characters, at least one letter and one number')
+      };
+    };
+  };
+
+  const validatePassword = () => {
+   setPasswordValid(PASSWORD_REGEX.test(password));
+  }
 
   const onSubmit = (e) => {
     e.preventDefault();
-
-  }
+    validatePasswordErrors();
+  };
 
   return (
     <>
@@ -44,7 +70,6 @@ function Register() {
                 <input 
                   type="text" 
                   className="form-control" 
-                  id="username" 
                   name="username"
                   value={ username } 
                   placeholder="Enter a username"
@@ -59,7 +84,6 @@ function Register() {
                 <input 
                   type="email" 
                   className="form-control" 
-                  id="email" 
                   name="email"
                   value={ email } 
                   placeholder="Enter your email address"
@@ -74,7 +98,6 @@ function Register() {
                   <input 
                     type="text" 
                     className="form-control" 
-                    id="familyname" 
                     name="familyname"
                     value={ familyname } 
                     placeholder="Enter a family name e.g. The Bloggs Family"
@@ -88,11 +111,10 @@ function Register() {
                 Password:
                   <input 
                     type="password" 
-                    className="form-control" 
-                    id="password" 
+                    className={passwordValid || password.length === 0 ? "form-control" : "form-control form-nonvalid"} 
                     name="password"
                     value={ password } 
-                    placeholder="Enter a password"
+                    placeholder="Min 8, at least 1 number"
                     onChange={ onChange } 
                   />
                 </label>
@@ -104,7 +126,6 @@ function Register() {
                   <input 
                     type="password" 
                     className="form-control" 
-                    id="passwordconfirm" 
                     name="passwordconfirm"
                     value={ passwordconfirm } 
                     placeholder="Confirm your password"

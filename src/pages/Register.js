@@ -7,7 +7,6 @@ function Register() {
   // Minimum eight characters, at least one letter, one number and one special character:
   
   const [formData, setFormData] = useState( { 
-    username: '',
     email: '',
     familyname: '',
     password: '',
@@ -15,9 +14,6 @@ function Register() {
   });
 
 
-
-
-  const [userNameValid, setUsernameValid] = useState(null);
   const [emailValid, setEmailValid] = useState(null);
   const [familyNameValid, setFamilyNameValid] = useState(null);
   const [passwordValid, setPasswordValid] = useState(null); // for shading of form input background
@@ -25,11 +21,10 @@ function Register() {
   const [formReady, setFormReady] = useState(false);
 
 
-  const { username, email, familyname, password, passwordconfirm } = formData; 
+  const { email, familyname, password, passwordconfirm } = formData; 
 
 
   useEffect(() => {
-    validateUsername();
     validateEmail();
     validateFamilyName();
     validatePassword();
@@ -38,7 +33,7 @@ function Register() {
 
   useEffect(() => {
     checkFormReady();
-  }, [userNameValid, emailValid, familyNameValid, passwordValid, passwordConfirmationValid]);
+  }, [emailValid, familyNameValid, passwordValid, passwordConfirmationValid]);
 
 
 // VALIDATIONS ON FORM SUBMIT - TRIGGER TOAST POPUP ERRORS
@@ -51,11 +46,6 @@ function Register() {
         return (atSigns === 1 && periods >= 1);
     };
 
-  const validateUsernameErrors = () => {
-    if (username.length === 0) {
-      toast.error('Username must be entered');
-    };
-  };
 
   const validateEmailErrors = () => {
     if (email.length === 0) {
@@ -86,9 +76,6 @@ function Register() {
 
   
 // VALIDATIONS ON INPUT - USED FOR BOX SHADING AND FORM READINESS TO SUBMIT
-  const validateUsername = () => {
-    setUsernameValid(username.length !== 0);
-   };
 
    const validateEmail = () => {
     setEmailValid(validateEmailHelper(email));
@@ -107,12 +94,11 @@ function Register() {
   };
 
   const checkFormReady = () => {
-    setFormReady((userNameValid && emailValid && familyNameValid && passwordValid && passwordConfirmationValid));
+    setFormReady((emailValid && familyNameValid && passwordValid && passwordConfirmationValid));
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    validateUsernameErrors();
     validateEmailErrors();
     validateFamilyNameErrors();
     validatePasswordErrors();
@@ -125,8 +111,6 @@ function Register() {
     }))
   };
 
-
-
   return (
     <>
         <section className="heading">
@@ -138,20 +122,7 @@ function Register() {
 
         <div className="form">
           <form onSubmit={ onSubmit }>
-            <div className="form-group">
-              <label>
-              Username:
-                <input 
-                  type="text" 
-                  className="form-control" 
-                  name="username"
-                  value={ username } 
-                  placeholder="Enter a username"
-                  onChange={ onChange } 
-                />
-              </label>
-            </div>
-
+      
             <div className="form-group">
               <label>
               Email:

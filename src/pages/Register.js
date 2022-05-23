@@ -18,7 +18,7 @@ function Register() {
   const [familyNameValid, setFamilyNameValid] = useState(null);
   const [passwordValid, setPasswordValid] = useState(null); // for shading of form input background
   const [passwordConfirmationValid, setPasswordConfirmationValid] = useState(null); // for shading of form input background
-  const [formReady, setFormReady] = useState(false);
+  const [formReady, setFormReady] = useState(false); // for button state
 
 
   const { email, familyname, password, passwordconfirm } = formData; 

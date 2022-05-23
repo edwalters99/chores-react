@@ -6,13 +6,13 @@ function Home() {
   return (
     <>
         <section className="heading">
-          <h1>Welcome to ChoreTracker</h1>
+          <h1>Welcome to ChoreTracker **familyname**</h1>
           <p>Parent Dashboard</p>
-          <p>Display childlist if exists</p>
+          <p>**Display childlist if exists**</p>
           <p>Child 1</p>
           <p>Child 2</p>
           <p>Child 3</p>
-          <p>OR</p>
+          <p>*OR*</p>
          
         </section>
 

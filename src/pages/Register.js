@@ -49,28 +49,28 @@ function Register() {
 
   const validateEmailErrors = () => {
     if (email.length === 0) {
-      toast.error('Email address must be entered');
+      toast.error('Email address must be entered', { toastId: 'emailNil'});
     };
     if (!validateEmailHelper(email)) {
-      toast.error('Invalid Email address');
+      toast.error('Invalid Email address', { toastId: 'emailBad'});
     };
   };
   
   const validateFamilyNameErrors = () => {
     if (familyname.length === 0) {
-      toast.error('Family Name must be entered');
+      toast.error('Family Name must be entered', { toastId: 'familyNil'});
     };
   };
   
   const validatePasswordErrors = () => {
     if (password.length === 0) {
-      toast.error('Password must be entered');
+      toast.error('Password must be entered', { toastId: 'passwordNil'});
     } else if (!passwordValid) {
-        toast.error('Password: Minimum eight characters - at least one letter and one number');
+        toast.error('Password: Minimum eight characters - at least one letter and one number', { toastId: 'passwordBad'});
     } else if (passwordconfirm.length === 0) {
-        toast.error('Password confirmation must be entered');
+        toast.error('Password confirmation must be entered', { toastId: 'passConNil'});
     } else if (password !== passwordconfirm) {
-        toast.error("Passwords don't match!");
+        toast.error("Passwords don't match!", { toastId: 'passNoMatch'});
     };
   };
 
@@ -145,7 +145,7 @@ function Register() {
                     className="form-control" 
                     name="familyname"
                     value={ familyname } 
-                    placeholder="Enter a family name e.g. The Bloggs Family"
+                    placeholder="e.g. The Bloggs Family"
                     onChange={ onChange } 
                   />
                 </label>
@@ -159,7 +159,7 @@ function Register() {
                     className={passwordValid || password.length === 0 ? "form-control" : "form-control form-nonvalid"} 
                     name="password"
                     value={ password } 
-                    placeholder="Min 8 chars & at least 1 number"
+                    placeholder="8+ (at least one number)"
                     onChange={ onChange } 
                   />
                 </label>

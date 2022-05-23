@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { FaSignInAlt } from 'react-icons/fa'
 
+
 function Login() {
  
   
@@ -41,17 +42,18 @@ function Login() {
 
   const validateEmailErrors = () => {
     if (email.length === 0) {
-      toast.error('Email address must be entered');
-    };
-    if (!validateEmailHelper(email)) {
-      toast.error('Invalid Email address');
+      toast.error('Email address must be entered', { toastId: 'emailNil'});
+    } else if (!validateEmailHelper(email)) {
+      toast.error('Invalid Email address', { toastId: 'emailBad'});
     };
   };
   
 
   const validatePasswordErrors = () => {
     if (password.length === 0) {
-      toast.error('Password must be entered');
+      toast.error('Password must be entered', {
+        toastId: 'passNil'
+      });
     };
   };
 
@@ -70,13 +72,13 @@ function Login() {
      setFormReady((emailValid  && passwordValid));
    };
   
-
-
+  
   const onSubmit = (e) => {
     e.preventDefault();
     validateEmailErrors();
     validatePasswordErrors();
   };
+
 
   const onChange = (e) => {
     setFormData(prevState => ({

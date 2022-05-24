@@ -5,6 +5,9 @@ import dayjs from 'dayjs';
 import ChildCard from '../components/ChildCard';
 
 
+const todayDate = new Date().toISOString().substring(0,10);
+const minDate = dayjs().subtract(21, 'year').toISOString().substring(0,10);
+
 
 function NewChild() {
     const { user } = useSelector((state) => state.auth);
@@ -17,16 +20,6 @@ function NewChild() {
         e.preventDefault();
     };
 
-    const todayDate = new Date().toISOString().substring(0,10);
-    const minDate = dayjs().subtract(21, 'year').toISOString().substring(0,10);
-    const age = dayjs(new Date()).diff(dayjs(dob), 'year');
-
-    // const avatarImg = () => {
-    //     if (avatar === 'cat') {return (<img src={ cat } />)}
-    //     if (avatar === 'dog') {return (<img src={ dog } />)}
-    //     if (avatar === 'dinosaur') {return (<img src={ dino } />)}
-    //     if (avatar === 'rabbit') {return (<img src={ rabbit } />)}
-    // };
 
     return (
     <>
@@ -77,11 +70,11 @@ function NewChild() {
         </section>
 
             { firstname && dob ? (
-               <ChildCard firstname={ firstname } avatar={ avatar } color={ color } />
+               <ChildCard firstname={ firstname } avatar={ avatar } color={ color } dob={ dob } />
             ) : 
             (<> </>)}
     </>
-  )
-}
+  );
+};
 
 export default NewChild;

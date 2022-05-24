@@ -14,10 +14,21 @@ const register = async (userData) => {
     // user data and token
 };
 
+const login = async (loginData) => {
+    const response = await axios.post(API_URL + '/login', loginData);
+
+    if (response.data) {
+        localStorage.setItem('user', JSON.stringify(response.data))
+    }
+    return response.data;
+    // user date and token
+};
+
 const logout = () => localStorage.removeItem('user');
 
 const authService = {
     register,
+    login,
     logout
 };
 

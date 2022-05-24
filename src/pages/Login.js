@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { FaSignInAlt } from 'react-icons/fa'
 import { useSelector, useDispatch } from 'react-redux';  // useSelector for reading global state, useDispatch for editing
-import { login } from '../features/auth/authSlice';
+import { login, reset } from '../features/auth/authSlice';
+import { useNavigate } from 'react-router-dom';
+
 
 
 function Login() {
@@ -14,9 +16,10 @@ function Login() {
     passwordconfirm: ''
   });
 
+  const navigate = useNavigate();
   // REDUX
   const dispatch = useDispatch();
-  const {user, isLoading, isSuccess, message } = useSelector(state => state.auth);  // retrieve from global state (auth)
+  const {user, isLoading, isError, isSuccess, message } = useSelector(state => state.auth);  // retrieve from global state (auth)
 
   const [emailValid, setEmailValid] = useState(null); 
   const [passwordValid, setPasswordValid] = useState(null); // for shading of form input background
@@ -33,6 +36,22 @@ function Login() {
   useEffect(() => {
     checkFormReady();
   }, [emailValid, passwordValid]);
+
+  useEffect(() => {
+    //Error
+    console.log(isError)
+    if (isError) {
+      toast.error(message, { toastId: 'tMessage'});
+    };
+    
+    //Redirect when logged in
+    if (isSuccess || user) {
+      navigate('/');
+    };
+
+    dispatch(reset());  // reset global error states
+
+  }, [isError, isSuccess, user, message, navigate, dispatch])
 
 
 

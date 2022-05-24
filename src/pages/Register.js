@@ -4,6 +4,7 @@ import { FaUser } from 'react-icons/fa'
 import { useSelector, useDispatch } from 'react-redux';  // useSelector for reading global state, useDispatch for editing
 import { useNavigate } from 'react-router-dom';
 import { register, reset } from '../features/auth/authSlice';
+import Spinner from '../components/Spinner';
 
 function Register() {
   
@@ -145,6 +146,7 @@ function Register() {
       dispatch(register(userData));
     }
   };
+
 
   return (
     <>

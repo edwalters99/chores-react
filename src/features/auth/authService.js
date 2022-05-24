@@ -1,4 +1,4 @@
-// makes the requests to the api
+// functions in this file perform the actions required e.g. call the API, delete token from localStorage
 
 import axios from 'axios';
 
@@ -14,8 +14,11 @@ const register = async (userData) => {
     // user data and token
 };
 
+const logout = () => localStorage.removeItem('user');
+
 const authService = {
-    register
+    register,
+    logout
 };
 
 export default authService;

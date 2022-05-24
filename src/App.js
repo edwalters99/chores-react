@@ -21,7 +21,8 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
-            <Route path='/new-child' element={<PrivateRoute />}>
+            {/* Wrap in Private Route to protect */}
+            <Route path='/new-child' element={<PrivateRoute />}> 
               <Route path='/new-child' element={<NewChild />} />
             </Route>
           </Routes>

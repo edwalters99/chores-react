@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap');
 
 * {
   margin: 0;
@@ -10,8 +10,8 @@ body {
   font-family: 'Roboto', sans-serif;
   height: 100vh;
   background: #f5f7fa;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #c3cfe2, #f5f7fa);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #c3cfe2, #f5f7fa); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: -webkit-linear-gradient(to right, #c3cfe2, #f5f7fa);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #c3cfe2, #f5f7fa); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }
 
@@ -228,6 +228,56 @@ h3 {
   border-color: #000 transparent #555 transparent;
   border-radius: 50%;
   animation: spin 1.2s linear infinite;
+}
+
+
+.avatar-container {
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 1em;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.avatar-name {
+  font-size: 2em;
+}
+
+.avatar-age {
+  font-size: 2em;
+}
+
+.colorswatch {
+  border: 2px solid black;
+  border-radius: 20px;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+
+
+.avatar-img > img {
+  margin-top: 0px;
+  width: 200px;
+  height: 200px;
+}
+
+
+@media(max-width:400px) {
+  .avatar-img > img {
+    margin-top: 0px;
+    width: 100px;
+    height: 100px;
+  }
+  .colorswatch {
+    width: 75px;
+    height: 75px;
+  }
+}
+
+.flexbox {
+  display: flex;
+  align-items: center;
 }
 
 

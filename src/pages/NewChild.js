@@ -2,10 +2,8 @@ import React from 'react';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import dayjs from 'dayjs';
-import dog from '../images/dog.png';
-import cat from '../images/cat.png';
-import dino from '../images/dino.png';
-import rabbit from '../images/rabbit.png';
+import ChildCard from '../components/ChildCard';
+
 
 
 function NewChild() {
@@ -23,12 +21,12 @@ function NewChild() {
     const minDate = dayjs().subtract(21, 'year').toISOString().substring(0,10);
     const age = dayjs(new Date()).diff(dayjs(dob), 'year');
 
-    const avatarImg = () => {
-        if (avatar === 'cat') {return (<img src={ cat } />)}
-        if (avatar === 'dog') {return (<img src={ dog } />)}
-        if (avatar === 'dinosaur') {return (<img src={ dino } />)}
-        if (avatar === 'rabbit') {return (<img src={ rabbit } />)}
-    };
+    // const avatarImg = () => {
+    //     if (avatar === 'cat') {return (<img src={ cat } />)}
+    //     if (avatar === 'dog') {return (<img src={ dog } />)}
+    //     if (avatar === 'dinosaur') {return (<img src={ dino } />)}
+    //     if (avatar === 'rabbit') {return (<img src={ rabbit } />)}
+    // };
 
     return (
     <>
@@ -77,20 +75,11 @@ function NewChild() {
             </div>
 
         </section>
-       
+
             { firstname && dob ? (
-                <section className='avatar-container'>
-                    <h2 className='avatar-name'>{ firstname }</h2>
-                    <h3 className='avatar-age'>Age: { age }</h3>
-                    <div className='flexbox'>
-                        <div className="colorswatch" style={ {background : `${color}`} }></div>
-                        <div className="avatar-img">{ avatarImg() }</div>
-                    </div>
-                </section>
+               <ChildCard firstname={ firstname } avatar={ avatar } color={ color } />
             ) : 
-            (<></>)}
-            
-       
+            (<> </>)}
     </>
   )
 }

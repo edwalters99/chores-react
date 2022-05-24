@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { FaUser } from 'react-icons/fa'
+import { useSelector, useDispatch } from 'react-redux';  // useSelector for reading global state, useDispatch for editing
+import { register } from '../features/auth/authSlice';
 
 function Register() {
   const PASSWORD_REGEX = /^(?=.*[A-Za-z])(?=.*\d).{8,}$/
@@ -12,6 +14,10 @@ function Register() {
     password: '',
     passwordconfirm: ''
   });
+
+  //REDUX
+  const dispatch = useDispatch();
+  const {user, isLoading, isSuccess, message } = useSelector(state => state.auth);  // retrieve from global state (auth)
 
 
   const [emailValid, setEmailValid] = useState(null);
@@ -97,18 +103,29 @@ function Register() {
     setFormReady((emailValid && familyNameValid && passwordValid && passwordConfirmationValid));
   };
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    validateEmailErrors();
-    validateFamilyNameErrors();
-    validatePasswordErrors();
-  };
-
   const onChange = (e) => {
     setFormData(prevState => ({
       ...prevState,
       [e.target.name] : e.target.value
     }))
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    validateEmailErrors();
+    validateFamilyNameErrors();
+    validatePasswordErrors();
+    
+    // prepare data for submission
+    const userData = {
+      email,
+      familyname,
+      password
+    };
+    
+    if (emailValid && familyNameValid && passwordValid && passwordConfirmationValid) {
+      dispatch(register(userData));
+    }
   };
 
   return (

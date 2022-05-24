@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { FaSignInAlt } from 'react-icons/fa'
+import { useSelector, useDispatch } from 'react-redux';  // useSelector for reading global state, useDispatch for editing
+import { login } from '../features/auth/authSlice';
 
 
 function Login() {
@@ -11,6 +13,10 @@ function Login() {
     password: '',
     passwordconfirm: ''
   });
+
+  // REDUX
+  const dispatch = useDispatch();
+  const {user, isLoading, isSuccess, message } = useSelector(state => state.auth);  // retrieve from global state (auth)
 
   const [emailValid, setEmailValid] = useState(null); 
   const [passwordValid, setPasswordValid] = useState(null); // for shading of form input background
@@ -72,19 +78,27 @@ function Login() {
      setFormReady((emailValid  && passwordValid));
    };
   
-  
-  const onSubmit = (e) => {
-    e.preventDefault();
-    validateEmailErrors();
-    validatePasswordErrors();
-  };
-
 
   const onChange = (e) => {
     setFormData(prevState => ({
       ...prevState,
       [e.target.name] : e.target.value
     }))
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    validateEmailErrors();
+    validatePasswordErrors();
+    
+    const userData = {
+      email,
+      password
+    };
+    
+    if (emailValid && passwordValid) {
+      dispatch(login(userData));
+    };
   };
 
   return (

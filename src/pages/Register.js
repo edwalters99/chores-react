@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { FaUser } from 'react-icons/fa'
 import { useSelector, useDispatch } from 'react-redux';  // useSelector for reading global state, useDispatch for editing
-import { register } from '../features/auth/authSlice';
+import { useNavigate } from 'react-router-dom';
+import { register, reset } from '../features/auth/authSlice';
 
 function Register() {
+  
   const PASSWORD_REGEX = /^(?=.*[A-Za-z])(?=.*\d).{8,}$/
   // Minimum eight characters, at least one letter, one number and one special character:
   
@@ -15,9 +17,11 @@ function Register() {
     passwordconfirm: ''
   });
 
+  const navigate = useNavigate();
+
   //REDUX
   const dispatch = useDispatch();
-  const {user, isLoading, isSuccess, message } = useSelector(state => state.auth);  // retrieve from global state (auth)
+  const {user, isLoading, isError, isSuccess, message } = useSelector(state => state.auth);  // retrieve from global state (auth)
 
 
   const [emailValid, setEmailValid] = useState(null);
@@ -41,6 +45,21 @@ function Register() {
     checkFormReady();
   }, [emailValid, familyNameValid, passwordValid, passwordConfirmationValid]);
 
+  useEffect(() => {
+    //Error
+    if (isError) {
+      toast.error(message);
+    };
+    
+    //Redirect when logged in
+    if (isSuccess || user) {
+      navigate('/');
+    };
+
+    dispatch(reset());  // reset global error states
+
+  }, [isError, isSuccess, user, message, navigate, dispatch])
+
 
 // VALIDATIONS ON FORM SUBMIT - TRIGGER TOAST POPUP ERRORS
 
@@ -49,16 +68,15 @@ function Register() {
     // An email address must contain at least one full stop (.)
         const atSigns = email.split('').filter(char => char === '@').length;
         const periods = email.split('').filter(char => char === '.').length;
-        return (atSigns === 1 && periods >= 1);
+        return (atSigns === 1 && periods >= 1);  // true if email valid
     };
 
 
   const validateEmailErrors = () => {
     if (email.length === 0) {
       toast.error('Email address must be entered', { toastId: 'emailNil'});
-    };
-    if (!validateEmailHelper(email)) {
-      toast.error('Invalid Email address', { toastId: 'emailBad'});
+    } else if (!validateEmailHelper(email)) {
+        toast.error('Invalid Email address', { toastId: 'emailBad'});
     };
   };
   

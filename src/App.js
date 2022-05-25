@@ -18,7 +18,9 @@ function App() {
         <div className="container">
         <Header />
           <Routes>
+          <Route path='/' element={<PrivateRoute />}> 
             <Route path='/' element={<Home />} />
+          </Route>
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
             {/* Wrap in Private Route to protect */}

@@ -38,7 +38,7 @@ export const createChild = createAsyncThunk(
 // Get User's Children
 export const getChildren = createAsyncThunk(
     'children/getAll',
-    async (_, thunkAPI) => {
+    async (childData, thunkAPI) => {
        
         try {
              // get the token for the currrent user 

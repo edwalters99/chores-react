@@ -9,8 +9,8 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import NewChild from './pages/NewChild';
-import FamilyChores from './pages/FamilyChores';
-import NewFamilyChores from './pages/NewFamilyChores';
+import Favourites from './pages/Favourites';
+import NewFavourite from './pages/NewFavourite';
 
 
 function App() {
@@ -29,11 +29,11 @@ function App() {
             <Route path='/new-child' element={<PrivateRoute />}> 
               <Route path='/new-child' element={<NewChild />} />
             </Route>
-            <Route path='/familychores' element={<PrivateRoute />}> 
-              <Route path='/familychores' element={<FamilyChores />} />
+            <Route path='/favourites' element={<PrivateRoute />}> 
+              <Route path='/favourites' element={<Favourites />} />
             </Route>
-            <Route path='/new-familychores' element={<PrivateRoute />}> 
-              <Route path='/new-familychores' element={<NewFamilyChores />} />
+            <Route path='/new-favourite' element={<PrivateRoute />}> 
+              <Route path='/new-favourite' element={<NewFavourite/>} />
             </Route>
           </Routes>
         </div>

@@ -28,7 +28,7 @@ function Home() {
           <FaQuestionCircle />  Add Child
         </Link>
 
-        <Link to='/familychores' className="btn btn-reverse btn-block">
+        <Link to='/favourites' className="btn btn-reverse btn-block">
           <FaQuestionCircle />  Family Chore List
         </Link>
     </>

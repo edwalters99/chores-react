@@ -2,16 +2,16 @@ import React from 'react';
 import BackButton from '../components/BackButton';
 import { Link } from 'react-router-dom';
 
-function FamilyChores() {
+function Favourite() {
   return (
     <>
         <BackButton url="/" />
         <div>ChoreLIST</div>
 
-        <Link to='/new-familychores' className="btn btn-reverse btn-block">New Favourite</Link>
+        <Link to='/new-favourite' className="btn btn-reverse btn-block">New Favourite</Link>
 
     </>
   )
 }
 
-export default FamilyChores;
+export default Favourite;

@@ -6,7 +6,7 @@ import BackButton from '../components/BackButton';
 
 import coin from '../images/coin.png';
 
-function NewFamilyChores() {
+function NewFavourite() {
     const [formData, setFormData] = useState( { 
         title: '',
         desc: '',
@@ -85,7 +85,7 @@ function NewFamilyChores() {
   
     return (
       <>
-       <BackButton url="/familychores" />
+       <BackButton url="/favourites" />
        <section className="heading">
          <h1>
              Create Favourite:
@@ -161,4 +161,4 @@ function NewFamilyChores() {
   )
 }
 
-export default NewFamilyChores;
+export default NewFavourite;

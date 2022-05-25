@@ -12,22 +12,54 @@ function NewFamilyChores() {
         icon: ''
       });
 
-      const { title, desc, value, icon } = formData; 
+    const [titleValid, setTitleValid] = useState(false);
+    const [descValid, setDescValid] = useState(false);
+    const [iconValid, setIconValid] = useState(false);
 
-      const [formReady, setFormReady] = useState();
+    
+    const [formReady, setFormReady] = useState();
 
-      const navigate = useNavigate();
+    const { title, desc, value, icon } = formData; 
 
-      //REDUX
-      const dispatch = useDispatch();
-    //   const {user, isLoading, isError, isSuccess, message } = useSelector(state => state.famchore);  // retrieve from global state (auth)
+    useEffect(() => {
+      checkFormReady();
+    }, [titleValid, descValid, iconValid]);
 
-      const onChange = (e) => {
-        setFormData(prevState => ({
-          ...prevState,
-          [e.target.name] : e.target.value
-        }))
-      };
+    useEffect(() => {
+      validateTitle();
+      validateDesc();
+      validateIcon();
+    },[formData]);
+
+    const navigate = useNavigate();
+
+    //REDUX
+    const dispatch = useDispatch();
+  //   const {user, isLoading, isError, isSuccess, message } = useSelector(state => state.famchore);  // retrieve from global state (auth)
+
+      
+    
+    
+    const validateTitle = () => {
+      setTitleValid(title.length !== 0);
+    };
+    const validateDesc = () => {
+      setDescValid(desc.length !== 0);
+    };
+    const validateIcon = () => {
+      setIconValid(icon.length !== 0);
+    };
+
+    const checkFormReady = () => {
+      setFormReady((titleValid && descValid && iconValid));
+    };
+
+    const onChange = (e) => {
+      setFormData(prevState => ({
+        ...prevState,
+        [e.target.name] : e.target.value
+      }))
+    };
 
       const onSubmit = (e) => {
         e.preventDefault();

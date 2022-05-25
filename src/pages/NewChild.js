@@ -6,7 +6,10 @@ import { toast } from 'react-toastify';
 import dayjs from 'dayjs';
 import { createChild, reset } from '../features/children/childSlice';
 import Spinner from '../components/Spinner';
+import BackButton from '../components/BackButton';
+
 import ChildCard from '../components/ChildCard';
+
 
 const todayDate = new Date().toISOString().substring(0,10);
 const minDate = dayjs().subtract(21, 'year').toISOString().substring(0,10);
@@ -51,6 +54,7 @@ function NewChild() {
 
     return (
     <>
+        <BackButton url="/" />
         <section className="heading">
             <h1>Add Child</h1>
             <h3>{ user.familyname }</h3>

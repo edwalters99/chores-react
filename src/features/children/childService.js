@@ -17,8 +17,24 @@ const createChild = async (childData, token) => {
     return response.data;
 };
 
+
+// Get user children
+
+const getChildren = async (token) => {
+   
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    };
+    const response = await axios.get(API_URL, config);
+
+    return response.data;
+};
+
 const childService = {
-    createChild
+    createChild,
+    getChildren
 };
 
 export default childService;

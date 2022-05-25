@@ -4,6 +4,7 @@ import { FaQuestionCircle } from 'react-icons/fa'
 
 function Home() {
   return (
+    
     <>
         <section className="heading">
           <h1>Welcome to ChoreTracker **familyname**</h1>

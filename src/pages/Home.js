@@ -15,11 +15,12 @@ function Home() {
     <>
         <section className="heading">
           <h1>Welcome to ChoreTracker</h1>
-          {/* <h1>{ user.familyname }</h1> */}
-          <p>Parent Dashboard</p>
-          <p>**Display childlist if exists**</p>
-          {/* <ChildrenList /> */}
-          <p>*OR*</p>
+          <h1>{ user.familyname }</h1>
+
+          <p className="home-subheader">Parent Dashboard</p>
+
+          <ChildrenList />
+   
          
         </section>
 

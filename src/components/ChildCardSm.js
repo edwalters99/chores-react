@@ -5,7 +5,7 @@ import cat from '../images/cat.png';
 import dino from '../images/dino.png';
 import rabbit from '../images/rabbit.png';
 
-function ChildCard(props) {
+function ChildCardSm(props) {
     const avatarImg = () => {
         if (props.avatar === 'cat') {return (<img src={ cat } />)}
         if (props.avatar === 'dog') {return (<img src={ dog } />)}
@@ -14,15 +14,14 @@ function ChildCard(props) {
     };
 
     return (
-        <div className='avatar-container'>
-            <h2 className='avatar-name'>{ props.firstname }</h2>
+        <div className='avatar-container-sm'>
+            <h2 className='avatar-name-sm'>{ props.firstname }</h2>
   
-            <div className='flexbox'>
-
-                <div className="avatar-img">{ avatarImg() }</div>
-            </div>
+        
+                <div className="avatar-img-sm">{ avatarImg() }</div>
+        
         </div>
   )
 }
 
-export default ChildCardSm
+export default ChildCardSm;

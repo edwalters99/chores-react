@@ -280,6 +280,30 @@ h3 {
   align-items: center;
 }
 
+.avatar-name-sm {
+  font-size: 2rem;
+}
+
+.avatar-container-sm {
+  display: flex;
+  max-width: 200px;
+  width: 500px;
+  height: 125px;
+  justify-content: space-between;
+  margin: 0 auto;
+  align-items: center;
+  border-bottom: black solid 3px;
+}
+
+.avatar-img-sm > img {
+  margin-top: 0px;
+  width: 100px;
+  height: 100px;
+}
+
+.home-subheader {
+  margin-bottom: 1em;
+}
 
 
 

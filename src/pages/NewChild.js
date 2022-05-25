@@ -11,6 +11,7 @@ import BackButton from '../components/BackButton';
 import ChildCard from '../components/ChildCard';
 
 
+
 const todayDate = new Date().toISOString().substring(0,10);
 const minDate = dayjs().subtract(21, 'year').toISOString().substring(0,10);
 
@@ -24,31 +25,36 @@ function NewChild() {
     const [color, setColor] = useState('red');
     const [avatar, setAvatar] = useState('cat');
 
+    const [submitted, setSubmitted] = useState(false); // needed for bug fix - referenced in useEffect
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     useEffect(() => {
         if (isError) {
             toast.error(message, {toastId: 'errMsg'});
+            setSubmitted(false);
         }
 
-        if (isSuccess) {
+        if (isSuccess && submitted) {
             dispatch(reset());
-            navigate('/children');
+            navigate('/');
         };
 
         dispatch(reset());
     }, [dispatch, isError, isSuccess, navigate, message]);
+
+
+
 
     if (isLoading) {
         return <Spinner />
     };
 
     const onSubmit = (e) => {
-        console.log('submit')
-        console.log(firstname, dob, color, avatar)
         e.preventDefault();
         dispatch(createChild({ firstname, dob, color, avatar }));
+        setSubmitted(true);
     };
 
 

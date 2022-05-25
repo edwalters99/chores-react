@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getChildren, reset } from '../features/children/childSlice';
 import Spinner from './Spinner';
-import ChildCard from './ChildCard';
+import ChildCardSm from './ChildCardSm';
 
 function ChildrenList() {
     const { children, isLoading, isSuccess } = useSelector((state) => state.child)
@@ -23,11 +23,15 @@ function ChildrenList() {
         return <Spinner />
     };
 
+    if (!children) {
+        return (<><p>Please add a child...</p></>)
+    };
+
     return (
         <div>
             { children.map((child) => (
                 <div className='childcardsmall'>
-                <ChildCard firstname={child.firstname} dob={child.dob} avatar={child.avatar} color={child.color}/>
+                <ChildCardSm firstname={child.firstname} dob={child.dob} avatar={child.avatar} color={child.color}/>
                 </div>
             )) }
         </div>

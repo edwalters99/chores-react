@@ -4,11 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import BackButton from '../components/BackButton';
 
+import coin from '../images/coin.png';
+
 function NewFamilyChores() {
     const [formData, setFormData] = useState( { 
         title: '',
         desc: '',
-        value: '',
+        value: '1',
         icon: ''
       });
 
@@ -37,8 +39,7 @@ function NewFamilyChores() {
     const dispatch = useDispatch();
   //   const {user, isLoading, isError, isSuccess, message } = useSelector(state => state.famchore);  // retrieve from global state (auth)
 
-      
-    
+
     
     const validateTitle = () => {
       setTitleValid(title.length !== 0);
@@ -64,14 +65,31 @@ function NewFamilyChores() {
       const onSubmit = (e) => {
         e.preventDefault();
       };
+
+      const coinDisplay = () => {
+        if (value == 1)
+        return (
+            <div className="coin-container"><img className="coin" src={ coin } /></div>
+        );
+        if (value == 2) {
+          return (
+            <div className="coin-container"><img className="coin" src={ coin } /><img className="coin" src={ coin } /></div>
+          );
+        };
+        if (value == 3) {
+          return (
+            <div className="coin-container"><img className="coin" src={ coin } /><img className="coin" src={ coin } /><img className="coin" src={ coin } /></div>
+          );
+        };
+      };
   
     return (
       <>
        <BackButton url="/familychores" />
        <section className="heading">
-          {/* <h1>
-            <FaUser /> Create new Chore...
-          </h1> */}
+         <h1>
+             Create Favourite:
+          </h1> 
         </section>
 
         <div className="form">
@@ -106,15 +124,14 @@ function NewFamilyChores() {
             </div>
 
             <div className="form-group small-width">
-                    <label htmlFor='value'>Value:</label>
-                    <select name="value" id="value" className="form-control" value={ value }onChange={ onChange }>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
-                </div>
+              <label htmlFor='value'>Value:</label>
+              <select name="value" id="value" className="form-control" value={ value }onChange={ onChange }>
+                <option value={ 1 }>1</option>
+                <option value={ 2 }>2</option>
+                <option value={ 3 }>3</option>
+              </select>
+            </div>
             
-
             <div className="form-group small-width">
               <label>
               Emoji:
@@ -130,11 +147,15 @@ function NewFamilyChores() {
               </label>
             </div>
 
-
               <div className="form-group">
                 <button className={ formReady ? "btn btn-block btn-success" : "btn btn-block btn-inactive"}>Save</button>
               </div>
             </form>
+
+            
+            { icon && coinDisplay() }
+            <h1 className='emoji-lg'>{ icon && icon }</h1>
+
         </div>
     </>
   )

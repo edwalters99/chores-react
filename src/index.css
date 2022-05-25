@@ -305,6 +305,11 @@ h3 {
   margin-bottom: 1em;
 }
 
+.small-width {
+  width: 25%;
+  min-width: 50px;
+}
+
 
 
 

@@ -9,6 +9,8 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import NewChild from './pages/NewChild';
+import FamilyChores from './pages/FamilyChores';
+import NewFamilyChores from './pages/NewFamilyChores';
 
 
 function App() {
@@ -26,6 +28,12 @@ function App() {
             {/* Wrap in Private Route to protect */}
             <Route path='/new-child' element={<PrivateRoute />}> 
               <Route path='/new-child' element={<NewChild />} />
+            </Route>
+            <Route path='/familychores' element={<PrivateRoute />}> 
+              <Route path='/familychores' element={<FamilyChores />} />
+            </Route>
+            <Route path='/new-familychores' element={<PrivateRoute />}> 
+              <Route path='/new-familychores' element={<NewFamilyChores />} />
             </Route>
           </Routes>
         </div>

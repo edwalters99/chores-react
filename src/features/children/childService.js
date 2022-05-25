@@ -21,7 +21,6 @@ const createChild = async (childData, token) => {
 // Get user children
 
 const getChildren = async (token) => {
-   console.log('testgc')
     const config = {
         headers: {
             Authorization: `Bearer ${token}`

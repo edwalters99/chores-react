@@ -16,10 +16,7 @@ function ChildCardSm(props) {
     return (
         <div className='avatar-container-sm'>
             <h2 className='avatar-name-sm'>{ props.firstname }</h2>
-  
-        
-                <div className="avatar-img-sm">{ avatarImg() }</div>
-        
+            <div className="avatar-img-sm">{ avatarImg() }</div>
         </div>
   )
 }

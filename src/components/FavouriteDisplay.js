@@ -10,7 +10,8 @@ function FavouriteDisplay({ fav }) {
     const dispatch = useDispatch();
     console.log(children)
 
-    const [selectedChild, setSelectedChild] = useState();
+    const [selectedChildId, setSelectedChildId] = useState();
+
 
     useEffect(() => {
         dispatch(getChildren());
@@ -43,11 +44,24 @@ function FavouriteDisplay({ fav }) {
         };
       };
 
-      const onChange = () => {}
+      const onChange = (e) => {
+          setSelectedChildId(e.target.value);
+      };
+
+      const onSubmit = (e) => {
+          e.preventDefault();
+          const choreData = {
+              title: fav.title,
+              desc: fav.desc,
+              value: fav.value,
+              icon: fav.icon
+          };
+          
+      };
 
       const renderChildSelection = () => {
           return (
-            <select name="selectedchild" id="selectedchild" className="form-control" value={ selectedChild } onChange={ onChange }>
+            <select name="selectedChildId"  className="form-control" value={ selectedChildId } onChange={ onChange }>
              { children.map((child) => (
                 <option value={ child._id }>{ child.firstname }</option>
             )) }
@@ -60,7 +74,7 @@ function FavouriteDisplay({ fav }) {
         <h2>{ fav.title } { fav.icon }</h2>
         <p>{ fav.desc }</p>
         { coinDisplay(fav.value)}
-        <form>
+        <form onSubmit={ onSubmit }>
         <div className="form-group">
            { renderChildSelection() }
         </div>

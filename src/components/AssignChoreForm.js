@@ -3,10 +3,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { createChore , reset } from '../features/chores/choreSlice';
 import { toast } from 'react-toastify';
 
+
 function AssignChoreForm(props) {
 
     const [selectedChildId, setSelectedChildId] = useState();
-    const [assigned, setAssigned] = useState([]);
 
     const dispatch = useDispatch();
 
@@ -24,7 +24,8 @@ function AssignChoreForm(props) {
           
         }, [isLoading, isSuccess, isError])
 
-    
+   
+
     const onSubmit = (e) => {
         e.preventDefault();
         const choreData = {
@@ -33,7 +34,8 @@ function AssignChoreForm(props) {
             value: props.fav.value,
             icon: props.fav.icon
         };
-        dispatch(createChore({choreData : choreData, childId : 'selectedChildId' })) 
+        dispatch(createChore({choreData : choreData, childId : 'selectedChildId' }));
+        props.addNameToList(getChildName());
     };
 
     const onChange = (e) => {
@@ -41,7 +43,14 @@ function AssignChoreForm(props) {
         setSelectedChildId(currentSelectedId);
     };
 
-  
+   const getChildName = () => {
+        const currentChild = props.children.find((child) => {
+            return child._id === selectedChildId;
+        });
+        const name = currentChild.firstname;
+        return name;
+   };
+    
 
 
     return (
@@ -54,7 +63,7 @@ function AssignChoreForm(props) {
                 </select>
             </div>
 
-            <button>Assign To Child</button>
+            <button className='btn btn-sm btn-center'>Assign To Child</button>
         </form>
   );
 

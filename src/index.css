@@ -208,6 +208,10 @@ h3 {
   transform: none;
 }
 
+.btn-center {
+  margin: 0 auto;
+}
+
 .loadingSpinnerContainer {
   position: fixed;
   top: 0;
@@ -315,6 +319,8 @@ h3 {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 .coin {
@@ -346,8 +352,11 @@ h3 {
 .favlist-heading {
   color: #828282;
   font-size: 1.5rem;
+}
 
-
+.assigned-list {
+  margin-top: 2em;
+  margin-bottom: 1em;
 }
 
 

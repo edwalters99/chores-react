@@ -30,8 +30,8 @@ function ChildrenList() {
     return (
         <div>
             { children.map((child) => (
-                <div className='childcardsmall'>
-                <ChildCardSm firstname={ child.firstname } dob={ child.dob } avatar={ child.avatar } color={ child.color }/>
+                <div className='childcardsmall' key={ child._id }>
+                    <ChildCardSm firstname={ child.firstname } dob={ child.dob } avatar={ child.avatar } color={ child.color }/>
                 </div>
             )) }
         </div>

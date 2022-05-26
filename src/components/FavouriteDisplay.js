@@ -1,12 +1,28 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { getChildren, reset } from '../features/children/childSlice';
+import { getChildren, reset as resetChild } from '../features/children/childSlice';
+import { createChore, reset as resetChore } from '../features/chores/choreSlice';
 import coin from '../images/coin.png';
 
 function FavouriteDisplay({ fav }) {
 
-    const { children, isLoading, isSuccess, isError, message } = useSelector((state) => state.child)
+    const { 
+        children, 
+        isLoading : isloadingChildren, 
+        isSuccess : isSuccessChildren, 
+        isError : isErrorChildren, 
+        message : messageChildren 
+    } = useSelector((state) => state.child); // need to change variable names to avoid clash with chore state
+    const { 
+        isLoading : isloadingChore, 
+        isSuccess : isSuccessChore, 
+        isError : isErrorChore, 
+        message : messageChore 
+    } = useSelector((state) => state.chore);
+
+    
+
     const dispatch = useDispatch();
     console.log(children)
 
@@ -17,15 +33,29 @@ function FavouriteDisplay({ fav }) {
         dispatch(getChildren());
     },[dispatch]);
 
+    // errors - get children
     useEffect(() => {  
-        if (isSuccess) {
-            dispatch(reset());
+        if (isSuccessChildren) {
+            dispatch(resetChild());
         };
-        if (isError) {
-            toast.error(message, { toastId: 'tMessage'});
+        if (isErrorChildren) {
+            toast.error(messageChildren, { toastId: 'ChildMessage'});
           };
-        dispatch(reset());
-    }, [isLoading, isSuccess, isError])
+        dispatch(resetChild());
+    }, [isloadingChildren, isSuccessChildren, isErrorChildren])
+    
+    // errors - create chore
+    useEffect(() => {  
+        if (isSuccessChore) {
+            // dispatch(resetChore());
+            console.log('success')
+        };
+        if (isErrorChore) {
+            toast.error(messageChore, { toastId: 'ChoreMessage'});
+          };
+          dispatch(resetChore());
+      
+    }, [isloadingChore, isSuccessChore, isErrorChore])
 
     const coinDisplay = (value) => {
         if (value == 1)
@@ -56,17 +86,22 @@ function FavouriteDisplay({ fav }) {
               value: fav.value,
               icon: fav.icon
           };
-          
+          dispatch(createChore({choreData : choreData, childId : selectedChildId })) 
       };
 
       const renderChildSelection = () => {
           return (
-            <select name="selectedChildId"  className="form-control" value={ selectedChildId } onChange={ onChange }>
-             { children.map((child) => (
-                <option value={ child._id }>{ child.firstname }</option>
-            )) }
-           
+            <select name="selectedChildId"  className="form-control" value={ selectedChildId + 2 } onChange={ onChange }>
+                { children.map((child) => (
+                    <option value={ child._id }>{ child.firstname }</option>
+                )) }
           </select>
+          )
+      }
+
+      if (isSuccessChore) {
+          return (
+              <h1>Success</h1>
           )
       }
   return (
@@ -84,6 +119,6 @@ function FavouriteDisplay({ fav }) {
   )
 }
 
-export default FavouriteDisplay
+export default FavouriteDisplay;
 
 

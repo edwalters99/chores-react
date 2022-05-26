@@ -7,10 +7,8 @@ function Favourite() {
   return (
     <>
         <BackButton url="/" />
+        <Link to='/new-favourite' className="btn btn-reverse btn-block">Add New Chore</Link>
         <FavouritesList />
-
-        <Link to='/new-favourite' className="btn btn-reverse btn-block">New Favourite</Link>
-
     </>
   )
 }

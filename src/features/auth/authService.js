@@ -1,9 +1,7 @@
 // functions in this file perform the actions required e.g. call the API, delete token from localStorage
 import axios from 'axios';
 
-
-
-const SERVER_URL = 'http://localhost:3000'
+const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 const API_URL = SERVER_URL + '/api/users';
 

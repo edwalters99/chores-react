@@ -38,7 +38,7 @@ function FavouritesList() {
     return (
         <div className="favlist-container">
             { favourites.map((fav) => (
-                <FavouriteDisplay fav={ fav } />
+                <FavouriteDisplay fav={ fav } key={ fav._id } />
             )) }
         </div>
   )

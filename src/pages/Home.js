@@ -19,6 +19,9 @@ function Home() {
 
           <p className="home-subheader">Parent Dashboard</p>
 
+          <Link to='/favourites' className="btn btn-reverse btn-block">
+            <FaQuestionCircle />  Family Chore List
+          </Link>          
           <ChildrenList />
    
          
@@ -28,9 +31,6 @@ function Home() {
           <FaQuestionCircle />  Add Child
         </Link>
 
-        <Link to='/favourites' className="btn btn-reverse btn-block">
-          <FaQuestionCircle />  Family Chore List
-        </Link>
     </>
   )
 }

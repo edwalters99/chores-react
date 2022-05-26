@@ -43,7 +43,7 @@ h3 {
   width: 100%;
   max-width: 960px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 20px 20px 20px;
   text-align: center;
 }
 
@@ -325,6 +325,29 @@ h3 {
 .emoji-lg {
   font-size: 5rem;
   margin-top: 0;
+}
+
+.favlist-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2em;
+}
+
+.favlist-cardsmall {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  border-bottom: 2px solid black;
+  width: fit-content;
+}
+
+.favlist-heading {
+  color: #828282;
+  font-size: 1.5rem;
+
+
 }
 
 

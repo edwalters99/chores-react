@@ -5,8 +5,15 @@ import { toast } from 'react-toastify';
 
 
 function AssignChoreForm(props) {
+    const [defaultValue, setDefaultValue] = useState('');
 
-    const [selectedChildId, setSelectedChildId] = useState();
+    // if (props.children[0] !== undefined ) {
+    //     setDefaultValue(props.children[0]._id)
+    // } else {
+    //     setDefaultValue("");
+    // }
+
+    const [selectedChildId, setSelectedChildId] = useState(defaultValue);
 
     const dispatch = useDispatch();
 
@@ -20,11 +27,10 @@ function AssignChoreForm(props) {
             if (isError) {
                 toast.error(message, { toastId: 'ChoreMessage'});
               };
-              dispatch(reset());
-          
+            
         }, [isLoading, isSuccess, isError])
 
-   
+        
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -47,12 +53,20 @@ function AssignChoreForm(props) {
         const currentChild = props.children.find((child) => {
             return child._id === selectedChildId;
         });
+        
+        console.log(selectedChildId)
+        console.log(props.children)
         const name = currentChild.firstname;
-        return name;
+        return name
    };
+
+   if (props.children.length === 0) {
+       return (
+           <>
+           </>
+       )
+   }
     
-
-
     return (
         <form onSubmit={ onSubmit }>
             <div className="form-group">

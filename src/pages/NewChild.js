@@ -9,6 +9,8 @@ import Spinner from '../components/Spinner';
 import BackButton from '../components/BackButton';
 
 import ChildCard from '../components/ChildCard';
+import { css } from "@emotion/react";
+import ClipLoader from "react-spinners/ClipLoader";
 
 
 
@@ -28,6 +30,11 @@ function NewChild() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    
+    useEffect(() => {
+        dispatch(reset());
+    },[]);
+    
     useEffect(() => {
         if (isError) {
             toast.error(message, {toastId: 'errMsg'});
@@ -43,7 +50,7 @@ function NewChild() {
 
 
     if (isLoading) {
-        return <Spinner />
+        return <ClipLoader />
     };
 
     const onSubmit = (e) => {

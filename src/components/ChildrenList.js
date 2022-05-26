@@ -5,6 +5,9 @@ import { getChildren, reset } from '../features/children/childSlice';
 import { toast } from 'react-toastify';
 import Spinner from './Spinner';
 import ChildCardSm from './ChildCardSm';
+import { css } from "@emotion/react";
+import ClipLoader from "react-spinners/ClipLoader";
+
 
 function ChildrenList() {
     const { children, isLoading, isSuccess, isError, message } = useSelector((state) => state.child)
@@ -21,14 +24,14 @@ function ChildrenList() {
         if (isError) {
             toast.error(message, { toastId: 'tMessage'});
           };
-        dispatch(reset());
+
     }, [isLoading, isSuccess, isError])
 
     if (isLoading) {
-        return <Spinner />
+        return (<ClipLoader />)
     };
 
-    if (!children) {
+    if (!children && !isLoading) {
         return (<><p>Please add a child...</p></>)
     };
 

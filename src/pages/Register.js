@@ -5,6 +5,8 @@ import { useSelector, useDispatch } from 'react-redux';  // useSelector for read
 import { useNavigate } from 'react-router-dom';
 import { register, reset } from '../features/auth/authSlice';
 import Spinner from '../components/Spinner';
+import { css } from "@emotion/react";
+import ClipLoader from "react-spinners/ClipLoader";
 
 function Register() {
   
@@ -148,7 +150,7 @@ function Register() {
   };
 
   if (isLoading) {
-    return <Spinner />
+    return <ClipLoader />
   }
    
   return (

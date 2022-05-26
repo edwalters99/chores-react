@@ -1,6 +1,5 @@
 import React from 'react';
-import { getChores, reset } from '../features/chores/choreSlice';
-import { useSelector, useDispatch } from 'react-redux';
+import { nanoid } from 'nanoid';
 
 function AssignedList({ names }) {
 
@@ -9,7 +8,7 @@ function AssignedList({ names }) {
         <div className='assigned-list'>
             { names.map((name) => {
                 return (
-                    <p>Assigned to: <strong>{ name }</strong></p>
+                    <p key={ nanoid }>Assigned to: <strong>{ name }</strong></p>
                 )
             })}
         </div>

@@ -6,6 +6,11 @@ import { getChildren, reset } from '../features/children/childSlice';
 import coin from '../images/coin.png';
 import AssignChoreForm from './AssignChoreForm';
 import AssignedList from './AssignedList';
+import Spinner from './Spinner';
+import { css } from "@emotion/react";
+import ClipLoader from "react-spinners/ClipLoader";
+
+
 
 function FavouriteDisplay({ fav }) {
 
@@ -27,7 +32,7 @@ function FavouriteDisplay({ fav }) {
         if (isError) {
             toast.error(message, { toastId: 'tmess'});
           };
-        dispatch(reset());
+   
     }, [isLoading, isSuccess, isError])
 
     const addNameToList = (name) => {
@@ -60,7 +65,11 @@ function FavouriteDisplay({ fav }) {
         };
         };
 
-      
+    if (isLoading) {
+        return (
+            <ClipLoader />
+        );
+    }
     return (
         <div className='favlist-cardsmall' key={ fav._id }>
             <h1 className='emoji-lg'>{ fav.icon }</h1>
@@ -69,7 +78,7 @@ function FavouriteDisplay({ fav }) {
             
             { coinDisplay(fav.value)}
 
-             <AssignChoreForm children={ children } fav={ fav } addNameToList={ addNameToList }/>
+            <AssignChoreForm children={ children } fav={ fav } addNameToList={ addNameToList }/>
             <AssignedList names={ names }/>
         
         </div>

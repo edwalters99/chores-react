@@ -232,6 +232,7 @@ h3 {
   border-color: #000 transparent #555 transparent;
   border-radius: 50%;
   animation: spin 1.2s linear infinite;
+  -webkit-animation: spin 1.2s linear infinite;
 }
 
 

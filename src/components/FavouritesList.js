@@ -4,8 +4,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getFavourites, reset } from '../features/favourites/favouriteSlice';
 import Spinner from './Spinner';
 import { toast } from 'react-toastify';
+import { css } from "@emotion/react";
+import ClipLoader from "react-spinners/ClipLoader";
 
 import FavouriteDisplay from './FavouriteDisplay';
+
 
 function FavouritesList() {
     const { favourites, isLoading, isSuccess, isError, message } = useSelector((state) => state.favourite)
@@ -23,15 +26,15 @@ function FavouritesList() {
         if (isError) {
             toast.error(message, { toastId: 'tMessage'});
           };
-        dispatch(reset());
+       
     }, [isLoading, isSuccess, isError])
 
 
     if (isLoading) {
-        return <Spinner />
+        return (<ClipLoader />)
     };
 
-    if (favourites.length === 0) {
+    if (favourites.length === 0 && !isLoading) {
         return (<p className="favlist-heading">No favourite chores yet. Please add one... </p>)
     };
 

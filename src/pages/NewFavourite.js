@@ -6,6 +6,8 @@ import { createFavourite, reset } from '../features/favourites/favouriteSlice';
 import { useState, useEffect } from 'react';
 import BackButton from '../components/BackButton';
 import Spinner from '../components/Spinner';
+import { css } from "@emotion/react";
+import ClipLoader from "react-spinners/ClipLoader";
 
 import coin from '../images/coin.png';
 
@@ -107,7 +109,7 @@ function NewFavourite() {
 
 
     if (isLoading) {
-      return <Spinner />
+      return <ClipLoader />
     }
        
     return (

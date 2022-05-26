@@ -3,11 +3,12 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getFavourites, reset } from '../features/favourites/favouriteSlice';
 import Spinner from './Spinner';
-import coin from '../images/coin.png';
+import { toast } from 'react-toastify';
+
 import FavouriteDisplay from './FavouriteDisplay';
 
 function FavouritesList() {
-    const { favourites, isLoading, isSuccess } = useSelector((state) => state.favourite)
+    const { favourites, isLoading, isSuccess, isError, message } = useSelector((state) => state.favourite)
     const dispatch = useDispatch();
 
 
@@ -19,25 +20,11 @@ function FavouritesList() {
         if (isSuccess) {
             dispatch(reset());
         };
-    }, [isLoading, isSuccess])
-
-    const coinDisplay = (value) => {
-        if (value == 1)
-        return (
-            <div className="coin-container"><img className="coin" src={ coin } /></div>
-        );
-        if (value == 2) {
-          return (
-            <div className="coin-container"><img className="coin" src={ coin } /><img className="coin" src={ coin } /></div>
-          );
-        };
-        if (value == 3) {
-          return (
-            <div className="coin-container"><img className="coin" src={ coin } /><img className="coin" src={ coin } /><img className="coin" src={ coin } /></div>
-          );
-        };
-      };
-
+        if (isError) {
+            toast.error(message, { toastId: 'tMessage'});
+          };
+        dispatch(reset());
+    }, [isLoading, isSuccess, isError])
 
 
     if (isLoading) {
@@ -45,7 +32,7 @@ function FavouritesList() {
     };
 
     if (favourites.length === 0) {
-        return (<><p className="favlist-heading">No favourite chores yet. Please add one... </p></>)
+        return (<p className="favlist-heading">No favourite chores yet. Please add one... </p>)
     };
 
     return (

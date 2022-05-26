@@ -26,7 +26,7 @@ const getFavourites = async (token) => {
         }
     };
     const response = await axios.get(API_URL, config);
-
+    console.log(response)
     return response.data;
 };
 

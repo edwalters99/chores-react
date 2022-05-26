@@ -41,7 +41,7 @@ export const getChildren = createAsyncThunk(
     async (_, thunkAPI) => {
        
         try {
-             // get the token for the currrent user 
+             // get the token for the current user 
              // thunkAPI.getState() method allows access fo data from other states
         const token = thunkAPI.getState().auth.user.token;
        

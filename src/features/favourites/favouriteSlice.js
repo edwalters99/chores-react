@@ -90,7 +90,7 @@ export const favouriteSlice = createSlice({
         .addCase(getFavourites.fulfilled, (state, action) => {
             state.isLoading = false;
             state.isSuccess = true;
-            state.children = action.payload;
+            state.favourites = action.payload;
         })
         .addCase(getFavourites.rejected, (state, action) => {
             state.isLoading = false;

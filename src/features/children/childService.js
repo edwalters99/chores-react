@@ -31,9 +31,23 @@ const getChildren = async (token) => {
     return response.data;
 };
 
+const deleteChild = async (token) => {
+   
+    const config = {
+        headers: {
+            Authorization: `Bearer ${ token }`
+        }
+    };
+    const response = await axios.delete(API_URL, config);
+
+    return response.data;
+};
+
+
 const childService = {
     createChild,
-    getChildren
+    getChildren,
+    deleteChild
 };
 
 export default childService;

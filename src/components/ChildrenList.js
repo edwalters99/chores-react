@@ -38,4 +38,4 @@ function ChildrenList() {
   )
 };
 
-export default ChildrenList
+export default ChildrenList;

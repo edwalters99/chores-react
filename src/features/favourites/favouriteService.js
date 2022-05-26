@@ -16,3 +16,9 @@ const createFavourite = async (favouriteData, token) => {
 
     return response.data;
 };
+
+const favouriteService = {
+    createFavourite
+};
+
+export default favouriteService;

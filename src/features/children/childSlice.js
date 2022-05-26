@@ -20,7 +20,7 @@ export const createChild = createAsyncThunk(
              // get the token for the currrent user 
              // thunkAPI.getState() method allows access fo data from other states
         const token = thunkAPI.getState().auth.user.token;
-        console.log(token)
+     
             return await childService.createChild(childData, token)
         }   catch (error) {
             const errorMessage = 
@@ -63,7 +63,12 @@ export const childSlice = createSlice({
     name: 'child',
     initialState,
     reducers: {
-        reset: (state) => initialState
+        reset: (state) => {
+            state.isLoading = false;
+            state.isError = false;
+            state.isSuccess = false;
+            state.message = '';
+        }
     },
     extraReducers: (builder) => {
         builder

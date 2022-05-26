@@ -9,7 +9,7 @@ const createChild = async (childData, token) => {
    
     const config = {
         headers: {
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${ token }`
         }
     };
     const response = await axios.post(API_URL, childData, config);

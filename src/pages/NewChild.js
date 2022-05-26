@@ -25,18 +25,15 @@ function NewChild() {
     const [color, setColor] = useState('red');
     const [avatar, setAvatar] = useState('cat');
 
-    const [submitted, setSubmitted] = useState(false); // needed for bug fix - referenced in useEffect
-
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     useEffect(() => {
         if (isError) {
             toast.error(message, {toastId: 'errMsg'});
-            setSubmitted(false);
-        }
+        };  
 
-        if (isSuccess && submitted) {
+        if (isSuccess) {
             dispatch(reset());
             navigate('/');
         };
@@ -54,7 +51,6 @@ function NewChild() {
     const onSubmit = (e) => {
         e.preventDefault();
         dispatch(createChild({ firstname, dob, color, avatar }));
-        setSubmitted(true);
     };
 
 

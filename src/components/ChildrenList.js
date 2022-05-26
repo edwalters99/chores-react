@@ -11,13 +11,13 @@ function ChildrenList() {
 
     useEffect(() => {
         dispatch(getChildren());
-
-        return () => {  // clean up state when component dismounts
-            if (isSuccess) {
-                dispatch(reset()); 
-            }
-        }
     },[dispatch]);
+
+    useEffect(() => {  
+        if (isSuccess) {
+            dispatch(reset());
+        };
+    }, [isLoading, isSuccess])
 
     if (isLoading) {
         return <Spinner />
@@ -31,7 +31,7 @@ function ChildrenList() {
         <div>
             { children.map((child) => (
                 <div className='childcardsmall'>
-                <ChildCardSm firstname={child.firstname} dob={child.dob} avatar={child.avatar} color={child.color}/>
+                <ChildCardSm firstname={ child.firstname } dob={ child.dob } avatar={ child.avatar } color={ child.color }/>
                 </div>
             )) }
         </div>

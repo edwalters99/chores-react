@@ -1,6 +1,8 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
+import { createFavourite, reset } from '../features/favourites/favouriteSlice';
 import { useState, useEffect } from 'react';
 import BackButton from '../components/BackButton';
 
@@ -23,6 +25,13 @@ function NewFavourite() {
 
     const { title, desc, value, icon } = formData; 
 
+    const {isLoading, isError, isSuccess, message} = useSelector((state) => state.favourite);
+
+    const navigate = useNavigate();
+
+    //REDUX
+    const dispatch = useDispatch();
+
     useEffect(() => {
       checkFormReady();
     }, [titleValid, descValid, iconValid]);
@@ -33,10 +42,21 @@ function NewFavourite() {
       validateIcon();
     },[formData]);
 
-    const navigate = useNavigate();
+    useEffect(() => {
+      if (isError) {
+          toast.error(message, {toastId: 'errMsg'});
+      };  
 
-    //REDUX
-    const dispatch = useDispatch();
+      if (isSuccess) {
+          dispatch(reset());
+          navigate('/');
+      };
+
+      dispatch(reset());
+  }, [dispatch, isError, isSuccess, navigate, message]);
+
+
+
   //   const {user, isLoading, isError, isSuccess, message } = useSelector(state => state.famchore);  // retrieve from global state (auth)
 
 
@@ -64,6 +84,7 @@ function NewFavourite() {
 
       const onSubmit = (e) => {
         e.preventDefault();
+        dispatch(createFavourite(formData));
       };
 
       const coinDisplay = () => {

@@ -42,8 +42,6 @@ function NewChild() {
     }, [dispatch, isError, isSuccess, navigate, message]);
 
 
-
-
     if (isLoading) {
         return <Spinner />
     };

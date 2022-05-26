@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createFavourite, reset } from '../features/favourites/favouriteSlice';
 import { useState, useEffect } from 'react';
 import BackButton from '../components/BackButton';
+import Spinner from '../components/Spinner';
 
 import coin from '../images/coin.png';
 
@@ -44,16 +45,16 @@ function NewFavourite() {
 
     useEffect(() => {
       if (isError) {
-          toast.error(message, {toastId: 'errMsg'});
+        toast.error(message, {toastId: 'errMsg'});
       };  
 
       if (isSuccess) {
           dispatch(reset());
-          navigate('/');
+          navigate('/favourites');
       };
 
       dispatch(reset());
-  }, [dispatch, isError, isSuccess, navigate, message]);
+    }, [dispatch, isError, isSuccess, navigate, message]);
 
 
 
@@ -82,28 +83,33 @@ function NewFavourite() {
       }))
     };
 
-      const onSubmit = (e) => {
-        e.preventDefault();
-        dispatch(createFavourite(formData));
-      };
+    const onSubmit = (e) => {
+      e.preventDefault();
+      dispatch(createFavourite(formData));
+    };
 
-      const coinDisplay = () => {
-        if (value == 1)
+    const coinDisplay = () => {
+      if (value == 1)
+      return (
+          <div className="coin-container"><img className="coin" src={ coin } /></div>
+      );
+      if (value == 2) {
         return (
-            <div className="coin-container"><img className="coin" src={ coin } /></div>
+          <div className="coin-container"><img className="coin" src={ coin } /><img className="coin" src={ coin } /></div>
         );
-        if (value == 2) {
-          return (
-            <div className="coin-container"><img className="coin" src={ coin } /><img className="coin" src={ coin } /></div>
-          );
-        };
-        if (value == 3) {
-          return (
-            <div className="coin-container"><img className="coin" src={ coin } /><img className="coin" src={ coin } /><img className="coin" src={ coin } /></div>
-          );
-        };
       };
-  
+      if (value == 3) {
+        return (
+          <div className="coin-container"><img className="coin" src={ coin } /><img className="coin" src={ coin } /><img className="coin" src={ coin } /></div>
+        );
+      };
+    };
+
+
+    if (isLoading) {
+      return <Spinner />
+    }
+       
     return (
       <>
        <BackButton url="/favourites" />

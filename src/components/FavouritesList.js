@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getFavourites, reset } from '../features/favourites/favouriteSlice';
 import Spinner from './Spinner';
 import coin from '../images/coin.png';
+import FavouriteDisplay from './FavouriteDisplay';
 
 function FavouritesList() {
     const { favourites, isLoading, isSuccess } = useSelector((state) => state.favourite)
@@ -50,14 +51,7 @@ function FavouritesList() {
     return (
         <div className="favlist-container">
             { favourites.map((fav) => (
-                <div className='favlist-cardsmall' key={ fav._id }>
-                   <h2>{ fav.title } { fav.icon }</h2>
-                   <p></p>
-                   <p>{ fav.desc }</p>
-                   { coinDisplay(fav.value)}
-                   
-                  
-                </div>
+                <FavouriteDisplay fav={ fav } />
             )) }
         </div>
   )

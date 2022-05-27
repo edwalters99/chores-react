@@ -364,6 +364,51 @@ h3 {
   margin-bottom: 1em;
 }
 
+.child-home-container {
+  height: 100vh;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.child-home-avatar-container img {
+  width: 70%;;
+}
+
+.child-home-avatar-container img:hover {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+
+}
+
+.child-home-title {
+  font-size: 3rem;
+}
+
+.child-home-message-container {
+  padding-top: .5em;
+  padding-bottom: .5em;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+}
+
+.gold-coin-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 80%;
+}
+
+.gold-coin {
+  width: 75px;
+  height: 75px;
+}
+
+.gold-coin:hover {
+  transform: scale(1.3);
+}
+
 
 
 

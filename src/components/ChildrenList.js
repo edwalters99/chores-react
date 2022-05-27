@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getChildren, reset } from '../features/children/childSlice';
 import { toast } from 'react-toastify';
@@ -7,6 +7,7 @@ import Spinner from './Spinner';
 import ChildCardSm from './ChildCardSm';
 import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
+import { nanoid } from '@reduxjs/toolkit';
 
 
 function ChildrenList() {
@@ -14,7 +15,7 @@ function ChildrenList() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getChildren());
+        dispatch(getChildren())
     },[dispatch]);
 
     useEffect(() => {  
@@ -27,11 +28,15 @@ function ChildrenList() {
 
     }, [isLoading, isSuccess, isError])
 
+    const forceRerender = () => {
+        window.location.reload(false);
+    };
+
     if (isLoading) {
         return (<ClipLoader />)
     };
 
-    if (!children && !isLoading) {
+    if (children.length === 0 && isLoading === false) {
         return (<><p>Please add a child...</p></>)
     };
 
@@ -39,7 +44,7 @@ function ChildrenList() {
         <div>
             { children.map((child) => (
                 <div className='childcardsmall' key={ child._id }>
-                    <ChildCardSm firstname={ child.firstname } dob={ child.dob } avatar={ child.avatar } color={ child.color }/>
+                    <ChildCardSm firstname={ child.firstname } dob={ child.dob } avatar={ child.avatar } color={ child.color } _id={ child._id } forceRerender={ forceRerender }/>
                 </div>
             )) }
         </div>

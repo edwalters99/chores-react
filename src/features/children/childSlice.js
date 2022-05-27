@@ -62,14 +62,13 @@ export const getChildren = createAsyncThunk(
 // Delete Child
 export const deleteChild = createAsyncThunk(
     'children/deleteChild',
-    async (_, thunkAPI) => {
-       
+    async (childId, thunkAPI) => {
         try {
              // get the token for the current user 
              // thunkAPI.getState() method allows access fo data from other states
         const token = thunkAPI.getState().auth.user.token;
        
-            return await childService.deleteChild(token)
+            return await childService.deleteChild(childId, token)
         }   catch (error) {
             const errorMessage = 
                 (error.response && 
@@ -125,6 +124,7 @@ export const childSlice = createSlice({
             state.isLoading = true;
         })
         .addCase(deleteChild.fulfilled, (state, action) => {
+        
             state.isLoading = false;
             state.isSuccess = true;
             state.message = action.payload;

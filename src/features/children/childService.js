@@ -31,14 +31,14 @@ const getChildren = async (token) => {
     return response.data;
 };
 
-const deleteChild = async (token) => {
+const deleteChild = async (childId, token) => {
    
     const config = {
         headers: {
             Authorization: `Bearer ${ token }`
         }
     };
-    const response = await axios.delete(API_URL, config);
+    const response = await axios.delete(API_URL + childId, config);
 
     return response.data;
 };

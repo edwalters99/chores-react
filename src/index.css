@@ -370,6 +370,8 @@ h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: -4em;
+  padding: 1em;
 }
 
 .child-home-avatar-container img {
@@ -379,7 +381,6 @@ h3 {
 .child-home-avatar-container img:hover {
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
-
 }
 
 .child-home-title {
@@ -391,13 +392,20 @@ h3 {
   padding-bottom: .5em;
   border-top: 1px solid white;
   border-bottom: 1px solid white;
+  margin-bottom: 1.5em;
+}
+
+.child-home-greeting {
+  margin-bottom: 1.5em;
 }
 
 .gold-coin-container {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
   width: 80%;
+  font-size: 1.25em;
 }
 
 .gold-coin {

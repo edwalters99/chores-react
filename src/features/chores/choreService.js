@@ -17,6 +17,21 @@ const getChores = async(childId, token) => {
     return response.data;
 
 }
+
+// Get Child's chores - Active Only
+
+const getChoresActive = async(childId, token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${ token }`,
+        },
+    };
+
+    const response = await axios.get(API_URL + childId + '/chores/active', config);
+
+    return response.data;
+
+}
 // Create Child's chore
 
 const createChore = async(choreData, childId, token) => {
@@ -35,6 +50,7 @@ const createChore = async(choreData, childId, token) => {
 
 const choreService = {
     getChores,
+    getChoresActive,
     createChore
 };
 

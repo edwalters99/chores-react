@@ -10,6 +10,7 @@ import cat from '../images/cat.png';
 import dino from '../images/dino.png';
 import rabbit from '../images/rabbit.png';
 import GoldCoins from '../components/GoldCoins';
+import AssignedChores from '../components/AssignedChores';
 
 
 
@@ -50,6 +51,25 @@ useEffect(() => {
     if (isSuccess) {
         const backwardsName = child.firstname.split('').reverse().join('').toLowerCase();
         const age = dayjs(new Date()).diff(dayjs(child.dob), 'year');
+        
+        function calculateDaysToBirthday() {
+            let today = new Date();
+            let bday = new Date(child.dob);
+            let age = today.getFullYear() - bday.getFullYear();
+            
+            let upcomingBday = new Date(today.getFullYear(), bday.getMonth(), bday.getDate());
+            
+            if(today > upcomingBday) {
+              upcomingBday.setFullYear(today.getFullYear() + 1);
+            }
+            
+            const one_day = 24 * 60 * 60 * 1000;
+            
+            const daysLeft = Math.ceil((upcomingBday.getTime() - today.getTime()) / (one_day));
+
+            return daysLeft
+        }
+        
         const messages = [
             `What's it like being ${ age }?`,
             `Life's good being a ${ child.avatar }!`,
@@ -57,12 +77,14 @@ useEffect(() => {
             `Caring is Sharing!`,
             `You're looking great today!`,
             `That's funny - my favourite colour is ${ child.color } too!`,
-            `I'm sleepy and want a nap!`,
-            `Reading is fun!`,
+            `I'm sleepy and I want a nap!`,
+            `Reading is fun! 📚`,
             `Your name backwards is ${ backwardsName }.`,
+            `🎂It's ${ calculateDaysToBirthday() } days until your Birthday 🎂`
          ];
         
          setRandomMessage(String(messages[Math.floor(Math.random()*messages.length)]));
+
     }
 }, [child, isSuccess]);
 
@@ -95,11 +117,16 @@ useEffect(() => {
                 <h1 className="child-home-title"> { child.firstname } dashboard</h1>
                 <div className="child-home-avatar-container">{ avatarImg() }</div>
                 <div>
-                    <h2> { greeting() }</h2>
+                    <h2 className="child-home-greeting"> { greeting() }</h2>
                     <h2 className="child-home-message-container">{ avatarName() } says: "{ randomMessage }"</h2> 
                 </div>
-                { child.rewardbal ?  <GoldCoins coins={ child.rewardbal } /> : <h2>Your Coin bank is empty. Complete some chores to get some shiny gold coins. 😀</h2>}
+
+                { child.rewardbal ? 
+                    <GoldCoins coins={ child.rewardbal } /> 
+                : 
+                    <h2>Your Coin bank is empty. Complete some chores to get some shiny gold coins. 😀</h2>}
                
+               <AssignedChores childId={ child._id } />
         </div>
       )
     };  

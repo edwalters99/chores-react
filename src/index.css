@@ -285,19 +285,22 @@ h3 {
   align-items: center;
 }
 
+/* parent dashboard */
 .avatar-name-sm {
   font-size: 2rem;
 }
 
 .avatar-container-sm {
-  display: flex;
-  max-width: 200px;
-  width: 500px;
-  height: 125px;
-  justify-content: space-between;
   margin: 0 auto;
-  align-items: center;
+  width: 70%;
   border-bottom: black solid 3px;
+  padding-bottom: .4em;
+}
+
+.avatar-container-sub {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .avatar-img-sm > img {
@@ -309,6 +312,7 @@ h3 {
 .home-subheader {
   margin-bottom: 1em;
 }
+
 
 .small-width {
   width: 30%;

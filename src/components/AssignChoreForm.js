@@ -7,14 +7,7 @@ import { toast } from 'react-toastify';
 function AssignChoreForm(props) {
     const [defaultValue, setDefaultValue] = useState('');
 
-    // if (props.children[0] !== undefined ) {
-    //     setDefaultValue(props.children[0]._id)
-    // } else {
-    //     setDefaultValue("");
-    // }
-
-    const [selectedChildId, setSelectedChildId] = useState(defaultValue);
-
+    const [selectedChildId, setSelectedChildId] = useState(props.children[0] === undefined ? '' : props.children[0]._id); //
     const dispatch = useDispatch();
 
     const { isLoading, isSuccess, isError, message } = useSelector((state) => state.chore);
@@ -40,7 +33,7 @@ function AssignChoreForm(props) {
             value: props.fav.value,
             icon: props.fav.icon
         };
-        dispatch(createChore({choreData : choreData, childId : 'selectedChildId' }));
+        dispatch(createChore({choreData : choreData, childId : selectedChildId }));
         props.addNameToList(getChildName());
     };
 
@@ -54,10 +47,7 @@ function AssignChoreForm(props) {
             return child._id === selectedChildId;
         });
         
-        console.log(selectedChildId)
-        console.log(props.children)
-        const name = currentChild.firstname;
-        return name
+        return (currentChild.firstname);
    };
 
    if (props.children.length === 0) {
@@ -71,6 +61,7 @@ function AssignChoreForm(props) {
         <form onSubmit={ onSubmit }>
             <div className="form-group">
                 <select name="selectedChildId" className="form-control" value={ selectedChildId } onChange={ onChange }>
+                    {/* <option disabled selected hidden value="">Select a Child:</option> */}
                     { props.children.map((child) => (
                         <option key={ child._id } value={ child._id }>{ child.firstname }</option>
                     )) }

@@ -1,4 +1,5 @@
 import React from 'react'
+import ChildDelete from './ChildDelete';
 
 import dog from '../images/dog.png';
 import cat from '../images/cat.png';
@@ -14,10 +15,16 @@ function ChildCardSm(props) {
     };
 
     return (
-        <div className='avatar-container-sm'>
-            <h2 className='avatar-name-sm'>{ props.firstname }</h2>
-            <div className="avatar-img-sm">{ avatarImg() }</div>
-        </div>
+        <>
+            <div className='avatar-container-sm'>
+                <div className="avatar-container-sub">
+                    <h2 className='avatar-name-sm'>{ props.firstname }</h2>
+                    <div className="avatar-img-sm">{ avatarImg() }</div>
+                </div>
+                <ChildDelete />
+            </div>
+            
+        </>
   )
 }
 

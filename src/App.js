@@ -11,6 +11,7 @@ import Register from './pages/Register';
 import NewChild from './pages/NewChild';
 import Favourites from './pages/Favourites';
 import NewFavourite from './pages/NewFavourite';
+import ChildHome from './pages/ChildHome';
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
             <Route path='/new-favourite' element={<PrivateRoute />}> 
               <Route path='/new-favourite' element={<NewFavourite/>} />
             </Route>
+            <Route path='/childhome' element={<ChildHome/>} />
           </Routes>
         </div>
       </Router>

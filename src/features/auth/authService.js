@@ -25,7 +25,10 @@ const login = async (loginData) => {
     // user date and token
 };
 
-const logout = () => localStorage.removeItem('user');
+const logout = () => {
+    localStorage.removeItem('user');
+    localStorage.removeItem('childAuth');
+};
 
 const authService = {
     register,

@@ -43,7 +43,6 @@ const deleteChild = async (childId, token) => {
     return response.data;
 };
 
-
 const childService = {
     createChild,
     getChildren,

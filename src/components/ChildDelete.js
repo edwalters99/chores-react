@@ -51,7 +51,6 @@ function ChildDelete({ childId, forceRerender }) {
         return (<ClipLoader />)
     };
 
-
     return (
         <div>
             <button onClick={ onClick }className="btn btn-sm btn-center">Delete</button>

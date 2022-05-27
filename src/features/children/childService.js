@@ -18,7 +18,7 @@ const createChild = async (childData, token) => {
 };
 
 
-// Get user children
+// Get user's children
 
 const getChildren = async (token) => {
     const config = {
@@ -30,6 +30,22 @@ const getChildren = async (token) => {
 
     return response.data;
 };
+
+// Get user child (single)
+
+const getChild = async (childId, token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${ token }`
+        }
+    };
+    const response = await axios.get(API_URL + childId, config);
+
+    return response.data;
+};
+
+
+
 
 const deleteChild = async (childId, token) => {
    
@@ -46,6 +62,7 @@ const deleteChild = async (childId, token) => {
 const childService = {
     createChild,
     getChildren,
+    getChild,
     deleteChild
 };
 

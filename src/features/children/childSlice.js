@@ -59,6 +59,30 @@ export const getChildren = createAsyncThunk(
     }
 );
 
+// Get Users Child
+export const getChild = createAsyncThunk(
+    'children/get',
+    async (childId, thunkAPI) => {
+       
+        try {
+             // get the token for the current user 
+             // thunkAPI.getState() method allows access fo data from other states
+        const token = thunkAPI.getState().auth.user.token;
+       
+            return await childService.getChild(childId, token)
+        }   catch (error) {
+            const errorMessage = 
+                (error.response && 
+                error.response.data && 
+                error.response.data.message) || 
+                error.message ||
+                error.toString() // cover different possible error JSON formats
+                
+                return thunkAPI.rejectWithValue(errorMessage);  // sends error response back to component if api request fails
+            } 
+    }
+);
+
 // Delete Child
 export const deleteChild = createAsyncThunk(
     'children/deleteChild',
@@ -116,6 +140,19 @@ export const childSlice = createSlice({
             state.children = action.payload;
         })
         .addCase(getChildren.rejected, (state, action) => {
+            state.isLoading = false;
+            state.isError = true;
+            state.message = action.payload;
+        })
+        .addCase(getChild.pending, (state) => {
+            state.isLoading = true;
+        })
+        .addCase(getChild.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.isSuccess = true;
+            state.child = action.payload;
+        })
+        .addCase(getChild.rejected, (state, action) => {
             state.isLoading = false;
             state.isError = true;
             state.message = action.payload;

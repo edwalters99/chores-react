@@ -10,7 +10,6 @@ const PrivateRouteChild = () => {
     
   const childLoggedIn = useChildAuthStatus();
 
-
   if (childLoggedIn) {
       return <Navigate to='/childhome' />
   } else {

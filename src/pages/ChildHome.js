@@ -152,7 +152,7 @@ useEffect(() => {
                     <h2>Your Coin bank is empty. Complete some chores to get some shiny gold coins. 😀</h2>}
                
                <AssignedChores childId={ child._id } />
-        </div>
+            </div>
       )
     };  
 }

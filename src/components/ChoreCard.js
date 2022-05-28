@@ -10,13 +10,13 @@ function ChoreCard({ chore }) {
   
     return (
         <div className="chore-card" key={chore._id}>
-            <h2>{ chore.title }</h2>
-            <h3>{ chore.desc }</h3>
+            <h2 onClick={ () => { setDone(false)} }>{ chore.title }</h2>
+            <h3 onClick={ () => { setDone(false)} }>{ chore.desc }</h3>
             <GoldCoins coins={ chore.value } titleText={ 'Reward' }/>
             <p>Set <TimeAgo date={ chore.createdAt } /></p>
             
         { done ? 
-            <ParentPinForm />  
+            <ParentPinForm chore={ chore } />  
         :
             <button className="btn btn-choredone" onClick={ () => {setDone(true)}}>Done!</button>
         }

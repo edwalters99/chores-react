@@ -39,7 +39,7 @@ function AssignedChores({ childId }) {
     if (chores.length === 0) {
         return (
             <div className="chore-display-container">
-                <h2>Well done you don't have any chores to do!</h2>
+                <h2>You don't have any chores to do!</h2>
             </div>
         );
     }

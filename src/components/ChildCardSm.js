@@ -50,9 +50,9 @@ function ChildCardSm(props) {
                     <div className="avatar-img-sm">{ avatarImg() }</div>
                 </div>
                 <div className="avatar-container-btns">
+                    <button className="btn btn-sm" onClick={ onClick }>Login</button>
                     <ChildDelete childId={ props._id } forceRerender={ props.forceRerender }
                     />
-                    <button className="btn btn-sm btn-center" onClick={ onClick }>Login</button>
                 </div>
             </div>
             

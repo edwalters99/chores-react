@@ -432,6 +432,13 @@ h3 {
   margin-top: 2em;
 }
 
+.chore-card {
+  margin-bottom: 2em;
+  border: 5px solid white;
+  border-radius: 20px;
+  padding: 1em;
+}
+
 
 
 

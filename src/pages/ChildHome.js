@@ -114,9 +114,18 @@ useEffect(() => {
     if (isError) {
         return <h3>Something Went Wrong</h3>
     }
+    
+    const fontColor = () => {
+        if (child.color === 'pink' || child.color === 'yellow') {
+            return 'black';
+        } else {
+            return 'white';
+        }
+    };
+
     const style = {
         backgroundColor: `${ child.color }`,
-        color: 'white',
+        color: `${ fontColor() }`,
       };
       
     if (isSuccess) {

@@ -85,8 +85,13 @@ export const choreSlice = createSlice({
     name: 'chore',
     initialState,
     reducers: {
-        reset: (state) => initialState
-    },
+        reset: (state) => {
+            state.isLoading = false;
+            state.isError = false;
+            state.isSuccess = false;
+            state.message = '';
+        }
+    },   
     extraReducers: (builder) => {
         builder  
         .addCase(getChores.pending, (state) => {

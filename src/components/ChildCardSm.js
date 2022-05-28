@@ -31,7 +31,7 @@ function ChildCardSm(props) {
                 label: 'Yes',
                 onClick: () => {
                     localStorage.setItem('childAuth', JSON.stringify(props._id));
-                    navigate('/childhome');  // log in child by setting their id in localStorage
+                    navigate('/childhome');  // 'log in' child by setting their id in localStorage
                 }
               },
               {
@@ -49,9 +49,11 @@ function ChildCardSm(props) {
                     <h2 className='avatar-name-sm'>{ props.firstname }</h2>
                     <div className="avatar-img-sm">{ avatarImg() }</div>
                 </div>
-                <ChildDelete childId={ props._id } forceRerender={ props.forceRerender }
-                />
-                <button className="btn btn-small btn-center" onClick={ onClick }>Login</button>
+                <div className="avatar-container-btns">
+                    <ChildDelete childId={ props._id } forceRerender={ props.forceRerender }
+                    />
+                    <button className="btn btn-sm btn-center" onClick={ onClick }>Login</button>
+                </div>
             </div>
             
         </>

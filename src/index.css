@@ -288,6 +288,7 @@ h3 {
 /* parent dashboard */
 .avatar-name-sm {
   font-size: 2rem;
+  margin-right: .5em;
 }
 
 .avatar-container-sm {
@@ -295,6 +296,16 @@ h3 {
   width: 70%;
   border-bottom: black solid 3px;
   padding-bottom: .4em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar-container-btns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 210px;
 }
 
 .avatar-container-sub {
@@ -415,6 +426,10 @@ h3 {
 
 .gold-coin:hover {
   transform: scale(1.3);
+}
+
+.chore-display-container {
+  margin-top: 2em;
 }
 
 

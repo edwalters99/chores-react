@@ -5,15 +5,12 @@ import { getChoresActive, reset } from '../features/chores/choreSlice';
 import { toast } from 'react-toastify';
 import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
-import ChildDelete from './ChildDelete';
 
 
 function AssignedChores({ childId }) {
     const { chores, isLoading, isSuccess, isError, message } = useSelector((state) => state.chore)
     const dispatch = useDispatch();
-
-    console.log(chores)
-
+    
     useEffect(() => {
         dispatch(getChoresActive( childId ))
     },[dispatch]);
@@ -32,16 +29,33 @@ function AssignedChores({ childId }) {
         return (<ClipLoader />)
     };
 
-if (isSuccess) {
+    if (chores.length === 0) {
+        return (
+            <div className="chore-display-container">
+                <h2>Well done you don't have any chores to do!</h2>
+            </div>
+        );
+    }
+
     return (
-        <div>
-        {console.log(chores)}
-       
+    <div className="chore-display-container">
+        <h2>Chores to be done...</h2>
+        <div>{ chores.map((chore) => {
+                return (
+                   <div className="chore-card">
+                        <p>{ chore.title }</p>
+                        <p>{ chore.desc }</p>
+                        <p>COINS HERE</p>
+
+                   </div>
+                );
+            })}
         </div>
-    )
+    </div>
+  )
 
 
-}
+
 
 
 }

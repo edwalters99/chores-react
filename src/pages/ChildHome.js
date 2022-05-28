@@ -137,9 +137,8 @@ useEffect(() => {
                         <Confetti/>
                     </>) 
                 : 
-                    <h1 className="child-home-title"> { child.firstname } dashboard</h1>
+                    <h1 className="child-home-title">Dashboard for { child.firstname } </h1>
                 }
-                
                 
                 <div className="child-home-avatar-container">{ avatarImg() }</div>
                 <div>
@@ -148,7 +147,7 @@ useEffect(() => {
                 </div>
 
                 { child.rewardbal ? 
-                    <GoldCoins coins={ child.rewardbal } /> 
+                    <GoldCoins coins={ child.rewardbal } titleText={ 'Your Coin Bank' } /> 
                 : 
                     <h2>Your Coin bank is empty. Complete some chores to get some shiny gold coins. 😀</h2>}
                

@@ -3,8 +3,12 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getChoresActive, reset } from '../features/chores/choreSlice';
 import { toast } from 'react-toastify';
+import GoldCoins from './GoldCoins';
 import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
+import TimeAgo from 'react-timeago';
+import ChoreDoneButton from './ChoreDoneButton';
+
 
 
 function AssignedChores({ childId }) {
@@ -25,6 +29,9 @@ function AssignedChores({ childId }) {
 
     }, [isLoading, isSuccess, isError])
 
+    const date = new Date(Date.now())
+
+
     if (isLoading) {
         return (<ClipLoader />)
     };
@@ -42,11 +49,12 @@ function AssignedChores({ childId }) {
         <h2>Chores to be done...</h2>
         <div>{ chores.map((chore) => {
                 return (
-                   <div className="chore-card">
-                        <p>{ chore.title }</p>
-                        <p>{ chore.desc }</p>
-                        <p>COINS HERE</p>
-
+                   <div className="chore-card" key={chore._id}>
+                        <h2>{ chore.title }</h2>
+                        <h3>{ chore.desc }</h3>
+                        <GoldCoins coins={ chore.value } titleText={ 'Reward' }/>
+                        <p>Set <TimeAgo date={ chore.createdAt } /></p>
+                        <ChoreDoneButton />
                    </div>
                 );
             })}

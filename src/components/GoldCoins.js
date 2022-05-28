@@ -12,10 +12,10 @@ function GoldCoins( props ) {
     return output
   };
   
-  
+   // titleText: 'Reward' - AssignedChores or 'Your Coin Bank' - ChildHome
 return (
     <div className="gold-coin-container">
-        <p>Your Coin Bank ({ props.coins }):</p>
+        <p>{ props.titleText } ({ props.coins }):</p> 
         <div key={ nanoid() }> {coins(props.coins)} </div>
     </div>
   )

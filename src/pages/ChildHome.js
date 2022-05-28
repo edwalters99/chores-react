@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import { getChild, reset } from '../features/children/childSlice';
 import { css } from "@emotion/react";
 import dayjs from 'dayjs';
+import Confetti from 'react-confetti';
 import ClipLoader from "react-spinners/ClipLoader";
 import dog from '../images/dog.png';
 import cat from '../images/cat.png';
@@ -19,7 +20,16 @@ function ChildHome() {
 
     const { child, isLoading, isSuccess, isError, message } = useSelector((state) => state.child);
 
+    const [isBirthday, setIsBirthday] = useState(false);
+
     const [randomMessage, setRandomMessage] = useState();
+
+    useEffect(() => {
+        if (isError) {
+            toast.error(message);
+        };
+        dispatch(getChild(childId));
+    }, [childId, isError, message]);
 
 
     const avatarImg = () => {
@@ -65,10 +75,15 @@ useEffect(() => {
             
             const one_day = 24 * 60 * 60 * 1000;
             
-            const daysLeft = Math.ceil((upcomingBday.getTime() - today.getTime()) / (one_day));
+            let daysLeft = Math.ceil((upcomingBday.getTime() - today.getTime()) / (one_day));
+    
+            if (daysLeft === 365) {
+                setIsBirthday(true);
+                daysLeft = 0;
+            };
 
-            return daysLeft
-        }
+            return daysLeft;
+        };
         
         const messages = [
             `What's it like being ${ age }?`,
@@ -80,7 +95,7 @@ useEffect(() => {
             `I'm sleepy and I want a nap!`,
             `Reading is fun! 📚`,
             `Your name backwards is ${ backwardsName }.`,
-            `🎂It's ${ calculateDaysToBirthday() } days until your Birthday 🎂`
+            `🎂It's ${ calculateDaysToBirthday() } day${ calculateDaysToBirthday() === 1 ? '' : 's'} until your Birthday 🎂`
          ];
         
          setRandomMessage(String(messages[Math.floor(Math.random()*messages.length)]));
@@ -89,16 +104,9 @@ useEffect(() => {
 }, [child, isSuccess]);
 
 
-
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        if (isError) {
-            toast.error(message);
-        };
-        dispatch(getChild(childId));
-    }, [childId, isError, message]);
-
+    
     if (isLoading) {
         return <ClipLoader />
     };
@@ -114,7 +122,16 @@ useEffect(() => {
     if (isSuccess) {
         return (
             <div className="child-home-container" style={ style }>
-                <h1 className="child-home-title"> { child.firstname } dashboard</h1>
+                { isBirthday ? 
+                    (<>
+                        <h1>Happy Birthday { child.firstname }!!!</h1>
+                        <Confetti/>
+                    </>) 
+                : 
+                    <h1 className="child-home-title"> { child.firstname } dashboard</h1>
+                }
+                
+                
                 <div className="child-home-avatar-container">{ avatarImg() }</div>
                 <div>
                     <h2 className="child-home-greeting"> { greeting() }</h2>

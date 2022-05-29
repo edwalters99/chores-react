@@ -1,20 +1,20 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getChoresActive, reset } from '../features/chores/choreSlice';
+import { getChoresActive, updateChore, reset } from '../features/chores/choreSlice';
 import { toast } from 'react-toastify';
 import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
 
 
 import ChoreCard from './ChoreCard';
+import { combineReducers } from '@reduxjs/toolkit';
 
 function AssignedChores({ childId }) {
     const { chores, isLoading, isSuccess, isError, message } = useSelector((state) => state.chore)
     const dispatch = useDispatch();
 
-  
-    
+
     useEffect(() => {
         dispatch(getChoresActive( childId ))
     },[dispatch]);
@@ -30,15 +30,19 @@ function AssignedChores({ childId }) {
     }, [isLoading, isSuccess, isError])
 
     const setApproved = (choreId) => {
-        console.log(choreId)
-        console.log('is done')
-    };
+        const data = {
+            choreData: { isApproved: true, isCompleted: true },
+            choreId,
+            childId
+        };
+        dispatch(updateChore(data));
+    }
 
     if (isLoading) {
         return (<ClipLoader />)
     };
 
-    if (chores.length === 0) {
+    if (chores.filter((chore) => !chore.isCompleted && !chore.isApproved ).length === 0) {
         return (
             <div className="chore-display-container">
                 <h2>You don't have any chores to do!</h2>
@@ -48,19 +52,19 @@ function AssignedChores({ childId }) {
 
 
     return (
-    <div className="chore-display-container">
-        <h2>Chores to be done...</h2>
-        
-        <div>{ chores.map((chore) => {
-                return (
-                    <ChoreCard chore={ chore } key={ chore._id } setApproved = { setApproved } />
-                );
-            })}
+        <div className="chore-display-container">
+            <h2>Chores to be done...</h2>
+            
+            <div>{ chores.map((chore) => {
+                    if (chore.isApproved == false & chore.isCompleted === false)
+                    return (
+                        <ChoreCard chore={ chore } key={ chore._id } setApproved = { setApproved } />
+                    );
+                })}
+            </div>
+    
         </div>
-
-    </div>
-  )
-
+      )
 }
 
 export default AssignedChores;

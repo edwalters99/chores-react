@@ -57,7 +57,7 @@ const updateChore = async(choreData, choreId, childId, token) => {
         },
     };
 
-    const response = await axios.put(API_URL + childId + '/chores' + choreId, choreData, config);
+    const response = await axios.put(API_URL + childId + '/chores/' + choreId, choreData, config);
 
     return response.data;
 

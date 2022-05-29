@@ -84,12 +84,13 @@ export const createChore = createAsyncThunk(
 // Update child's chore
 export const updateChore = createAsyncThunk(
     'chores/updateChore',
-    async ({choreData, choreId, childId}, thunkAPI) => {
+    async ({ choreData, choreId, childId }, thunkAPI) => {
        
         try {
              // get the token for the current user 
              // thunkAPI.getState() method allows access fo data from other states
-        const token = thunkAPI.getState().auth.user.token;
+       
+             const token = thunkAPI.getState().auth.user.token;
        
             return await choreService.updateChore(choreData, choreId, childId, token)
         }   catch (error) {
@@ -155,9 +156,16 @@ export const choreSlice = createSlice({
         })
         .addCase(updateChore.fulfilled, (state, action) => {
             state.isLoading = false;
-            state.chores.map((chore) => chore.id === action.payload._id 
-            ? (chore = action.payload) : chore )
-        }) // update front-end state wihtout having to re-fetch
+           
+            state.chores.map((chore) => {
+                if (chore._id === action.payload._id) {
+                   chore.isApproved = true;
+                   chore.isCompleted = true;
+                } else {
+                    return chore;
+                }
+            })
+        }); // update front-end state wihtout having to re-fetch from api
     
     }
 });

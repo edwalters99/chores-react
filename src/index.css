@@ -478,6 +478,14 @@ h3 {
   width:100px;
 }
 
+.parent-pin-form button {
+  cursor: pointer;
+}
+
+.parent-pin-form button:hover {
+  transform: scale(1.2);
+}
+
 .btn-parentpin-yes {
   font-family: inherit;
   color: white;
@@ -487,9 +495,6 @@ h3 {
   border-radius: 10px;
 };
 
-.parentpinmessage p {
-  color: Red;
-}
 
 
 

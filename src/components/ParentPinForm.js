@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-function ParentPinForm({ chore, setApproved }) {
+function ParentPinForm({ chore, setApproved, setDone }) {
     const [pinInput, setPinInput] = useState('');
     const [failed, setFailed] = useState(false);
     
@@ -27,7 +27,7 @@ function ParentPinForm({ chore, setApproved }) {
 
     return (
     <div className="parent-pin-form-container">
-        { failed ? <p>Wrong PIN</p> : <p>Parent: enter PIN:</p> }
+        { failed ? <p onClick= { () => setDone(false) }>Wrong PIN</p> : <p onClick= { () => setDone(false) }>Parent: enter PIN:</p> }
         <form className="parent-pin-form">
             <input onChange={ handleChange } type="password" maxLength={ 4 } required placeholder="4-digit PIN" value={ pinInput } />
             <button className="btn-parentpin-yes" onClick={ handleSubmit }>Yes!</button>

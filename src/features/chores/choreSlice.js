@@ -84,14 +84,14 @@ export const createChore = createAsyncThunk(
 // Update child's chore
 export const updateChore = createAsyncThunk(
     'chores/updateChore',
-    async (choreId, thunkAPI) => {
+    async ({choreData, choreId, childId}, thunkAPI) => {
        
         try {
              // get the token for the current user 
              // thunkAPI.getState() method allows access fo data from other states
         const token = thunkAPI.getState().auth.user.token;
        
-            return await choreService.updateChore(choreId, token)
+            return await choreService.updateChore(choreData, choreId, childId, token)
         }   catch (error) {
             const errorMessage = 
                 (error.response && 

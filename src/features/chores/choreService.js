@@ -35,7 +35,7 @@ const getChoresActive = async(childId, token) => {
 // Create Child's chore
 
 const createChore = async(choreData, childId, token) => {
-    console.log(choreData, childId, token)
+
     const config = {
         headers: {
             Authorization: `Bearer ${ token }`,
@@ -50,7 +50,7 @@ const createChore = async(choreData, childId, token) => {
 
 // Update Child's chore
 
-const updateChore = async(choreId, token) => {
+const updateChore = async(choreData, choreId, childId, token) => {
     const config = {
         headers: {
             Authorization: `Bearer ${ token }`,

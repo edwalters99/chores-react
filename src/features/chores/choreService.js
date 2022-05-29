@@ -48,10 +48,27 @@ const createChore = async(choreData, childId, token) => {
 
 }
 
+// Update Child's chore
+
+const updateChore = async(choreId, token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${ token }`,
+        },
+    };
+
+    const response = await axios.put(API_URL + childId + '/chores' + choreId, choreData, config);
+
+    return response.data;
+
+}
+
+
 const choreService = {
     getChores,
     getChoresActive,
-    createChore
+    createChore,
+    updateChore
 };
 
 export default choreService;

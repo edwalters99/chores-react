@@ -81,6 +81,31 @@ export const createChore = createAsyncThunk(
     }
 );
 
+// Update child's chore
+export const updateChore = createAsyncThunk(
+    'chores/updateChore',
+    async (choreId, thunkAPI) => {
+       
+        try {
+             // get the token for the current user 
+             // thunkAPI.getState() method allows access fo data from other states
+        const token = thunkAPI.getState().auth.user.token;
+       
+            return await choreService.updateChore(choreId, token)
+        }   catch (error) {
+            const errorMessage = 
+                (error.response && 
+                error.response.data && 
+                error.response.data.message) || 
+                error.message ||
+                error.toString() // cover different possible error JSON formats
+                
+                return thunkAPI.rejectWithValue(errorMessage);  // sends error response back to component if api request fails
+            } 
+    }
+);
+
+
 export const choreSlice = createSlice({
     name: 'chore',
     initialState,
@@ -128,11 +153,12 @@ export const choreSlice = createSlice({
             state.isSuccess = true;
             state.chores.push(action.payload);
         })
-        .addCase(createChore.rejected, (state, action) => {
+        .addCase(updateChore.fulfilled, (state, action) => {
             state.isLoading = false;
-            state.isError = true;
-            state.message = action.payload;
-        })
+            state.chores.map((chore) => chore.id === action.payload._id 
+            ? (chore = action.payload) : chore )
+        }) // update front-end state wihtout having to re-fetch
+    
     }
 });
 

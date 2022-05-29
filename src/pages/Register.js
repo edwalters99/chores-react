@@ -10,12 +10,18 @@ import ClipLoader from "react-spinners/ClipLoader";
 
 function Register() {
   
-  const PASSWORD_REGEX = /^(?=.*[A-Za-z])(?=.*\d).{8,}$/
+  const PASSWORD_REGEX1 = /^(?=.*[A-Za-z])(?=.*\d).{8,}$/
   // Minimum eight characters, at least one letter, one number and one special character:
+  const NOSPACES__REGEX = /^\S*$/
+  // No spaces
+
+  const PIN_REGEX = /^[0-9]*$/;
+  // Numbers only
   
   const [formData, setFormData] = useState( { 
     email: '',
     familyname: '',
+    pin: '',
     password: '',
     passwordconfirm: ''
   });
@@ -29,24 +35,26 @@ function Register() {
 
   const [emailValid, setEmailValid] = useState(null);
   const [familyNameValid, setFamilyNameValid] = useState(null);
+  const [pinValid, setPinValid] = useState(null);
   const [passwordValid, setPasswordValid] = useState(null); // for shading of form input background
   const [passwordConfirmationValid, setPasswordConfirmationValid] = useState(null); // for shading of form input background
   const [formReady, setFormReady] = useState(false); // for button state
 
 
-  const { email, familyname, password, passwordconfirm } = formData; 
+  const { email, familyname, pin, password, passwordconfirm } = formData; 
 
 
   useEffect(() => {
     validateEmail();
     validateFamilyName();
+    validatePin();
     validatePassword();
     validatePasswordConfirmation();
   },[formData]);
 
   useEffect(() => {
     checkFormReady();
-  }, [emailValid, familyNameValid, passwordValid, passwordConfirmationValid]);
+  }, [emailValid, familyNameValid, pinValid, passwordValid, passwordConfirmationValid]);
 
   useEffect(() => {
     //Error
@@ -71,33 +79,41 @@ function Register() {
     // An email address must contain at least one full stop (.)
         const atSigns = email.split('').filter(char => char === '@').length;
         const periods = email.split('').filter(char => char === '.').length;
-        return (atSigns === 1 && periods >= 1);  // true if email valid
+        return (atSigns === 1 && periods >= 1 && NOSPACES__REGEX.test(email));  // true if email valid
     };
 
 
   const validateEmailErrors = () => {
     if (email.length === 0) {
-      toast.error('Email address must be entered', { toastId: 'emailNil'});
+      toast.error('Email address must be entered', { toastId: 'emailNil' });  // toastId used to prevent duplicate alerts (only one of same id allowed on screen at a time)
     } else if (!validateEmailHelper(email)) {
-        toast.error('Invalid Email address', { toastId: 'emailBad'});
+        toast.error('Invalid Email address', { toastId: 'emailBad' });
     };
   };
   
   const validateFamilyNameErrors = () => {
     if (familyname.length === 0) {
-      toast.error('Family Name must be entered', { toastId: 'familyNil'});
+      toast.error('Family Name must be entered', { toastId: 'familyNil' });
     };
   };
   
   const validatePasswordErrors = () => {
     if (password.length === 0) {
-      toast.error('Password must be entered', { toastId: 'passwordNil'});
+      toast.error('Password must be entered', { toastId: 'passwordNil' });
     } else if (!passwordValid) {
-        toast.error('Password: Minimum eight characters - at least one letter and one number', { toastId: 'passwordBad'});
+        toast.error('Password: Minimum 8 characters: at least 1 letter, 1 number, no spaces', { toastId: 'passwordBad' });
     } else if (passwordconfirm.length === 0) {
-        toast.error('Password confirmation must be entered', { toastId: 'passConNil'});
+        toast.error('Password confirmation must be entered', { toastId: 'passConNil' });
     } else if (password !== passwordconfirm) {
-        toast.error("Passwords don't match!", { toastId: 'passNoMatch'});
+        toast.error("Passwords don't match!", { toastId: 'passNoMatch' });
+    };
+  };
+
+  const validatePinErrors = () => {
+    if (pin.length !== 4) {
+      toast.error('4 Digit PIN required', { toastId: 'pinLength' });
+    } else if (!PIN_REGEX.test(pin)) {
+      toast.error('PIN must only contain numbers', { toastId: 'pinNumeric' });
     };
   };
 
@@ -112,8 +128,12 @@ function Register() {
     setFamilyNameValid(familyname.length !== 0);
    };
 
+   const validatePin = () => {
+     setPinValid(PIN_REGEX.test(pin) && pin.length === 4);
+   };
+
   const validatePassword = () => {
-   setPasswordValid(PASSWORD_REGEX.test(password));
+   setPasswordValid(PASSWORD_REGEX1.test(password) && NOSPACES__REGEX.test(password));
   };
 
   const validatePasswordConfirmation = () => {
@@ -121,7 +141,7 @@ function Register() {
   };
 
   const checkFormReady = () => {
-    setFormReady((emailValid && familyNameValid && passwordValid && passwordConfirmationValid));
+    setFormReady((emailValid && familyNameValid && pinValid && passwordValid && passwordConfirmationValid));
   };
 
   const onChange = (e) => {
@@ -135,16 +155,19 @@ function Register() {
     e.preventDefault();
     validateEmailErrors();
     validateFamilyNameErrors();
+    validatePinErrors(); 
     validatePasswordErrors();
     
     // prepare data for submission
     const userData = {
       email,
       familyname,
+      pin,
       password
     };
     
-    if (emailValid && familyNameValid && passwordValid && passwordConfirmationValid) {
+    if (emailValid && familyNameValid && pinValid && passwordValid && passwordConfirmationValid) {
+      console.log(userData)
       dispatch(register(userData));
     }
   };
@@ -173,7 +196,7 @@ function Register() {
                   className={emailValid || email.length === 0 ? "form-control" : "form-control form-nonvalid"} 
                   name="email"
                   value={ email } 
-                  placeholder="Enter your email address"
+                  placeholder="e.g. joebloggs@gmail.com"
                   onChange={ onChange } 
                 />
               </label>
@@ -193,6 +216,22 @@ function Register() {
                 </label>
               </div>
 
+            <div className="form-group">
+                <label>
+                4 Digit PIN (Parent Authorization):
+                  <input 
+                    type="password" 
+                    className={pinValid || pin.length === 0 ? "form-control" : "form-control form-nonvalid"} 
+                    name="pin"
+                    value={ [ pin ] } 
+                    placeholder="e.g. 1234"
+                    maxLength={ 4 }
+                    onChange={ onChange } 
+                  />
+                </label>
+              </div>
+
+
               <div className="form-group">
                 <label>
                 Password:
@@ -201,7 +240,7 @@ function Register() {
                     className={passwordValid || password.length === 0 ? "form-control" : "form-control form-nonvalid"} 
                     name="password"
                     value={ password } 
-                    placeholder="8+ (at least one number)"
+                    placeholder="8 + (at least one number)"
                     onChange={ onChange } 
                   />
                 </label>

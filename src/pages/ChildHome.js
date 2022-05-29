@@ -12,6 +12,7 @@ import dino from '../images/dino.png';
 import rabbit from '../images/rabbit.png';
 import GoldCoins from '../components/GoldCoins';
 import AssignedChores from '../components/AssignedChores';
+import useWindowDimensions from '../hooks/useWindowDimensions';
 
 
 
@@ -26,12 +27,24 @@ function ChildHome() {
 
     const [coinsEarned, setCoinsEarned] = useState(null);  // for congrats message
 
+    const [confettiActive, setConfettiActive] = useState(false);
+
+    const { width, height } = useWindowDimensions();
+    
     useEffect(() => {
         if (isError) {
             toast.error(message);
         };
         dispatch(getChild(childId));
     }, [childId, isError, message]);
+
+    useEffect(() => {
+        if (coinsEarned) {
+            setConfettiActive(true);
+        }
+        const timer = setTimeout(() => setConfettiActive(false), 50000);
+
+    },[coinsEarned])
 
 
     const avatarImg = () => {
@@ -131,11 +144,22 @@ useEffect(() => {
       
     if (isSuccess) {
         return (
+           
             <div className="child-home-container" style={ style }>
+                { confettiActive && 
+                    <Confetti
+                        width={width}
+                        height={height}
+                    /> 
+                }
+
                 { isBirthday ? 
                     (<>
                         <h1>Happy Birthday { child.firstname }!!!</h1>
-                        <Confetti/>
+                        <Confetti
+                            width={width}
+                            height={height + 200}
+                        />
                     </>) 
                 : 
                     <h1 className="child-home-title">Dashboard for { child.firstname } </h1>
@@ -153,7 +177,7 @@ useEffect(() => {
                     <h2>Your Coin bank is empty. Complete some chores to get some shiny gold coins. 😀</h2>}
 
 
-               { coinsEarned && <h2>Congratulations you've just earned { coinsEarned } gold coins! </h2> }
+               { coinsEarned && <h1>Congratulations you just earned { coinsEarned } gold coins! </h1> }
                <AssignedChores childId={ child._id } setCoinsEarned={ (coins) => { setCoinsEarned(coins) } } />
             </div>
       )

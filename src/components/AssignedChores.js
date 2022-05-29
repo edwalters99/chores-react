@@ -80,7 +80,7 @@ function AssignedChores({ childId, setCoinsEarned }) {
             <div>{ chores.map((chore) => {
                     if (!chore.isApproved & !chore.isCompleted) 
                     return (
-                        <ChoreCard chore={ chore } key={ chore._id } setApproved={ setApproved } />
+                        <ChoreCard chore={ chore } setApproved={ setApproved } />
                     );
                 })}
             </div>

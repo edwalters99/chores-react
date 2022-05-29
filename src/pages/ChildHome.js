@@ -24,6 +24,8 @@ function ChildHome() {
 
     const [randomMessage, setRandomMessage] = useState();
 
+    const [coinsEarned, setCoinsEarned] = useState(null);  // for congrats message
+
     useEffect(() => {
         if (isError) {
             toast.error(message);
@@ -43,7 +45,6 @@ function ChildHome() {
         const string = child.avatar;
         return string.charAt(0).toUpperCase() + string.slice(1);
     };
-
 
     const greeting = () => {
         const today = new Date();
@@ -150,8 +151,10 @@ useEffect(() => {
                     <GoldCoins coins={ child.rewardbal } titleText={ 'Your Coin Bank' } /> 
                 : 
                     <h2>Your Coin bank is empty. Complete some chores to get some shiny gold coins. 😀</h2>}
-               
-               <AssignedChores childId={ child._id } />
+
+
+               { coinsEarned && <h2>Congratulations you've just earned { coinsEarned } gold coins! </h2> }
+               <AssignedChores childId={ child._id } setCoinsEarned={ (coins) => { setCoinsEarned(coins) } } />
             </div>
       )
     };  

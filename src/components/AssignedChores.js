@@ -11,13 +11,12 @@ import ClipLoader from "react-spinners/ClipLoader";
 import ChoreCard from './ChoreCard';
 
 
-function AssignedChores({ childId }) {
+function AssignedChores({ childId, setCoinsEarned }) {
     const { chores, isLoading : isLoadingChores, isSuccess : isSuccessChores, isError : isErrorChores, message : messageChores } = useSelector((state) => state.chore)
 
-
     const { child } = useSelector((state) => state.child)
+    
     const dispatch = useDispatch();
-
 
     useEffect(() => {
         dispatch(getChoresActive( childId ))
@@ -57,13 +56,10 @@ function AssignedChores({ childId }) {
             rewardbal : newBal,
             choresdone: newChoresDone
         };
-        console.log(childId)
-        dispatch(updateChild({childData, childId}));
+        dispatch(updateChild({ childData, childId }));
+        setCoinsEarned(choreRewardValue); // for congrats message on home page
     };
      
-
-
-
 
     if (isLoadingChores) {
         return (<ClipLoader />)
@@ -77,7 +73,6 @@ function AssignedChores({ childId }) {
         );
     }
 
-
     return (
         <div className="chore-display-container">
             <h2>Chores to be done...</h2>
@@ -85,7 +80,7 @@ function AssignedChores({ childId }) {
             <div>{ chores.map((chore) => {
                     if (!chore.isApproved & !chore.isCompleted) 
                     return (
-                        <ChoreCard chore={ chore } key={ chore._id } setApproved = { setApproved } />
+                        <ChoreCard chore={ chore } key={ chore._id } setApproved={ setApproved } />
                     );
                 })}
             </div>

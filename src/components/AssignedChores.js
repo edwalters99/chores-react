@@ -1,17 +1,21 @@
 import React from 'react';
 import { useEffect, useState, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getChoresActive, updateChore, reset } from '../features/chores/choreSlice';
+import { getChoresActive, updateChore, reset as resetChores } from '../features/chores/choreSlice';
+import { getChild, updateChild, reset as resetChild } from '../features/children/childSlice';
 import { toast } from 'react-toastify';
 import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
 
 
 import ChoreCard from './ChoreCard';
-import { combineReducers } from '@reduxjs/toolkit';
+
 
 function AssignedChores({ childId }) {
-    const { chores, isLoading, isSuccess, isError, message } = useSelector((state) => state.chore)
+    const { chores, isLoading : isLoadingChores, isSuccess : isSuccessChores, isError : isErrorChores, message : messageChores } = useSelector((state) => state.chore)
+
+
+    const { child } = useSelector((state) => state.child)
     const dispatch = useDispatch();
 
 
@@ -20,16 +24,16 @@ function AssignedChores({ childId }) {
     },[dispatch]);
 
     useEffect(() => {  
-        if (isSuccess) {
-            dispatch(reset());
+        if (isSuccessChores) {
+            dispatch(resetChores());
         };
-        if (isError) {
-            toast.error(message, { toastId: 'tMessage'});
+        if (isErrorChores) {
+            toast.error(messageChores, { toastId: 'tMessage'});
           };
 
-    }, [isLoading, isSuccess, isError])
+    }, [isLoadingChores, isSuccessChores, isErrorChores])
 
-    const setApproved = (choreId) => {
+    const setApproved = (choreId, choreRewardValue) => {
         const data = {
             choreData: { 
                 isApproved: true, 
@@ -38,10 +42,30 @@ function AssignedChores({ childId }) {
             choreId,
             childId
         };
-        dispatch(updateChore(data));
-    }
+        dispatch(updateChore(data)); 
+        updateChildData(choreRewardValue) 
+    };
 
-    if (isLoading) {
+    const updateChildData = (choreRewardValue) => {
+      
+        const currentBal = child.rewardbal;
+        const currentChoresDone = child.choresdone;
+        const newBal = currentBal + choreRewardValue;
+        const newChoresDone = currentChoresDone + 1;
+
+        const childData = {
+            rewardbal : newBal,
+            choresdone: newChoresDone
+        };
+        console.log(childId)
+        dispatch(updateChild({childData, childId}));
+    };
+     
+
+
+
+
+    if (isLoadingChores) {
         return (<ClipLoader />)
     };
 
@@ -59,7 +83,7 @@ function AssignedChores({ childId }) {
             <h2>Chores to be done...</h2>
             
             <div>{ chores.map((chore) => {
-                    if (chore.isApproved == false & chore.isCompleted === false)
+                    if (!chore.isApproved & !chore.isCompleted) 
                     return (
                         <ChoreCard chore={ chore } key={ chore._id } setApproved = { setApproved } />
                     );

@@ -89,7 +89,7 @@ export const updateChild = createAsyncThunk(
     async ({ childData, childId }, thunkAPI) => {
        
         try {
-             // get the token for the current user 
+            // get the token for the current user 
              // thunkAPI.getState() method allows access fo data from other states
        
              const token = thunkAPI.getState().auth.user.token;
@@ -185,9 +185,10 @@ export const childSlice = createSlice({
         .addCase(updateChild.pending, (state) => {
             state.isLoading = true;
         })
-        .addCase(updateChild.fulfilled, (state) => {
+        .addCase(updateChild.fulfilled, (state, action) => {
             state.isLoading = false;
             state.isSuccess = true;
+            state.child = action.payload;
         })
         .addCase(updateChild.rejected, (state, action) => {
             state.isLoading = false;

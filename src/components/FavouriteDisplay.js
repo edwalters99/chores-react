@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { getChildren, reset } from '../features/children/childSlice';
-
 import coin from '../images/coin.png';
 import AssignChoreForm from './AssignChoreForm';
 import AssignedList from './AssignedList';
@@ -79,7 +78,7 @@ function FavouriteDisplay({ fav }) {
             { coinDisplay(fav.value)}
 
             <AssignChoreForm children={ children } fav={ fav } addNameToList={ addNameToList }/>
-            <AssignedList names={ names }/>
+            <AssignedList names={ names } />
         
         </div>
     )

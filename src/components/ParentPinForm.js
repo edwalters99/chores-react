@@ -7,10 +7,6 @@ function ParentPinForm({ chore, setApproved, setDone }) {
     
     const { user } = useSelector((state) => state.auth);
 
- 
-    const dispatch = useDispatch();
-
-
     const handleChange = (e) => {
         setPinInput(e.target.value)
     };
@@ -18,7 +14,7 @@ function ParentPinForm({ chore, setApproved, setDone }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (Number(pinInput) == user.pin) {
-            setApproved(chore._id); // function passed down from AssignedChores.js
+            setApproved(chore._id, chore.value); // function passed down from AssignedChores.js
         } else {
            setFailed(true);
         }
@@ -26,15 +22,19 @@ function ParentPinForm({ chore, setApproved, setDone }) {
 
 
     return (
-    <div className="parent-pin-form-container">
-        { failed ? <p onClick= { () => setDone(false) }>Wrong PIN</p> : <p onClick= { () => setDone(false) }>Parent: enter PIN:</p> }
-        <form className="parent-pin-form">
-            <input onChange={ handleChange } type="password" maxLength={ 4 } required placeholder="4-digit PIN" value={ pinInput } />
-            <button className="btn-parentpin-yes" onClick={ handleSubmit }>Yes!</button>
-
-        </form>
-    </div>
+        <div className="parent-pin-form-container">
+            { failed ? 
+                <p onClick= { () => setDone(false) }>Wrong PIN</p> 
+                : 
+                <p onClick= { () => setDone(false) }>Parent: enter PIN:</p> 
+            }
+            
+            <form className="parent-pin-form">
+                <input onChange={ handleChange } type="password" maxLength={ 4 } required placeholder="4-digit PIN" value={ pinInput } />
+                <button className="btn-parentpin-yes" onClick={ handleSubmit }>Yes!</button>
+            </form>
+        </div>
   )
 }
 
-export default ParentPinForm
+export default ParentPinForm;

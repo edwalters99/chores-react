@@ -53,7 +53,7 @@ const updateChild = async(childData, childId, token) => {
     };
 
     const response = await axios.put(API_URL + childId, childData, config);
-
+    
     return response.data;
 
 };

@@ -31,7 +31,10 @@ function AssignedChores({ childId }) {
 
     const setApproved = (choreId) => {
         const data = {
-            choreData: { isApproved: true, isCompleted: true },
+            choreData: { 
+                isApproved: true, 
+                isCompleted: true,
+            },
             choreId,
             childId
         };

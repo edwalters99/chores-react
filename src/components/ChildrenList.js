@@ -16,7 +16,7 @@ function ChildrenList() {
 
     useEffect(() => {
         dispatch(getChildren())
-    },[dispatch]);
+    },[])
 
     useEffect(() => {  
         if (isSuccess) {
@@ -28,9 +28,7 @@ function ChildrenList() {
 
     }, [isLoading, isSuccess, isError])
 
-    const forceRerender = () => {
-        window.location.reload(false);
-    };
+   
 
     if (isLoading) {
         return (<ClipLoader />)
@@ -44,7 +42,7 @@ function ChildrenList() {
         <div>
             { children.map((child) => (
                 <div className='childcardsmall' key={ child._id }>
-                    <ChildCardSm firstname={ child.firstname } dob={ child.dob } avatar={ child.avatar } color={ child.color } _id={ child._id } forceRerender={ forceRerender }/>
+                    <ChildCardSm firstname={ child.firstname } dob={ child.dob } avatar={ child.avatar } color={ child.color } _id={ child._id } />
                 </div>
             )) }
         </div>

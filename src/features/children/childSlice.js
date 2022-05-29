@@ -161,10 +161,12 @@ export const childSlice = createSlice({
             state.isLoading = true;
         })
         .addCase(deleteChild.fulfilled, (state, action) => {
-        
             state.isLoading = false;
             state.isSuccess = true;
             state.message = action.payload;
+            const deleteId = action.payload._id;
+            const index = state.children.findIndex((child) => child._id == deleteId);
+            state.children.pop(index);
         })
         .addCase(deleteChild.rejected, (state, action) => {
             state.isLoading = false;

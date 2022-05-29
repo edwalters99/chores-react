@@ -9,7 +9,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
-function ChildDelete({ childId, forceRerender }) {
+function ChildDelete({ childId }) {
     const { children, isLoading, isSuccess, isError, message } = useSelector((state) => state.child)
     
     const dispatch = useDispatch();
@@ -34,8 +34,6 @@ function ChildDelete({ childId, forceRerender }) {
                 label: 'Yes',
                 onClick: () => {
                     dispatch(deleteChild(childId));
-                    getChildren();
-                    forceRerender();
                 }
               },
               {

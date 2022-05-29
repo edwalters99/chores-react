@@ -156,17 +156,9 @@ export const choreSlice = createSlice({
         })
         .addCase(updateChore.fulfilled, (state, action) => {
             state.isLoading = false;
-           
-            state.chores.map((chore) => {
-                if (chore._id === action.payload._id) {
-                   chore.isApproved = true;
-                   chore.isCompleted = true;
-                } else {
-                    return chore;
-                }
-            })
+            const index = state.chores.findIndex((chore) => chore._id == action.payload._id);
+            state.chores[index] = action.payload;
         }); // update front-end state wihtout having to re-fetch from api
-    
     }
 });
 

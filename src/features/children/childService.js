@@ -44,9 +44,22 @@ const getChild = async (childId, token) => {
     return response.data;
 };
 
+// Update Child Data
+const updateChild = async(childData, childId, token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${ token }`,
+        },
+    };
+
+    const response = await axios.put(API_URL + childId, childData, config);
+
+    return response.data;
+
+};
 
 
-
+// Delete Child
 const deleteChild = async (childId, token) => {
    
     const config = {
@@ -63,6 +76,7 @@ const childService = {
     createChild,
     getChildren,
     getChild,
+    updateChild,
     deleteChild
 };
 

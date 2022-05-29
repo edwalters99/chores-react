@@ -29,8 +29,10 @@ function AssignedChores({ childId }) {
 
     }, [isLoading, isSuccess, isError])
 
-    const date = new Date(Date.now())
-
+    const setApproved = (choreId) => {
+        console.log(choreId)
+        console.log('is done')
+    };
 
     if (isLoading) {
         return (<ClipLoader />)
@@ -44,13 +46,14 @@ function AssignedChores({ childId }) {
         );
     }
 
+
     return (
     <div className="chore-display-container">
         <h2>Chores to be done...</h2>
         
         <div>{ chores.map((chore) => {
                 return (
-                    <ChoreCard chore={ chore } key={ chore._id } />
+                    <ChoreCard chore={ chore } key={ chore._id } setApproved = { setApproved } />
                 );
             })}
         </div>

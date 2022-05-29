@@ -4,9 +4,10 @@ import TimeAgo from 'react-timeago';
 import ParentPinForm from './ParentPinForm';;
 
 
-function ChoreCard({ chore }) {
+function ChoreCard({ chore, setApproved }) {
     const [done, setDone] = useState(false);
-  
+
+
   
     return (
         <div className="chore-card" key={chore._id}>
@@ -16,9 +17,9 @@ function ChoreCard({ chore }) {
             <p>Set <TimeAgo date={ chore.createdAt } /></p>
             
         { done ? 
-            <ParentPinForm chore={ chore } />  
+            <ParentPinForm chore={ chore } setApproved={ setApproved } />  
         :
-            <button className="btn btn-choredone" onClick={ () => {setDone(true)}}>Done!</button>
+            <button className="btn btn-choredone" onClick={ () => setDone(true) }>Done!</button>
         }
         </div>
     )

@@ -463,6 +463,10 @@ h3 {
   height: 90px;
 }
 
+.parent-pin-form-container p {
+ width: 100px;
+}
+
 .parent-pin-form {
   display: flex;
   flex-direction: row;
@@ -471,7 +475,7 @@ h3 {
 
 .parent-pin-form input {
   padding-left: .5em;
-  width: 50%
+  width:100px;
 }
 
 .btn-parentpin-yes {
@@ -482,6 +486,10 @@ h3 {
   margin-left: 1em;
   border-radius: 10px;
 };
+
+.parentpinmessage p {
+  color: Red;
+}
 
 
 

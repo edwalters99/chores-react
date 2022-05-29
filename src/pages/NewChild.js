@@ -14,8 +14,8 @@ import ClipLoader from "react-spinners/ClipLoader";
 
 
 
-const todayDate = new Date().toISOString().substring(0,10);
-const minDate = dayjs().subtract(21, 'year').toISOString().substring(0,10);
+const todayDate = new Date().toISOString().substring(0,10); // can't set date of birth in future!
+const minDate = dayjs().subtract(21, 'year').toISOString().substring(0,10);  // no children over age 21!
 
 
 function NewChild() {

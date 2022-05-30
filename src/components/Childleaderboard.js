@@ -44,8 +44,8 @@ function ChildLeaderboard({ child, children, familyname }) {
                     <h1>{ mapchild.firstname }</h1>
                     { index === 0 ? <img className="leaderboard-medal" src={ medal } /> : <></> }
                     <div className="leaderboard-avatar">{ avatarImg(mapchild.avatar) }</div>
-                    { sortedByChores && <h3>Chores: { mapchild.choresdone }</h3> }
-                    { sortedByCoins && <h3>Coins: { mapchild.rewardbal }</h3> }
+                    { sortedByChores && <h2>Chores: { mapchild.choresdone }</h2> }
+                    { sortedByCoins && <h2>Coins: { mapchild.rewardbal }</h2> }
                 </div>
               )
           })

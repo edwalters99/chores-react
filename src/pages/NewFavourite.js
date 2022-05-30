@@ -87,6 +87,7 @@ function NewFavourite() {
 
     const onSubmit = (e) => {
       e.preventDefault();
+
       dispatch(createFavourite(formData));
     };
 
@@ -117,7 +118,7 @@ function NewFavourite() {
        <BackButton url="/favourites" />
        <section className="heading">
          <h1>
-             Create Favourite:
+             New Chore
           </h1> 
         </section>
 
@@ -171,6 +172,7 @@ function NewFavourite() {
                   value={ icon } 
                   placeholder="🛏️"
                   maxLength="3"
+                  required
                   onChange={ onChange } 
                 />
               </label>

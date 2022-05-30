@@ -1,27 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux';
-import { toast } from 'react-toastify';
-import { getChildren, reset } from '../features/children/childSlice';
 import coin from '../images/coin.png';
 import AssignChoreForm from './AssignChoreForm';
 import AssignedList from './AssignedList';
-import Spinner from './Spinner';
-import { css } from "@emotion/react";
-import ClipLoader from "react-spinners/ClipLoader";
+import FavouriteDelete from './FavouriteDelete';
+
 
 
 
 function FavouriteDisplay({ fav, children }) {
 
-    
-
     const [names, setNames] = useState([]);  // Assigned names to display below button
-
-    const dispatch = useDispatch();
-
-  
-
-  
 
     const addNameToList = (name) => {
         setNames(prevNames => [...prevNames, name]);
@@ -61,10 +49,10 @@ function FavouriteDisplay({ fav, children }) {
             <p>{ fav.desc }</p>
             
             { coinDisplay(fav.value)}
-
+           
             <AssignChoreForm children={ children } fav={ fav } addNameToList={ addNameToList }/>
             <AssignedList names={ names } />
-        
+            <FavouriteDelete favId={ fav._id }/>
         </div>
     )
     }

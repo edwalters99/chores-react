@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getFavourites, reset } from '../features/favourites/favouriteSlice';
+import { getChildren } from '../features/children/childSlice';
 import Spinner from './Spinner';
 import { toast } from 'react-toastify';
 import { css } from "@emotion/react";
@@ -19,6 +20,7 @@ function FavouritesList() {
 
     useEffect(() => {
         dispatch(getFavourites());
+        dispatch(getChildren());
     },[dispatch]);
 
     useEffect(() => {  

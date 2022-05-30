@@ -13,6 +13,7 @@ import rabbit from '../images/rabbit.png';
 import GoldCoins from '../components/GoldCoins';
 import AssignedChores from '../components/AssignedChores';
 import useWindowDimensions from '../hooks/useWindowDimensions';
+import ChoresTotalCompleted from '../app/ChoresTotalCompleted';
 
 
 
@@ -27,9 +28,13 @@ function ChildHome() {
 
     const [coinsEarned, setCoinsEarned] = useState(null);  // for congrats message
 
+    const [choresToDo, setChoresToDo] = useState(null);  // number of chores to do - set by AssignedChores.js
+
     const [confettiActive, setConfettiActive] = useState(false);
 
     const { width, height } = useWindowDimensions();
+
+
     
     useEffect(() => {
         if (isError) {
@@ -42,7 +47,7 @@ function ChildHome() {
         if (coinsEarned) {
             setConfettiActive(true);
         }
-        const timer = setTimeout(() => setConfettiActive(false), 50000);
+        const timer = setTimeout(() => setConfettiActive(false), 30000);
 
     },[coinsEarned])
 
@@ -149,7 +154,7 @@ useEffect(() => {
                 { confettiActive && 
                     <Confetti
                         width={width}
-                        height={height}
+                        height={height+200}
                     /> 
                 }
 
@@ -174,11 +179,19 @@ useEffect(() => {
                 { child.rewardbal ? 
                     <GoldCoins coins={ child.rewardbal } titleText={ 'Your Coin Bank' } /> 
                 : 
-                    <h2>Your Coin bank is empty. Complete some chores to get some shiny gold coins. 😀</h2>}
-
+                    <h2>Your Coin bank is empty. Complete some chores to get some shiny gold coins. 😀</h2>
+                }
 
                { coinsEarned && <h1>Congratulations you just earned { coinsEarned } gold coins! </h1> }
-               <AssignedChores childId={ child._id } setCoinsEarned={ (coins) => { setCoinsEarned(coins) } } />
+               
+               <AssignedChores 
+                    childId={ child._id } 
+                    setCoinsEarned={ (coins) => { setCoinsEarned(coins) } }
+                    setChoresToDo={ (num) => { setChoresToDo(num)} } 
+                />
+                { choresToDo > 0 && <ChoresTotalCompleted number={ child.choresdone }/> } 
+               
+
             </div>
       )
     };  

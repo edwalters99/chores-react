@@ -11,7 +11,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import ChoreCard from './ChoreCard';
 
 
-function AssignedChores({ childId, setCoinsEarned }) {
+function AssignedChores({ childId, setCoinsEarned, setChoresToDo }) {
     const { chores, isLoading : isLoadingChores, isSuccess : isSuccessChores, isError : isErrorChores, message : messageChores } = useSelector((state) => state.chore)
 
     const { child } = useSelector((state) => state.child)
@@ -25,6 +25,7 @@ function AssignedChores({ childId, setCoinsEarned }) {
     useEffect(() => {  
         if (isSuccessChores) {
             dispatch(resetChores());
+            setChoresToDo(chores.length); // set state in ChildHome
         };
         if (isErrorChores) {
             toast.error(messageChores, { toastId: 'tMessage'});

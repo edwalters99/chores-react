@@ -9,8 +9,8 @@ import ClipLoader from "react-spinners/ClipLoader";
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
-function ChildDelete({ childId }) {
-    const { children, isLoading, isSuccess, isError, message } = useSelector((state) => state.child)
+function ChildDelete({ childId, childName }) {
+    const { isLoading, isSuccess, isError, message } = useSelector((state) => state.child)
     
     const dispatch = useDispatch();
 
@@ -27,7 +27,7 @@ function ChildDelete({ childId }) {
      
     const onClick = (e) => {
         confirmAlert({
-            title: 'Confirm Delete Child',
+            title: `Confirm Delete Child: ${ childName }`,
             message: 'Are you sure?',
             buttons: [
               {
@@ -42,7 +42,6 @@ function ChildDelete({ childId }) {
               }
             ]
           });
-        
     };
 
     if (isLoading) {

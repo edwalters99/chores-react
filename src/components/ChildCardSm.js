@@ -51,7 +51,7 @@ function ChildCardSm(props) {
                 </div>
                 <div className="avatar-container-btns">
                     <button className="btn btn-sm" onClick={ onClick }>Login</button>
-                    <ChildDelete childId={ props._id } />
+                    <ChildDelete childId={ props._id } childName={ props.firstname} />
                 </div>
             </div>
             

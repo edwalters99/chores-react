@@ -52,7 +52,7 @@ function FavouriteDisplay({ fav, children }) {
            
             <AssignChoreForm children={ children } fav={ fav } addNameToList={ addNameToList }/>
             <AssignedList names={ names } />
-            <FavouriteDelete favId={ fav._id }/>
+            <FavouriteDelete favId={ fav._id } favTitle={ fav.title }/>
         </div>
     )
     }

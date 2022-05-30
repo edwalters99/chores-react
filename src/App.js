@@ -13,6 +13,7 @@ import NewChild from './pages/NewChild';
 import Favourites from './pages/Favourites';
 import NewFavourite from './pages/NewFavourite';
 import ChildHome from './pages/ChildHome';
+import ChildRewards from './pages/ChildRewards';
 
 function App() {
   return (
@@ -54,7 +55,13 @@ function App() {
             </Route>
             </Route>
     
-            <Route path='/childhome' element={<ChildHome/>} />
+            <Route path='/childhome' element={<PrivateRoute />} >
+              <Route path='/childhome' element={<ChildHome/>} />
+            </Route>
+            
+            <Route path='/childrewards' element={<PrivateRoute/>} >
+              <Route path='/childrewards' element={<ChildRewards/>} />
+            </Route>
       
           </Routes>
         </div>

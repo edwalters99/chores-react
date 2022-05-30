@@ -548,6 +548,47 @@ h3 {
   width: 100%;
 }
 
+.btn-rewards-go {
+  background: green;
+  font-size: 1.5rem;
+  padding: 0.75em 1em;
+  border-radius: 15px;
+  margin-top: 20px;
+  transition: all 1s;
+}
+
+.btn-rewards-go:hover {
+  transform: scale(1.3);
+}
+
+.black-btn {
+  background: black;
+}
+
+.black-btn:hover {
+  transform: scale(1.3);
+}
+
+.childrewards-back-btn {
+  background: black;
+  font-size: 2rem;
+  border-radius: 20px;
+  margin-bottom: 1em;
+}
+
+.rewards-container {
+  background: Red;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -4em;
+  padding: 1em;
+  min-height: 100vh;
+}
+
+
+
 
 
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch} from 'react-redux';
 import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 import { getChild, getChildren, reset } from '../features/children/childSlice';
 import { css } from "@emotion/react";
 
@@ -105,6 +106,11 @@ function ChildHome() {
                 }
 
                { coinsEarned && <h1>Congratulations you just earned { coinsEarned } gold coins! </h1> }
+             
+               <Link to="/childrewards" 
+                    className={ child.color == 'green' ? "btn btn-rewards-go black-btn" : "btn btn-rewards-go" }>
+                    Spend your Coins - Get REWARDS
+               </Link>
                
                <AssignedChores 
                     childId={ child._id } 

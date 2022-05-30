@@ -37,7 +37,7 @@ export const createFavourite = createAsyncThunk(
 
 // Get User's Favourites
 export const getFavourites = createAsyncThunk(
-    'favouritesgetAll',
+    'favourites/getAll',
     async (_, thunkAPI) => {
        
         try {
@@ -58,6 +58,31 @@ export const getFavourites = createAsyncThunk(
             } 
     }
 );
+
+// Delete Favourite
+export const deleteFavourite = createAsyncThunk(
+    'favourite/delete',
+    async (favId, thunkAPI) => {
+        try {
+             // get the token for the current user 
+             // thunkAPI.getState() method allows access fo data from other states
+        const token = thunkAPI.getState().auth.user.token;
+       
+            return await favouriteService.deleteFavourite(favId, token)
+        }   catch (error) {
+            const errorMessage = 
+                (error.response && 
+                error.response.data && 
+                error.response.data.message) || 
+                error.message ||
+                error.toString() // cover different possible error JSON formats
+                
+                return thunkAPI.rejectWithValue(errorMessage);  // sends error response back to component if api request fails
+            } 
+    }
+);
+
+
 
 export const favouriteSlice = createSlice({
     name: 'favourite',
@@ -93,6 +118,22 @@ export const favouriteSlice = createSlice({
             state.favourites = action.payload;
         })
         .addCase(getFavourites.rejected, (state, action) => {
+            state.isLoading = false;
+            state.isError = true;
+            state.message = action.payload;
+        })
+        .addCase(deleteFavourite.pending, (state) => {
+            state.isLoading = true;
+        })
+        .addCase(deleteFavourite.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.isSuccess = true;
+            state.message = action.payload;
+            const deleteId = action.payload._id;
+            const index = state.favourites.findIndex((fav) => fav._id == deleteId);
+            state.favourites.pop(index);
+        })
+        .addCase(deleteFavourite.rejected, (state, action) => {
             state.isLoading = false;
             state.isError = true;
             state.message = action.payload;

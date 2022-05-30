@@ -13,7 +13,6 @@ const createFavourite = async (favouriteData, token) => {
         }
     };
     const response = await axios.post(API_URL, favouriteData, config);
-
     return response.data;
 };
 
@@ -29,9 +28,22 @@ const getFavourites = async (token) => {
     return response.data;
 };
 
+// Delete Favourite
+const deleteFavourite = async (favId, token) => {
+   
+    const config = {
+        headers: {
+            Authorization: `Bearer ${ token }`
+        }
+    };
+    const response = await axios.delete(API_URL + favId, config);
+    return response.data;
+};
+
 const favouriteService = {
     createFavourite,
-    getFavourites
+    getFavourites,
+    deleteFavourite
 };
 
 export default favouriteService;

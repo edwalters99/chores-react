@@ -3,6 +3,7 @@ import dog from '../images/dog.png';
 import cat from '../images/cat.png';
 import dino from '../images/dino.png';
 import rabbit from '../images/rabbit.png';
+import medal from '../images/medal.png';
 
 
 function ChildLeaderboard({ child, children, familyname }) {
@@ -37,10 +38,11 @@ function ChildLeaderboard({ child, children, familyname }) {
   
     const leaderboard = () => {
       return (
-        childrenSorted.map((mapchild) => {
+        childrenSorted.map((mapchild, index) => {
               return (
                 <div className={ mapchild._id === child._id ? 'leaderboard-card-accent' : 'leaderboard-card'} key={ mapchild._id } >
                     <h1>{ mapchild.firstname }</h1>
+                    { index === 0 ? <img className="leaderboard-medal" src={ medal } /> : <></> }
                     <div className="leaderboard-avatar">{ avatarImg(mapchild.avatar) }</div>
                     { sortedByChores && <h3>Chores: { mapchild.choresdone }</h3> }
                     { sortedByCoins && <h3>Coins: { mapchild.rewardbal }</h3> }

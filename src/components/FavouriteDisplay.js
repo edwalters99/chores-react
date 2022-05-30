@@ -11,28 +11,17 @@ import ClipLoader from "react-spinners/ClipLoader";
 
 
 
-function FavouriteDisplay({ fav }) {
+function FavouriteDisplay({ fav, children }) {
 
-    const { children, isLoading, isSuccess,isError, message} = useSelector((state) => state.child); 
+    
 
     const [names, setNames] = useState([]);  // Assigned names to display below button
 
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(getChildren());
-    },[dispatch]);
+  
 
   
-    useEffect(() => {  
-        if (isSuccess) {
-            dispatch(reset());
-        };
-        if (isError) {
-            toast.error(message, { toastId: 'tmess'});
-          };
-   
-    }, [isLoading, isSuccess, isError])
 
     const addNameToList = (name) => {
         setNames(prevNames => [...prevNames, name]);
@@ -64,11 +53,7 @@ function FavouriteDisplay({ fav }) {
         };
         };
 
-    if (isLoading) {
-        return (
-            <ClipLoader />
-        );
-    }
+    
     return (
         <div className='favlist-cardsmall' key={ fav._id }>
             <h1 className='emoji-lg'>{ fav.icon }</h1>

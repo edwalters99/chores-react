@@ -12,6 +12,8 @@ import FavouriteDisplay from './FavouriteDisplay';
 
 function FavouritesList() {
     const { favourites, isLoading, isSuccess, isError, message } = useSelector((state) => state.favourite)
+
+    const { children } = useSelector((state) => state.child); 
     const dispatch = useDispatch();
 
 
@@ -41,7 +43,7 @@ function FavouritesList() {
     return (
         <div className="favlist-container">
             { favourites.map((fav) => (
-                <FavouriteDisplay fav={ fav } key={ fav._id } />
+                <FavouriteDisplay fav={ fav } key={ fav._id } children ={ children } />
             )) }
         </div>
   )

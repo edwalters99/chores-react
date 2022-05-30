@@ -5,9 +5,8 @@ import { toast } from 'react-toastify';
 
 
 function AssignChoreForm(props) {
-    const [defaultValue, setDefaultValue] = useState('');
 
-    const [selectedChildId, setSelectedChildId] = useState(props.children[0] === undefined ? '' : props.children[0]._id); //
+    const [selectedChildId, setSelectedChildId] = useState(props.children[0] === undefined ? '' : props.children[0]._id); // Handles situation with a single child in dropdown list. Ensures ID is set for that child as onChange won't be called.
     const dispatch = useDispatch();
 
     const { isLoading, isSuccess, isError, message } = useSelector((state) => state.chore);
@@ -23,7 +22,6 @@ function AssignChoreForm(props) {
             
         }, [isLoading, isSuccess, isError])
 
-        
 
     const onSubmit = (e) => {
         e.preventDefault();

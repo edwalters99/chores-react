@@ -14,7 +14,7 @@ import ChildHomeAvatar from '../components/ChildHomeAvatar';
 import ChildHomeRandomMessage from '../components/ChildHomeRandomMessage';
 import ChildHomeGreeting from '../components/ChildHomeGreeting';
 import ChoresTotalCompleted from '../components/ChoresTotalCompleted';
-import Childleaderboard from '../components/Childleaderboard';
+import ChildLeaderboard from '../components/ChildLeaderboard';
 
 
 function ChildHome() {
@@ -119,7 +119,7 @@ function ChildHome() {
                 
                 { child.choresdone > 0 && <ChoresTotalCompleted number={ child.choresdone }/> } 
 
-                <Childleaderboard child={ child } children={ children } familyname= { user.familyname }/>
+                <ChildLeaderboard child={ child } children={ children } familyname= { user.familyname }/>
                
             </div>
       )

@@ -6,7 +6,7 @@ function ChoresTotalCompleted( { number }) {
             return (
             <div className="chore-total-container">
                 <h1>WOW! Keep up the amazing work!</h1>
-                <h1>Completed Chores: { number }</h1> 
+                <h1>{ number } Completed Chores</h1> 
             </div>
             );
         }
@@ -15,7 +15,7 @@ function ChoresTotalCompleted( { number }) {
             return (
             <div className="chore-total-container">
                 <h1>You're on fire!</h1>
-                <h1>Completed Chores: { number }</h1> 
+                <h1>{ number } Completed Chores</h1> 
             </div>
             );
         }
@@ -24,7 +24,7 @@ function ChoresTotalCompleted( { number }) {
             return (
             <div className="chore-total-container">
                 <h1>You're doing amazing!</h1>
-                <h1>Completed Chores: { number }</h1> 
+                <h1>{ number } Completed Chores</h1> 
             </div>
             );
         }
@@ -33,7 +33,7 @@ function ChoresTotalCompleted( { number }) {
             return (
             <div className="chore-total-container">
                 <h1>You're doing great!</h1>
-                <h1>Completed Chores: { number }</h1> 
+                <h1>{ number } Completed Chores</h1> 
             </div>
             );
         }
@@ -42,7 +42,7 @@ function ChoresTotalCompleted( { number }) {
             return (
             <div className="chore-total-container">
                 <h1>You're making great progress!</h1>
-                <h1>Completed Chores: { number }</h1> 
+                <h1>{ number } Completed Chores</h1> 
             </div>
             );
         }

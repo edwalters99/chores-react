@@ -1,35 +1,65 @@
-import React from 'react';
-import { nanoid } from '@reduxjs/toolkit';
+import React, { useEffect, useState } from 'react';
+import dog from '../images/dog.png';
+import cat from '../images/cat.png';
+import dino from '../images/dino.png';
+import rabbit from '../images/rabbit.png';
 
 
+function ChildLeaderboard({ child, children, familyname }) {
 
-function Childleaderboard({ child, children, familyname }) {
-//   const childrenSorted = children.sort((a,b) => a.choresdone - b.choresdone)
+    const avatarImg = (avatar) => {
+        if (avatar === 'cat') {return (<img src={ cat } />)}
+        if (avatar === 'dog') {return (<img src={ dog } />)}
+        if (avatar === 'dinosaur') {return (<img src={ dino } />)}
+        if (avatar === 'rabbit') {return (<img src={ rabbit } />)}
+    };
+
+    const [childrenSorted, setChildrenSorted] = useState(children.slice().sort((a,b) =>  b.choresdone - a.choresdone));
+    const [sortedByChores, setSortedByChores] = useState(true);
+    const [sortedByCoins, setSortedByCoins] = useState(false);
+
+    useEffect(() => {
+        sortByChores();
+    },[children]);
+   
+    const sortByChores = () => {
+        setChildrenSorted(children.slice().sort((a,b) =>  b.choresdone - a.choresdone));
+        setSortedByChores(true);
+        setSortedByCoins(false);
+    };
+
+    const sortByCoins = () => {
+        setChildrenSorted(children.slice().sort((a,b) =>  b.rewardbal - a.rewardbal));
+        setSortedByCoins(true);
+        setSortedByChores(false);
+    };
   
   
     const leaderboard = () => {
       return (
-          children.map((mapchild) => {
+        childrenSorted.map((mapchild) => {
               return (
-                <div className="leaderboard-card" key={ mapchild._id } >
-                    { mapchild._id === child._id ? <h1>*** { mapchild.firstname } *** </h1> : <h2> { mapchild.firstname }</h2>}
-                    <h3>Chores: { mapchild.choresdone }</h3>
-                    <h3>Coins: { mapchild.rewardbal }</h3>
+                <div className={ mapchild._id === child._id ? 'leaderboard-card-accent' : 'leaderboard-card'} key={ mapchild._id } >
+                    <h1>{ mapchild.firstname }</h1>
+                    <div className="leaderboard-avatar">{ avatarImg(mapchild.avatar) }</div>
+                    { sortedByChores && <h3>Chores: { mapchild.choresdone }</h3> }
+                    { sortedByCoins && <h3>Coins: { mapchild.rewardbal }</h3> }
                 </div>
               )
           })
       );
   };
 
-
   
     if (children.length > 1) {
       return (
-      <div className="leaderboard-container">
-          <h1 className="leaderboard-header">{ familyname } Leaderboard</h1>
-          { leaderboard() }
-
-
+        <div className="leaderboard-container">
+            <h1 className="leaderboard-header">{ familyname } Leaderboard</h1>
+            <div className="leaderboard-btn-container">
+                <button className="btn btn-sm leaderboard-btn" onClick={ sortByChores }>Chores</button>
+                <button className="btn btn-sm leaderboard-btn" onClick={ sortByCoins }>Coins</button>
+            </div>
+            { leaderboard() }
     </div>
     )}
 
@@ -37,4 +67,4 @@ function Childleaderboard({ child, children, familyname }) {
     <></>
 }
 
-export default Childleaderboard;
+export default ChildLeaderboard;

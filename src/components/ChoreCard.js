@@ -7,7 +7,7 @@ import ParentPinForm from './ParentPinForm';;
 function ChoreCard({ chore, setApproved }) {
     const [done, setDone] = useState(false);
 
-
+    
   
     return (
         <div className="chore-card" key={chore._id} >

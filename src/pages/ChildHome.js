@@ -13,7 +13,7 @@ import rabbit from '../images/rabbit.png';
 import GoldCoins from '../components/GoldCoins';
 import AssignedChores from '../components/AssignedChores';
 import useWindowDimensions from '../hooks/useWindowDimensions';
-import ChoresTotalCompleted from '../app/ChoresTotalCompleted';
+import ChoresTotalCompleted from '../components/ChoresTotalCompleted';
 
 
 
@@ -173,7 +173,7 @@ useEffect(() => {
                 <div className="child-home-avatar-container">{ avatarImg() }</div>
                 <div>
                     <h2 className="child-home-greeting"> { greeting() }</h2>
-                    <h2 className="child-home-message-container">{ avatarName() } says: "{ randomMessage }"</h2> 
+                    <h2 className="child-home-message-container">{ avatarName() } says: { randomMessage }</h2> 
                 </div>
 
                 { child.rewardbal ? 
@@ -189,7 +189,15 @@ useEffect(() => {
                     setCoinsEarned={ (coins) => { setCoinsEarned(coins) } }
                     setChoresToDo={ (num) => { setChoresToDo(num)} } 
                 />
-                { choresToDo > 0 && <ChoresTotalCompleted number={ child.choresdone }/> } 
+                { choresToDo > 0 && child.choresdone === 0 &&
+                    <div className="chore-total-container">
+                        <h1>Start your gold coin collection today by completing your first chore!</h1>
+                    </div>
+                }
+                
+                { child.choresdone > 0 && <ChoresTotalCompleted number={ child.choresdone }/> 
+                
+                } 
                
 
             </div>

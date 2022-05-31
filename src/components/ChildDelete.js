@@ -1,13 +1,11 @@
-import React from 'react';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteChild, getChildren, reset } from '../features/children/childSlice';
-import { useNavigate } from 'react-router-dom';
+import { deleteChild, reset } from '../features/children/childSlice';
 import { toast } from 'react-toastify';
 import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
-import { confirmAlert } from 'react-confirm-alert'; // Import
-import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+import { confirmAlert } from 'react-confirm-alert'; 
+import 'react-confirm-alert/src/react-confirm-alert.css'; 
 
 function ChildDelete({ childId, childName }) {
     const { isLoading, isSuccess, isError, message } = useSelector((state) => state.child)

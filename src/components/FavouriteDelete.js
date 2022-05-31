@@ -2,12 +2,11 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteFavourite, reset } from '../features/favourites/favouriteSlice';
-import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
-import { confirmAlert } from 'react-confirm-alert'; // Import
-import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+import { confirmAlert } from 'react-confirm-alert'; 
+import 'react-confirm-alert/src/react-confirm-alert.css'; 
 
 
 function FavouriteDelete({ favId, favTitle }) {

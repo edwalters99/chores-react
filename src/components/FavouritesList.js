@@ -3,11 +3,9 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getFavourites, reset } from '../features/favourites/favouriteSlice';
 import { getChildren } from '../features/children/childSlice';
-import Spinner from './Spinner';
 import { toast } from 'react-toastify';
 import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
-
 import FavouriteDisplay from './FavouriteDisplay';
 
 

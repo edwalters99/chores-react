@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
-import coin from '../images/coin.png';
+import React, { useState } from 'react'
 import AssignChoreForm from './AssignChoreForm';
 import AssignedList from './AssignedList';
 import FavouriteDelete from './FavouriteDelete';
+import coin from '../images/coin.png';
 
 
 

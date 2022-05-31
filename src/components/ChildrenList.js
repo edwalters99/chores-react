@@ -1,13 +1,11 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getChildren, reset } from '../features/children/childSlice';
 import { toast } from 'react-toastify';
-import Spinner from './Spinner';
 import ChildCardSm from './ChildCardSm';
 import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
-import { nanoid } from '@reduxjs/toolkit';
+
 
 
 function ChildrenList() {

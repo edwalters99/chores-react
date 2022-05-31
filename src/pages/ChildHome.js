@@ -4,10 +4,8 @@ import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { getChild, getChildren, reset } from '../features/children/childSlice';
 import { css } from "@emotion/react";
-
 import Confetti from 'react-confetti';
 import ClipLoader from "react-spinners/ClipLoader";
-
 import GoldCoins from '../components/GoldCoins';
 import AssignedChores from '../components/AssignedChores';
 import useWindowDimensions from '../hooks/useWindowDimensions';

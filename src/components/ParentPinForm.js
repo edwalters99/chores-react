@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 function ParentPinForm({ chore, setApproved, setDone }) {
     const [pinInput, setPinInput] = useState('');

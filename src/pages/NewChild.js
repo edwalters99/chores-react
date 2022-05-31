@@ -3,11 +3,9 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import dayjs from 'dayjs';
 import { createChild, reset } from '../features/children/childSlice';
-import Spinner from '../components/Spinner';
+import dayjs from 'dayjs';
 import BackButton from '../components/BackButton';
-
 import ChildCard from '../components/ChildCard';
 import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";

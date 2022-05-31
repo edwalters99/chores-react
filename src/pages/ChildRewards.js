@@ -8,7 +8,6 @@ import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
 import GoldCoins from '../components/GoldCoins';
 import RewardList from '../components/RewardList';
-import cat from '../images/cat.png'
 
 
 function ChildRewards() {

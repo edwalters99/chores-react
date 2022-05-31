@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { FaUser } from 'react-icons/fa'
-import { useSelector, useDispatch } from 'react-redux';  // useSelector for reading global state, useDispatch for editing
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { register, reset } from '../features/auth/authSlice';
-import Spinner from '../components/Spinner';
 import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
 import hero2 from '../images/hero2.jpg';

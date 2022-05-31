@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getChoresActive, updateChore, reset as resetChores } from '../features/chores/choreSlice';
-import { updateChild, reset as resetChild } from '../features/children/childSlice';
+import { updateChild } from '../features/children/childSlice';
 import { toast } from 'react-toastify';
 import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
@@ -61,7 +61,7 @@ function AssignedChores({ childId, setCoinsEarned, setChoresToDo }) {
         const newChoresDone = currentChoresDone + 1;
 
         const childData = {
-            rewardbal : newBal,
+            rewardbal: newBal,
             choresdone: newChoresDone
         };
         dispatch(updateChild({ childData, childId }));

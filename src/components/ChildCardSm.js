@@ -1,14 +1,12 @@
 import React from 'react'
-import ChildDelete from './ChildDelete';
 import { useNavigate } from 'react-router-dom';
-
+import { confirmAlert } from 'react-confirm-alert'; 
+import 'react-confirm-alert/src/react-confirm-alert.css';
 import dog from '../images/dog.png';
 import cat from '../images/cat.png';
 import dino from '../images/dino.png';
 import rabbit from '../images/rabbit.png';
-
-import { confirmAlert } from 'react-confirm-alert'; // Import
-import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+import ChildDelete from './ChildDelete'; 
 
 
 

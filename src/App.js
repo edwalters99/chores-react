@@ -19,7 +19,7 @@ function App() {
   return (
     <>
       <Router>
-      <ScrollToTop />
+        <ScrollToTop />
         <div className="container">
           <Header />
           <Routes>

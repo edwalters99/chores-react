@@ -1,23 +1,22 @@
-import React from 'react';
-import { nanoid } from 'nanoid';
+import React from "react";
+import { nanoid } from "nanoid";
 
 function AssignedList({ names }) {
-
   if (names.length !== 0) {
     return (
-        <div className='assigned-list'>
-            { names.map((name) => {
-                return (
-                    <p key={ nanoid }>Assigned to: <strong>{ name }</strong></p>
-                )
-            })}
-        </div>
-    )
+      <div className="assigned-list">
+        {names.map((name) => {
+          return (
+            <p key={nanoid}>
+              Assigned to: <strong>{name}</strong>
+            </p>
+          );
+        })}
+      </div>
+    );
   }
 
-  return (
-      <></>
-  )
+  return <></>;
 }
 
 export default AssignedList;

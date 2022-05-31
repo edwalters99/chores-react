@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;600;700&display=swap");
 
 * {
   margin: 0;
@@ -7,12 +7,19 @@
 }
 
 body {
-  font-family: 'Mukta', sans-serif;
+  font-family: "Mukta", sans-serif;
   height: 100vh;
-  background: #f5f7fa;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #c3cfe2, #f5f7fa);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #c3cfe2, #f5f7fa); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+  background: #f5f7fa; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #c3cfe2,
+    #f5f7fa
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #c3cfe2,
+    #f5f7fa
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 a {
@@ -114,6 +121,7 @@ h3 {
   color: #777;
 }
 
+/* forms */
 .form {
   width: 70%;
   margin: 0 auto;
@@ -145,6 +153,7 @@ h3 {
   background: rgb(245, 200, 200);
 }
 
+/* buttons */
 .btn {
   padding: 10px 20px;
   border-radius: 5px;
@@ -190,7 +199,7 @@ h3 {
 }
 
 .btn:hover {
-  transform: scale(.95);
+  transform: scale(0.95);
 }
 
 .btn-success {
@@ -226,30 +235,6 @@ h3 {
   border: 2px solid white;
 }
 
-.loadingSpinnerContainer {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 5000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.loadingSpinner {
-  width: 64px;
-  height: 64px;
-  border: 8px solid;
-  border-color: #000 transparent #555 transparent;
-  border-radius: 50%;
-  animation: spin 1.2s linear infinite;
-  -webkit-animation: spin 1.2s linear infinite;
-}
-
-
 .avatar-container {
   border: 2px solid black;
   border-radius: 20px;
@@ -274,15 +259,13 @@ h3 {
   margin: 0 auto;
 }
 
-
 .avatar-img > img {
   margin-top: 0px;
   width: 200px;
   height: 200px;
 }
 
-
-@media(max-width:400px) {
+@media (max-width: 400px) {
   .avatar-img > img {
     margin-top: 0px;
     width: 100px;
@@ -302,14 +285,14 @@ h3 {
 /* parent dashboard */
 .avatar-name-sm {
   font-size: 2rem;
-  margin-right: .5em;
+  margin-right: 0.5em;
 }
 
 .avatar-container-sm {
   margin: 0 auto;
   width: 70%;
   border-bottom: black solid 3px;
-  padding-bottom: .4em;
+  padding-bottom: 0.4em;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -388,6 +371,7 @@ h3 {
   margin-bottom: 1em;
 }
 
+/* child home */
 .child-home-container {
   border-radius: 30px;
   display: flex;
@@ -399,7 +383,7 @@ h3 {
 }
 
 .child-home-avatar-container img {
-  width: 70%;;
+  width: 70%;
 }
 
 .child-home-avatar-container img:hover {
@@ -412,8 +396,8 @@ h3 {
 }
 
 .child-home-message-container {
-  padding-top: .5em;
-  padding-bottom: .5em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
   border-top: 1px solid white;
   border-bottom: 1px solid white;
   margin-bottom: 1.5em;
@@ -446,6 +430,7 @@ h3 {
   transform: scale(1.3);
 }
 
+/* child chores */
 .chore-display-container {
   margin-top: 2em;
 }
@@ -470,7 +455,7 @@ h3 {
 }
 
 .parent-pin-form-container p {
- width: 100px;
+  width: 100px;
 }
 
 .parent-pin-form {
@@ -480,8 +465,8 @@ h3 {
 }
 
 .parent-pin-form input {
-  padding-left: .5em;
-  width:100px;
+  padding-left: 0.5em;
+  width: 100px;
 }
 
 .parent-pin-form button {
@@ -512,7 +497,7 @@ h3 {
   margin-bottom: 2em;
   border: 1px solid white;
   border-radius: 10px;
-  padding: .4em;
+  padding: 0.4em;
 }
 
 .leaderboard-card-accent {
@@ -521,7 +506,7 @@ h3 {
   margin-bottom: 2em;
   border: 1px solid white;
   border-radius: 10px;
-  padding: .4em;
+  padding: 0.4em;
 }
 
 .leaderboard-btn {
@@ -553,7 +538,7 @@ h3 {
   margin-top: 1em;
   width: 100%;
 }
-
+/* child rewards */
 .btn-rewards-go {
   background: green;
   font-size: 1.5rem;
@@ -619,7 +604,7 @@ h3 {
   width: 200px;
   height: 200px;
 }
-
+/* login and register */
 .hero-img {
   margin: 0 auto;
   width: 100%;
@@ -630,11 +615,3 @@ h3 {
 .login-header {
   font-size: 2.7rem;
 }
-
-
-
-
-
-
-
-

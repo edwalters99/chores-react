@@ -8,6 +8,7 @@ import {
 } from "../features/chores/choreSlice";
 import {
   updateChild,
+  getChildren,
   reset as resetChild,
 } from "../features/children/childSlice";
 import { toast } from "react-toastify";

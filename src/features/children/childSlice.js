@@ -185,6 +185,11 @@ export const childSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.child = action.payload;
+        const index = state.children.findIndex(
+            (child) => child._id == action.payload._id
+          );
+        state.children[index] = action.payload;
+         // update front-end state without having to re-fetch from api
       })
       .addCase(updateChild.rejected, (state, action) => {
         state.isLoading = false;

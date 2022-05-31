@@ -98,7 +98,10 @@ function ChildHome() {
         )}
 
         {coinsEarned && (
-          <h1>Congratulations you just earned {coinsEarned} gold coins! </h1>
+          <h1>
+            Congratulations you just earned {coinsEarned} gold{" "}
+            {coinsEarned > 1 ? "coins!" : "coin!"}
+          </h1>
         )}
 
         <Link

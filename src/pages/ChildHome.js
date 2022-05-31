@@ -95,7 +95,7 @@ function ChildHome() {
 
                 <div>
                     <ChildHomeGreeting child={ child } />
-                    <ChildHomeRandomMessage child={ child } setIsBirthday={ (bool) => setIsBirthday(bool) } />
+                    { console.log(child)}<ChildHomeRandomMessage child={ child } setIsBirthday={ (bool) => setIsBirthday(bool) } />
                 </div>
 
                 { child.rewardbal ? 

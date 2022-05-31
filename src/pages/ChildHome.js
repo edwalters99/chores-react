@@ -19,7 +19,6 @@ import ChildLeaderboard from '../components/ChildLeaderboard';
 
 
 function ChildHome() {
-    
     const childId = JSON.parse(localStorage.getItem('childAuth')); // logged in Child
     const { child, children, isLoading, isSuccess, isError, message } = useSelector((state) => state.child);
     const { user } = useSelector((state) => state.auth);

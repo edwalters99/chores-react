@@ -429,6 +429,11 @@ h3 {
   justify-content: center;
   width: 80%;
   font-size: 1.25em;
+  margin-bottom: 1em;
+}
+
+.gold-coin-container p {
+  margin-bottom: 1em;
 }
 
 .gold-coin {

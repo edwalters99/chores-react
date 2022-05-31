@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import GoldCoins from './GoldCoins';
+import ParentPinFormReward from './ParentPinFormReward';
 
 function RewardCard({ name, cost, image, child }) {
     const [claimed, setClaimed] = useState(false);
@@ -16,16 +17,27 @@ function RewardCard({ name, cost, image, child }) {
     const isAffordable = () => {
         return child.rewardbal >= cost;
     };
+
+    const buttonPinFormRender = () => {
+        if (claimed) {
+            return (
+                <ParentPinFormReward setClaimed={ (bool) => setClaimed(bool)}/>
+            )
+        }
+        else {
+            return  (
+                <button className="btn btn-choredone" onClick={ () => setClaimed( true) }>Claim!</button>
+            )
+        }
+    };
   
     return (
     <div className="reward-card">
-        <h2>{ name }</h2>
-        <GoldCoins coins={ cost } titleText={ 'Cost' }/>
-        <img src={ image } />
-        { AffordMessage() }
-        { isAffordable() && <button className="btn btn-choredone" onClick={ () => setClaimed( true) }>Claim!</button>
-      
-        }
+        <h2 onClick={ () => setClaimed(false) }>{ name }</h2>
+        <img src={ image } onClick={ () => setClaimed(false) }/>
+        <GoldCoins coins={ cost } titleText={ 'Cost' } />
+        <div onClick={ () => setClaimed(false) }>{ AffordMessage() }</div>
+        { isAffordable() && buttonPinFormRender() }
     </div>
   )
 }

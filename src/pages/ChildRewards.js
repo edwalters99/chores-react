@@ -4,6 +4,8 @@ import { toast } from 'react-toastify';
 import  { FaArrowCircleLeft }  from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { getChild, getChildren, reset } from '../features/children/childSlice';
+import { css } from "@emotion/react";
+import ClipLoader from "react-spinners/ClipLoader";
 import GoldCoins from '../components/GoldCoins';
 import RewardList from '../components/RewardList';
 
@@ -78,6 +80,10 @@ function ChildRewards() {
         dispatch(getChild(childId));
         dispatch(getChildren());
     }, [childId, isError, message]);
+
+    if (isLoading) {
+        return (<ClipLoader />)
+    };
   
 
     if (child.rewardbal === 0) {

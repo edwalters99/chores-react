@@ -26,6 +26,12 @@ function ChildRewards() {
             cost: 3,
             image: 'http://www.placekitten.com/100/100'
         },
+
+        { 
+            name: '$2 to spend at tuck shop',
+            cost: 6,
+            image: 'http://www.placekitten.com/100/100'
+        },
         { 
             name: 'Movie Night',
             cost: 6,
@@ -42,13 +48,25 @@ function ChildRewards() {
             image: 'http://www.placekitten.com/100/100'
         },
         { 
-            name: '$10 to spend on a toy',
+            name: '$10 Toy Shopping',
             cost: 9,
             image: 'http://www.placekitten.com/100/100'
         },
+
         { 
-            name: 'Cafe Sweet Treat - whole family',
-            cost: 12,
+            name: '$20 Toy Shopping',
+            cost: 18,
+            image: 'http://www.placekitten.com/100/100'
+        },
+        { 
+            name: 'Cafe treat',
+            cost: 6,
+            image: 'http://www.placekitten.com/100/100'
+        },
+
+        { 
+            name: 'Cafe treat for whole family',
+            cost: 30,
             image: 'http://www.placekitten.com/100/100'
         },
     ]);
@@ -82,7 +100,7 @@ function ChildRewards() {
         <GoldCoins coins={ child.rewardbal } titleText={ 'Your Coin Bank' } />
         <h1>Let's help you spend those Shiny Gold Coins...</h1>
 
-        <RewardList rewards={ rewards } />
+        <RewardList rewards={ rewards } child={ child } />
            
     </div>
   )

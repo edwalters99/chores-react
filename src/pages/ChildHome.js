@@ -82,7 +82,6 @@ function ChildHome() {
 
         <div>
           <ChildHomeGreeting child={child} />
-          {console.log(child)}
           <ChildHomeRandomMessage
             child={child}
             setIsBirthday={(bool) => setIsBirthday(bool)}

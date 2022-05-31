@@ -7,16 +7,16 @@ import rabbit from "../images/rabbit.png";
 function ChildHomeAvatar({ avatar }) {
   const avatarImg = () => {
     if (avatar === "cat") {
-      return <img src={cat} />;
+      return <img src={cat} alt="cat" />;
     }
     if (avatar === "dog") {
-      return <img src={dog} />;
+      return <img src={dog} alt="dog" />;
     }
     if (avatar === "dinosaur") {
-      return <img src={dino} />;
+      return <img src={dino} alt="dinosaur" />;
     }
     if (avatar === "rabbit") {
-      return <img src={rabbit} />;
+      return <img src={rabbit} alt="rabbit" />;
     }
   };
 

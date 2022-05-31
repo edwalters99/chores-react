@@ -13,16 +13,16 @@ function ChildCardSm(props) {
 
   const avatarImg = () => {
     if (props.avatar === "cat") {
-      return <img src={cat} />;
+      return <img src={cat} alt="cat" />;
     }
     if (props.avatar === "dog") {
-      return <img src={dog} />;
+      return <img src={dog} alt="dog" />;
     }
     if (props.avatar === "dinosaur") {
-      return <img src={dino} />;
+      return <img src={dino} alt="dinosaur" />;
     }
     if (props.avatar === "rabbit") {
-      return <img src={rabbit} />;
+      return <img src={rabbit} alt="rabbit" />;
     }
   };
 

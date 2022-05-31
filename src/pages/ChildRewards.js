@@ -8,6 +8,7 @@ import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
 import GoldCoins from '../components/GoldCoins';
 import RewardList from '../components/RewardList';
+import cat from '../images/cat.png'
 
 
 function ChildRewards() {
@@ -21,53 +22,52 @@ function ChildRewards() {
         { 
             name: 'Pizza for dinner',
             cost: 3,
-            image: 'http://www.placekitten.com/100/100'
+            image: '/images/pizza.png'
         },
         { 
             name: 'Trip to the Park',
             cost: 3,
-            image: 'http://www.placekitten.com/100/100'
+            image: '/images/park.png'
         },
-
         { 
             name: '$2 to spend at tuck shop',
             cost: 6,
-            image: 'http://www.placekitten.com/100/100'
+            image: '/images/dollar.png'
         },
         { 
-            name: 'Movie Night',
+            name: 'Movie Night at Home',
             cost: 6,
-            image: 'http://www.placekitten.com/100/100'
+            image: '/images/movie.png'
         },
         { 
-            name: '1 hr Computer Game time',
+            name: '1 hour Computer Game time',
             cost: 3,
-            image: 'http://www.placekitten.com/100/100'
+            image: '/images/computer.png'
         },
         { 
             name: 'Ice Cream at home',
             cost: 3,
-            image: 'http://www.placekitten.com/100/100'
+            image: '/images/icecream.png'
         },
         { 
             name: '$10 Toy Shopping',
             cost: 9,
-            image: 'http://www.placekitten.com/100/100'
+            image: '/images/toyshop.png'
         },
         { 
             name: '$20 Toy Shopping',
             cost: 18,
-            image: 'http://www.placekitten.com/100/100'
+            image: '/images/toyshop.png'
         },
         { 
             name: 'Cafe treat',
             cost: 6,
-            image: 'http://www.placekitten.com/100/100'
+            image: '/images/donut.png'
         },
         { 
             name: 'Cafe treat for whole family',
             cost: 30,
-            image: 'http://www.placekitten.com/100/100'
+            image: '/images/donutplate.png'
         },
     ]);
 

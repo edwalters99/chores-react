@@ -34,7 +34,7 @@ function RewardCard({ name, cost, image, child, updateChildBalance }) {
     return (
     <div className="reward-card">
         <h2 onClick={ () => setClaimed(false) }>{ name }</h2>
-        <img src={ image } onClick={ () => setClaimed(false) }/>
+        <img className="reward-card-img" src={ image } onClick={ () => setClaimed(false) }/>
         <GoldCoins coins={ cost } titleText={ 'Cost' } />
         <div onClick={ () => setClaimed(false) }>
             { AffordMessage() }

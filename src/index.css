@@ -611,10 +611,14 @@ h3 {
   height: 40px;
 }
 
-.reward-card img {
+
+
+.reward-card-img {
   border-radius: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
+  width: 200px;
+  height: 200px;
 }
 
 

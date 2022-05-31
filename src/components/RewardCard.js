@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import GoldCoins from './GoldCoins';
 import ParentPinFormReward from './ParentPinFormReward';
 
-function RewardCard({ name, cost, image, child }) {
+function RewardCard({ name, cost, image, child, updateChildBalance }) {
     const [claimed, setClaimed] = useState(false);
 
     const AffordMessage = () => {
@@ -21,7 +21,7 @@ function RewardCard({ name, cost, image, child }) {
     const buttonPinFormRender = () => {
         if (claimed) {
             return (
-                <ParentPinFormReward setClaimed={ (bool) => setClaimed(bool)}/>
+                <ParentPinFormReward setClaimed={ (bool) => setClaimed(bool)} updateChildBalance={ updateChildBalance } cost={ cost }/>
             )
         }
         else {

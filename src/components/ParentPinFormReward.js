@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-function ParentPinFormReward({ setClaimed }) {
+function ParentPinFormReward({ setClaimed, updateChildBalance, cost }) {
   
     const [pinInput, setPinInput] = useState('');
     const [failed, setFailed] = useState(false);
@@ -15,6 +15,7 @@ function ParentPinFormReward({ setClaimed }) {
         e.preventDefault();
         if (Number(pinInput) == user.pin) {
             // setApproved(chore._id, chore.value); // function passed down from AssignedChores.js
+            updateChildBalance(cost); // function passed down from ChildRewards.js
         } else {
            setFailed(true);
         }

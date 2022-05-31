@@ -3,7 +3,7 @@ import { useSelector, useDispatch} from 'react-redux';
 import { toast } from 'react-toastify';
 import  { FaArrowCircleLeft }  from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import { getChild, getChildren, reset } from '../features/children/childSlice';
+import { getChild, getChildren, updateChild, reset } from '../features/children/childSlice';
 import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
 import GoldCoins from '../components/GoldCoins';
@@ -15,7 +15,7 @@ function ChildRewards() {
 
     const dispatch = useDispatch();
 
-    const { child, children, isLoading, isSuccess, isError, message } = useSelector((state) => state.child);;
+    const { child, children, isLoading, isSuccess, isError, message } = useSelector((state) => state.child);
 
     const [rewards] = useState([
         { 
@@ -79,6 +79,18 @@ function ChildRewards() {
         dispatch(getChildren());
     }, [childId, isError, message]);
 
+    const updateChildBalance = (deductionAmt) => {
+        console.log(deductionAmt)
+        const currentBal = child.rewardbal;
+        const newBal = currentBal - deductionAmt;
+        const childData = {
+            rewardbal: newBal,
+        };
+        dispatch(updateChild({ childData, childId }));
+    };
+
+    
+
     if (isLoading) {
         return (<ClipLoader />)
     };
@@ -103,7 +115,7 @@ function ChildRewards() {
         <GoldCoins coins={ child.rewardbal } titleText={ 'Your Coin Bank' } />
         <h1>Let's help you spend those Shiny Gold Coins...</h1>
 
-        <RewardList rewards={ rewards } child={ child } />
+        <RewardList rewards={ rewards } child={ child } updateChildBalance={ updateChildBalance } />
            
     </div>
   )

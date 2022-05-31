@@ -113,7 +113,7 @@ function ChildHome() {
                </Link>
                
                <AssignedChores 
-                    childId={ child._id } 
+                    childId={ childId } 
                     setCoinsEarned={ (coins) => { setCoinsEarned(coins) } }
                     setChoresToDo={ (num) => { setChoresToDo(num)} } 
                 />

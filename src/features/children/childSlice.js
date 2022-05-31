@@ -147,9 +147,10 @@ export const childSlice = createSlice({
         .addCase(createChild.pending, (state) => {
             state.isLoading = true;
         })
-        .addCase(createChild.fulfilled, (state) => {
+        .addCase(createChild.fulfilled, (state, action) => {
             state.isLoading = false;
             state.isSuccess = true;
+            state.children.push(action.payload);
         })
         .addCase(createChild.rejected, (state, action) => {
             state.isLoading = false;

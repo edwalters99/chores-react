@@ -20,7 +20,7 @@ function AssignedChores({ childId, setCoinsEarned, setChoresToDo }) {
 
     useEffect(() => {
         dispatch(getChoresActive( childId ))
-    },[dispatch]);
+    },[dispatch, childId]);
 
     useEffect(() => {  
         if (isSuccessChores) {

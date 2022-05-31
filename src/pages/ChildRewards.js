@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch} from 'react-redux';
 import { toast } from 'react-toastify';
 import  { FaArrowCircleLeft }  from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { getChild, getChildren, reset } from '../features/children/childSlice';
 import GoldCoins from '../components/GoldCoins';
+import RewardList from '../components/RewardList';
 
 
 function ChildRewards() {
@@ -12,7 +13,45 @@ function ChildRewards() {
 
     const dispatch = useDispatch();
 
-    const { child, children, isLoading, isSuccess, isError, message } = useSelector((state) => state.child);
+    const { child, children, isLoading, isSuccess, isError, message } = useSelector((state) => state.child);;
+
+    const [rewards] = useState([
+        { 
+            name: 'Pizza for dinner',
+            cost: 3,
+            image: 'http://www.placekitten.com/100/100'
+        },
+        { 
+            name: 'Trip to the Park',
+            cost: 3,
+            image: 'http://www.placekitten.com/100/100'
+        },
+        { 
+            name: 'Movie Night',
+            cost: 6,
+            image: 'http://www.placekitten.com/100/100'
+        },
+        { 
+            name: '1 hr Computer Game time',
+            cost: 3,
+            image: 'http://www.placekitten.com/100/100'
+        },
+        { 
+            name: 'Ice Cream at home',
+            cost: 3,
+            image: 'http://www.placekitten.com/100/100'
+        },
+        { 
+            name: '$10 to spend on a toy',
+            cost: 9,
+            image: 'http://www.placekitten.com/100/100'
+        },
+        { 
+            name: 'Cafe Sweet Treat - whole family',
+            cost: 12,
+            image: 'http://www.placekitten.com/100/100'
+        },
+    ]);
 
     useEffect(() => {
         if (isError) {
@@ -42,12 +81,9 @@ function ChildRewards() {
        
         <GoldCoins coins={ child.rewardbal } titleText={ 'Your Coin Bank' } />
         <h1>Let's help you spend those Shiny Gold Coins...</h1>
+
+        <RewardList rewards={ rewards } />
            
-            
-       
-
-
-  
     </div>
   )
 }

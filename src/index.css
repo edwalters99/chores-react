@@ -577,7 +577,8 @@ h3 {
 }
 
 .rewards-container {
-  background: Red;
+  background: Green;
+  color: white;
   border-radius: 30px;
   display: flex;
   flex-direction: column;

@@ -15,6 +15,13 @@ function ChoreCard({ chore, setApproved }) {
       >
         {chore.title}
       </h2>
+      <h2 className="chore-card-icon"
+        onClick={() => {
+          setDone(false);
+        }}
+      >
+        {chore.icon}
+      </h2>
       <h3
         onClick={() => {
           setDone(false);

@@ -447,6 +447,10 @@ h3 {
   align-items: center;
 }
 
+.chore-card-icon {
+  font-size: 5rem;
+}
+
 .parent-pin-form-container {
   display: flex;
   flex-direction: row;

@@ -15,7 +15,7 @@ function FavouriteDisplay({ fav, children }) {
     if (value == 1)
       return (
         <div className="coin-container">
-          <img className="coin" src={coin} />
+          <img className="coin" src={coin} alt="coin"/>
         </div>
       );
     if (value == 2) {

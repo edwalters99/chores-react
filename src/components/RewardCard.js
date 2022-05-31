@@ -7,10 +7,10 @@ function RewardCard({ name, cost, image, child }) {
 
     const AffordMessage = () => {
         if (child.rewardbal < cost ) {
-            return <h2>❌ Sorry { child.firstname } you can't afford this. You need { cost - child.rewardbal } more coins. <br />Keep saving!</h2>
+            return <h2>❌ Sorry { child.firstname } you can't afford this. You need { cost - child.rewardbal } more {cost - child.rewardbal > 1 ? 'coins' : 'coin'}. <br />Keep saving!</h2>
         }
         else {
-            return <h2> ✅ You can afford this and will have { child.rewardbal - cost } coins left.</h2>
+            return <h2> ✅ You can afford this and will have { child.rewardbal - cost } { child.rewardbal - cost > 1 ? 'coins' : 'coin' } left.</h2>
         }
     };
 
@@ -36,7 +36,9 @@ function RewardCard({ name, cost, image, child }) {
         <h2 onClick={ () => setClaimed(false) }>{ name }</h2>
         <img src={ image } onClick={ () => setClaimed(false) }/>
         <GoldCoins coins={ cost } titleText={ 'Cost' } />
-        <div onClick={ () => setClaimed(false) }>{ AffordMessage() }</div>
+        <div onClick={ () => setClaimed(false) }>
+            { AffordMessage() }
+        </div>
         { isAffordable() && buttonPinFormRender() }
     </div>
   )

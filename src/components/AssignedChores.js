@@ -1,8 +1,8 @@
 import React from 'react';
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getChoresActive, updateChore, reset as resetChores } from '../features/chores/choreSlice';
-import { getChild, updateChild, reset as resetChild } from '../features/children/childSlice';
+import { updateChild, reset as resetChild } from '../features/children/childSlice';
 import { toast } from 'react-toastify';
 import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
@@ -14,7 +14,7 @@ import ChoreCard from './ChoreCard';
 function AssignedChores({ childId, setCoinsEarned, setChoresToDo }) {
     const { chores, isLoading : isLoadingChores, isSuccess : isSuccessChores, isError : isErrorChores, message : messageChores } = useSelector((state) => state.chore)
 
-    const { child } = useSelector((state) => state.child)
+    const { child, isLoading : isLoadingChild, isSuccess : isSuccessChild, isError : isErrorChild, message : messageChild  } = useSelector((state) => state.child)
     
     const dispatch = useDispatch();
 
@@ -32,6 +32,13 @@ function AssignedChores({ childId, setCoinsEarned, setChoresToDo }) {
           };
 
     }, [isLoadingChores, isSuccessChores, isErrorChores])
+
+    useEffect(() => {  
+        if (isErrorChild) {
+            toast.error(messageChild, { toastId: 'cMessage'});
+          };
+
+    }, [isLoadingChild, isSuccessChild, isErrorChild])
 
     const setApproved = (choreId, choreRewardValue) => {
         const data = {

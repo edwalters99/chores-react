@@ -38,6 +38,15 @@ function ChoresTotalCompleted( { number }) {
             );
         }
 
+        else if (number == 1) {
+            return (
+            <div className="chore-total-container">
+                <h1>You're doing great!</h1>
+                <h1>{ number } Completed Chore</h1> 
+            </div>
+            );
+        }
+
         else {
             return (
             <div className="chore-total-container">

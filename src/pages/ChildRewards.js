@@ -54,7 +54,6 @@ function ChildRewards() {
             cost: 9,
             image: 'http://www.placekitten.com/100/100'
         },
-
         { 
             name: '$20 Toy Shopping',
             cost: 18,
@@ -65,7 +64,6 @@ function ChildRewards() {
             cost: 6,
             image: 'http://www.placekitten.com/100/100'
         },
-
         { 
             name: 'Cafe treat for whole family',
             cost: 30,
@@ -85,7 +83,6 @@ function ChildRewards() {
         return (<ClipLoader />)
     };
   
-
     if (child.rewardbal === 0) {
         return (
             <div className="rewards-container">

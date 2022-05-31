@@ -10,7 +10,7 @@ function RewardCard({ name, cost, image, child, updateChildBalance }) {
             return <h2>❌ Sorry { child.firstname } you can't afford this. You need { cost - child.rewardbal } more {cost - child.rewardbal > 1 ? 'coins' : 'coin'}. <br />Keep saving!</h2>
         }
         else {
-            return <h2> ✅ You can afford this and will have { child.rewardbal - cost } { child.rewardbal - cost > 1 ? 'coins' : 'coin' } left.</h2>
+            return <h2> ✅ You can afford this and still have { child.rewardbal - cost } { child.rewardbal - cost > 1 ? 'coins' : 'coin' } left.</h2>
         }
     };
 

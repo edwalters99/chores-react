@@ -15,7 +15,7 @@ function ChildRewards() {
 
     const dispatch = useDispatch();
 
-    const { child, children, isLoading, isSuccess, isError, message } = useSelector((state) => state.child);
+    const { child, isLoading, isSuccess, isError, message } = useSelector((state) => state.child);
 
     const [rewards] = useState([
         { 
@@ -71,25 +71,28 @@ function ChildRewards() {
         },
     ]);
 
+    const [rewardRedeemed, setRewardRedeemed] = useState(false);
+
     useEffect(() => {
         if (isError) {
             toast.error(message);
         };
         dispatch(getChild(childId));
         dispatch(getChildren());
+        dispatch(reset());
+        
     }, [childId, isError, message]);
 
     const updateChildBalance = (deductionAmt) => {
-        console.log(deductionAmt)
         const currentBal = child.rewardbal;
         const newBal = currentBal - deductionAmt;
         const childData = {
             rewardbal: newBal,
         };
         dispatch(updateChild({ childData, childId }));
-    };
+        setRewardRedeemed(true);
 
-    
+    };
 
     if (isLoading) {
         return (<ClipLoader />)
@@ -111,6 +114,8 @@ function ChildRewards() {
          <Link to= "/childhome" className='btn childrewards-back-btn'>
             <FaArrowCircleLeft/> Back to Dashboard
         </Link>
+
+        { rewardRedeemed && <h2>Congratulations you're claimed your reward! Enjoy!</h2>}
        
         <GoldCoins coins={ child.rewardbal } titleText={ 'Your Coin Bank' } />
         <h1>Let's help you spend those Shiny Gold Coins...</h1>

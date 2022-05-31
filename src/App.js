@@ -14,11 +14,13 @@ import Favourites from "./pages/Favourites";
 import NewFavourite from "./pages/NewFavourite";
 import ChildHome from "./pages/ChildHome";
 import ChildRewards from "./pages/ChildRewards";
+import ScrollToTop from "./hooks/scrollToTop";
 
 function App() {
   return (
     <>
       <Router>
+      <ScrollToTop />
         <div className="container">
           <Header />
           <Routes>

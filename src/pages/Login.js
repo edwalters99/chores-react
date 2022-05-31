@@ -7,6 +7,8 @@ import { useNavigate } from 'react-router-dom';
 import Spinner from '../components/Spinner';
 import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
+import hero1 from '../images/hero1.jpg';
+
 
 
 
@@ -42,7 +44,6 @@ function Login() {
 
   useEffect(() => {
     //Error
-    console.log(isError)
     if (isError) {
       toast.error(message, { toastId: 'tMessage'});
     };
@@ -130,10 +131,12 @@ function Login() {
   return (
     <>
         <section className="heading">
+        <h1 className="login-header">Chore Tracker</h1>
           <h1>
-            <FaSignInAlt /> Sign in
+            <FaSignInAlt /> Login
           </h1>
           <p>Login here to access your account</p>
+          <img className="hero-img" src={ hero1 } alt="Young child helping her mum with the laundry." />
         </section>
 
         <div className="form">
@@ -171,6 +174,7 @@ function Login() {
                 <button className={ formReady ? "btn btn-block btn-success" : "btn btn-block btn-inactive"}>Login</button>
               </div>
             </form>
+          
         </div>
     </>
   )

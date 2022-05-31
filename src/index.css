@@ -117,6 +117,7 @@ h3 {
 .form {
   width: 70%;
   margin: 0 auto;
+  max-width: 500px;
 }
 
 .form-group {
@@ -611,14 +612,23 @@ h3 {
   height: 40px;
 }
 
-
-
 .reward-card-img {
   border-radius: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
   width: 200px;
   height: 200px;
+}
+
+.hero-img {
+  margin: 0 auto;
+  width: 100%;
+  border-radius: 20px;
+  border: white 2px solid;
+}
+
+.login-header {
+  font-size: 2.7rem;
 }
 
 

@@ -7,6 +7,7 @@ import { register, reset } from '../features/auth/authSlice';
 import Spinner from '../components/Spinner';
 import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
+import hero2 from '../images/hero2.jpg';
 
 function Register() {
   
@@ -180,9 +181,9 @@ function Register() {
     <>
         <section className="heading">
           <h1>
-            <FaUser /> Register your family here...
+            <FaUser /> Register
           </h1>
-          <p>Please create an account</p>
+          <p>Please create an account and register your family</p>
         </section>
 
         <div className="form">
@@ -264,6 +265,7 @@ function Register() {
                 <button className={ formReady ? "btn btn-block btn-success" : "btn btn-block btn-inactive"}>Submit</button>
               </div>
             </form>
+            <img className="hero-img" src={ hero2 } alt="Children helping with chores in the kitchen." />
         </div>
     </>
   )

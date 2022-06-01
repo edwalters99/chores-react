@@ -1,46 +1,57 @@
-# Getting Started with Create React App and Redux
+# Chore Tracker
+Chore Tracker makes getting kids to do household chores easy! A gamified child dashboard lets them compete with their siblings on a leaderboard, earn gold coins and spend those coins on rewards. Children can personalize their dashboard by picking a favourite colour and avatar. Look out on your birthday for a special birthday surprise!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+## Technologies
+Project created with:
+* React
+* React Router Dom
+* Redux Toolkit
+* Node.js ([GitHub repo](https://github.com/edwalters99/chores-express))
+* Express 
+* Mongoose
+* MongoDB Atlas
+* JSON Web Tokens
+* bcrpyt (password encryption)
 
-## Available Scripts
 
-In the project directory, you can run:
+## Try it out
+You can access and use this application on this link: [Chore Tracker](https://chore-tracker0.netlify.app/).
 
-### `npm start`
+### Login
+* email: joebloggs@gmail.com
+* password: Password1
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Back-end server codebase
+[Chores-express GitHub repo](https://github.com/edwalters99/chores-express)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+<!-- ## Object model associations
+Coming soon -->
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---------------------------------------------------------------
+## Introduction
 
-### `npm run build`
+This was the final project on the 12 week General Assembly Software Engineering Immersive Bootcamp. I challenged myself to make an app that would be useful to myself and my family, while learning some more advanced features of React such as Redux Toolkit. I also decided to use Node.js / Express for my back-end (my previous projects used Ruby on Rails). I am pleased I made this decision as I learnt so much about making an API server and designing my data in such a way that it would work with a non-relational database (MongoDB)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---------------------------------------------------------------
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<!-- ## Approach
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Coming Soon -->
 
-### `npm run eject`
+---------------------------------------------------------------
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+ ## Screenshots
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+<span><img src="/public/images/screenshots_readme/dashboard2.jpg" width="250" alt="Dashboard">
+<img src="/public/images/screenshots_readme/dashboard.jpg" width="250" alt="Dashboard">
+<img src="/public/images/screenshots_readme/birthday.jpg" width="250" alt=""></span>
+<span><img src="/public/images/screenshots_readme/leaderboard.jpg" width="250" alt="">
+<img src="/public/images/screenshots_readme/rewards1.jpg" width="250" alt="">
+<img src="/public/images/screenshots_readme/rewards2.jpg" width="250" alt=""></span>
+<span><img src="/public/images/screenshots_readme/login.jpg" width="250" alt="">
+<img src="/public/images/screenshots_readme/register.jpg" width="250" alt="">
+<img src="/public/images/screenshots_readme/addchild.jpg" width="250" alt=""></span>
+<span><img src="/public/images/screenshots_readme/assignchores.jpg" width="250" alt="">
+<img src="/public/images/screenshots_readme/newchore.jpg" width="250" alt="">
+></span>

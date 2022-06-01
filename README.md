@@ -44,7 +44,7 @@ Coming Soon -->
  ## Screenshots
 
 <span><img src="/public/images/screenshots_readme/dashboard2.jpg" width="250" alt="Dashboard">
-<img src="/public/images/screenshots_readme/dashboard.jpg" width="250" alt="Dashboard">
+<img src="/public/images/screenshots_readme/dashboard1.jpg" width="250" alt="Dashboard">
 <img src="/public/images/screenshots_readme/birthday.jpg" width="250" alt=""></span>
 <span><img src="/public/images/screenshots_readme/leaderboard.jpg" width="250" alt="">
 <img src="/public/images/screenshots_readme/rewards1.jpg" width="250" alt="">

@@ -10,7 +10,7 @@ function Home() {
   return (
     <>
       <section className="heading">
-        <h1>Welcome to ChoreTracker</h1>
+        <h1>Welcome to Chore Tracker</h1>
         <h1>{user.familyname}</h1>
 
         <p className="home-subheader">Parent Dashboard</p>

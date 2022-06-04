@@ -28,7 +28,7 @@ You can access and use this application on this link: [Chore Tracker](https://ch
 
 ## Introduction
 
-This was the final project on the 13 week General Assembly Software Engineering Immersive Bootcamp. I challenged myself to make an app that would be useful to myself and my family, while learning some more advanced features of React such as Redux Toolkit. I decided to use Node.js / Express for my back-end (my previous projects used Ruby on Rails). I am pleased I made this decision as I learnt so much about making an API server and designing my data in such a way that it would work with a non-relational database (MongoDB)
+This was the final project of the 13 week General Assembly Software Engineering Immersive Bootcamp. It was completed in 10 days. I challenged myself to make an app that would be useful to myself and my family, while learning some more advanced features of React such as Redux Toolkit. I decided to use Node.js / Express for my back-end (my previous projects used Ruby on Rails). I am pleased I made this decision as I learnt so much about making an API server and designing my data in such a way that it would work with a non-relational database (MongoDB)
 
 ---------------------------------------------------------------
 
@@ -57,18 +57,19 @@ This was the final project on the 13 week General Assembly Software Engineering 
 * Login and Register pages with custom form validation and error display.
 * Parent enters a family name on signup (e.g. The Bloggs Family) which is used in various sections of the app.
 * Parent enters a PIN on signup which is used for authorizing Chore Completion and Reward Redemption.
-* Data captured when adding a new child (Favourite Colour, Avatar, Birthday) is used to create a personalized & unique Child Dashboard.
+* Data captured when adding a new child (Favourite Colour, Avatar, Date of Birth) is used to create a personalized & unique Child Dashboard.
 * A random inspirational / personalized message from their Avatar is displayed on each page refresh of Child Dashboard. e.g Days to their Birthday, their name spelt backwards.
 * Parents create/delete Favourite Chores, customizing them with a title, description, emoji and reward Coin Value to personalize each chore.
 * These chores can then be reused and assigned to individual Children in the family.
 * Parent logs in Child to their Child Dashboard with a single button click. Child is unable to access other areas of the app and is restricted to Child Dashboard, Child Rewards and Logout.
-* Child Dashboard updates with Assigned Chores and time since Assignment.
-* Child can mark Chore as done and after Parental PIN approval their coin balance will update by the chore value along with a motivational message and Confetti Display.
+* Child Dashboard updates with Assigned Chore and time since Assignment.
+* Child can mark Chore as done. After Parental PIN approval their coin balance will update by the chore value along with a motivational message and Confetti Display.
 * Motivational messages on Child Dashboard conditionally rendered based on number of chores completed.
+* Family Leaderboard sorted by Chores Completed or Coins
 * All Day Confetti and congratulations message on Child's birthday.
 * Rewards page with motivational messages about which Rewards the child can afford and how many coins they will have remaining after purchase.
 * Child can redeem rewards and after Parental PIN approval their coin balance is adjusted. 
-* Mobile % Tablet-first design. Also works on larger screen sizes.
+* Mobile / Tablet-first design. Also works on larger screen sizes.
 
 ---------------------------------------------------------------
 
@@ -94,13 +95,15 @@ This was the final project on the 13 week General Assembly Software Engineering 
 * Edit User Profile and Change Password
 * Parent profile to show which chores are currently assigned to each Child. At present it dispays this information at the time of assignment only. The Child Dashboard is then used to see this information.
 * Bonus Coins on Child's birthday.
-* Parent ability to unassign chores.
-* Parent ability to set recurring chores with a time period e.g. weekly.
+* Parent feature to unassign chores.
+* Parent view of claimed rewards by each child
+* Parent feature to set recurring chores with a time period e.g. weekly.
 * Custom reward creation/deletion for each family. (A selection of Rewards are currently hard-coded into the app)
 * More complex media queries to work on larger screens and make full use of extra screen space.
 ---------------------------------------------------------------
 
 Acknowledgements:
 
-<a href='https://pngtree.com/so/acknowledge'>Icons provided by pngtree.com</a>
+* <a href='https://pngtree.com/so/acknowledge'>Icons sourced from pngtree.com</a>
+* The support of my family while spending countless hours working on this project!
 

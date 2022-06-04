@@ -14,16 +14,14 @@ Project created with:
 * bcrpyt (password encryption)
 
 React Libraries:
+* axios
+* dayjs
 * React Confetti
 * React Confirm Alert
 * React Icons
 * React Spinners
 * React Timeago
 * React Toastify
-* React Use Window Size
-
-
-
 
 
 ## Try it out
@@ -40,7 +38,7 @@ You can access and use this application on this link: [Chore Tracker](https://ch
 
 ## Introduction
 
-This was my final solo project of the 13 week General Assembly Software Engineering Immersive Bootcamp. It was completed in 10 days. I challenged myself to make an app that would be useful to myself and my family, while learning some more advanced features of React such as Redux Toolkit. I decided to use Node.js / Express for my back-end as my previous projects were build using Ruby on Rails. I am pleased I made this decision as I learnt so much about making an API server and designing my data structure so it would work with a non-relational database (MongoDB). I also got experience using Postman and Compass to test API calls and manipulate the database.
+This was my final solo project of the 13 week General Assembly Software Engineering Immersive Bootcamp. It was completed in 10 days. I challenged myself to make an app that would be useful to myself and my family, while learning some more advanced features of React such as Redux Toolkit. I decided to use Node.js / Express for my back-end as my previous projects were build using Ruby on Rails. I am pleased I made this decision as I learnt so much about making an API server and designing my data structure so it would work with a non-relational database (MongoDB). My approach was to create the back-end server first, using Postman and Compass to test the API requests and manipulate the database. I then moved on to the React side creating the necessary Pages/Components to meet the requirements of the Use Case Diagram. I started on Register / Login and the Parent Dashboard before moving onto the Child Dashboard and Child Rewards. I found the Child section hugely enjoyable as new features could be added relatively quickly and it was fun putting myself in the eyes of the end user and adding new functionality to keep them engaged. 
 
 ---------------------------------------------------------------
 
@@ -67,11 +65,11 @@ This was my final solo project of the 13 week General Assembly Software Engineer
 ## Feature List
 
 * Login and Register pages with custom form validation and error display.
-* Back-end server warnings & errors are displayed to the user throughout the App using 'Toast messages'.
+* Back-end server warnings & errors are displayed to the user throughout the app using 'Toast messages'.
 * Parent enters a family name on signup (e.g. The Bloggs Family) which is displayed in various app components.
 * Parent enters a PIN on signup which is used for authorizing Chore Completion and Reward Redemption.
-* Parent can create (or delete) a Child. Favourite Colour, Avatar, Date of Birth is requested to create a personalized & unique Child Dashboard.
-* A random inspirational / personalized message from their Avatar is displayed on each page refresh of Child Dashboard. e.g Days to their Birthday / Child name spelt backwards.
+* Parent can create (or delete) a Child. Favourite Colour, Avatar and Date of Birth inputs are requested to create a personalized & unique Child Dashboard.
+* A random inspirational / personalized message from their Avatar is displayed on page refresh of the Child Dashboard. e.g Days to their Birthday / Child name spelt backwards.
 * Parents can create/delete Favourite Chores; entering a title, description, reward Coin Value and emoji to personalize each chore.
 * These chores can then be reused and assigned to any number of Children.
 * Parent performs login to Child Dashboard with a single button click. Child is unable to access other areas of the app and is restricted to Child Dashboard, Child Rewards and Logout. (No child username/password required)
@@ -81,7 +79,7 @@ This was my final solo project of the 13 week General Assembly Software Engineer
 * Family Leaderboard can be sorted either by Chores Completed or Coin Total.
 * All Day Confetti and congratulations message on Child's birthday.
 * Rewards page displays messages about which Rewards the child can afford and how many coins they will have remaining after purchase.
-* Child can redeem rewards and after parent PIN approval their coin balance is reduced. 
+* Child can spend coins to redeem a reward. After parent PIN approval their coin balance is reduced. 
 * Mobile / Tablet-first design. Also works on larger screen sizes.
 
 ---------------------------------------------------------------

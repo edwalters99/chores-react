@@ -38,7 +38,13 @@ You can access and use this application on this link: [Chore Tracker](https://ch
 
 ## Introduction
 
-This was my final solo project of the 13 week General Assembly Software Engineering Immersive Bootcamp. It was completed in 10 days. I challenged myself to make an app that would be useful to myself and my family, while learning some more advanced features of React such as Redux Toolkit. I decided to use Node.js / Express for my back-end as my previous projects were build using Ruby on Rails. I am pleased I made this decision as I learnt so much about making an API server and designing my data structure so it would work with a non-relational database (MongoDB). My approach was to create the back-end server first, using Postman and Compass to test the API requests and manipulate the database. I then moved on to the React side creating the necessary Pages/Components to meet the requirements of the Use Case Diagram. I started on Register / Login and the Parent Dashboard before moving onto the Child Dashboard and Child Rewards. I found the Child section hugely enjoyable as new features could be added relatively quickly and it was fun putting myself in the eyes of the end user and adding new functionality to keep them engaged. 
+This was my final solo project of the 13 week General Assembly Software Engineering Immersive Bootcamp. It was completed in 10 days. I challenged myself to make an app that would be useful to myself and my family, while learning some more advanced features of React such as Redux Toolkit. I decided to use Node.js / Express for my back-end as my previous projects were build using Ruby on Rails. I am pleased I made this decision as I learnt so much about making an API server and designing my data structure so it would work with a non-relational database (MongoDB).
+
+---------------------------------------------------------------
+
+## Approach / Decision Making
+
+ The first step was to draw up a Use Case Diagram that tied down the key functionality that I was aiming to achieve. This gave me a benchmark throughout the week of how much progress was being made and ensured no critical functionality was missed. I then chose to get the back-end server operational first. This was the first time I had used a Node.js / Express back-end in a Project and although we had covered the basics in class I needed to do further study (Udemy) to build out the models and controllers in a methodical way, and learn how to use 'Middleware' to avoid code repetition, handle protected routes and provide detailed and reliable error responses. Since there was no front-end yet built, I learnt to use Postman and Compass to test the API requests and confirm the database was working as intended. I then moved on to the React side creating the necessary Pages & Components to meet the requirements of the Use Case Diagram. I taught myself Redux toolkit from a tutorial which explained how to set up the Store, User Authentication, Services and Slices and how to check Redux State in Chrome Devtools. I started working on Register / Login and the Parent Dashboard before moving onto the Child Dashboard and Child Rewards. At times I refactored existing React code as too much functionality was in one component and this needed splitting out into subcomponents. Sometimes this was to keep the code clean and readable, and at other times it was required for state management and to avoid repeated API calls from a low-level component. The most stressful point was when I was 60% through the project (time-wise) and had completed the back-end and the Parent functionality but no Child features. It was unclear how long the Child Dashboard and Rewards sections would take to develop. However, since the time consuming work of setting up Redux, API requests and authentication were all done, it turned out that I found building the Child section hugely enjoyable as new features could be added relatively quickly and it was fun putting myself in the eyes of the end user and adding new functionality to keep them engaged. I avoided adding any new features in the 18 hours prior to deadline and instead focussed on testing, bug fixes, preparing my presentation and README. In retrospect I am happy that I chose to use Redux on this project. The down side was that state management took longer to setup initially, with a lot of code required in the Slice files in particular. However once this was written once, it could be repurposed when adding additional features. The main positive was that it was easy to read and write (make api requests) from any component in the project and I found it useful to be able to see a full view of state at any time in the Redux Devtools and be able to rewind state to see how it changed over time. At times I didn't need to make another API GET request when something changed and could just manipulate this local state directly to force a re-render of a component. 
 
 ---------------------------------------------------------------
 
@@ -65,20 +71,20 @@ This was my final solo project of the 13 week General Assembly Software Engineer
 ## Feature List
 
 * Login and Register pages with custom form validation and error display.
-* Back-end server warnings & errors are displayed to the user throughout the app using 'Toast messages'.
+* Back-end server warnings & errors are displayed to the user throughout the app using Toast Messages.
 * Parent enters a family name on signup (e.g. The Bloggs Family) which is displayed in various app components.
-* Parent enters a PIN on signup which is used for authorizing Chore Completion and Reward Redemption.
-* Parent can create (or delete) a Child. Favourite Colour, Avatar and Date of Birth inputs are requested to create a personalized & unique Child Dashboard.
-* A random inspirational / personalized message from their Avatar is displayed on page refresh of the Child Dashboard. e.g Days to their Birthday / Child name spelt backwards.
-* Parents can create/delete Favourite Chores; entering a title, description, reward Coin Value and emoji to personalize each chore.
-* These chores can then be reused and assigned to any number of Children.
+* Parent enters a PIN on signup which is used for authorizing chore completion and reward redemption.
+* Parent can create (or delete) a child. Favourite colour, avatar and date of birth inputs are required to create a personalized & unique Child Dashboard.
+* A random inspirational / personalized message from their avatar is displayed on each page refresh of the Child Dashboard. e.g Days to their birthday / child name spelt backwards.
+* Parents can create/delete favourite chores; entering a title, description, reward coin value and emoji to personalize each chore.
+* These chores can then be reused and assigned to any number of children.
 * Parent performs login to Child Dashboard with a single button click. Child is unable to access other areas of the app and is restricted to Child Dashboard, Child Rewards and Logout. (No child username/password required)
-* Assigned Chores appear on Child Dashboard and display elapsed time since Assignment.
-* Child can mark Chore as done. Parent enters PIN to approve Chore completion. Child's coin balance updates by the chore value with a motivational message and Confetti Display.
+* Assigned chores appear on Child Dashboard and display the elapsed time since assignment.
+* Child can mark chore as done. Parent enters PIN to approve chore completion. Child's coin balance updates by the chore value with a motivational message and confetti display.
 * Motivational messages on Child Dashboard are conditionally rendered based on number of chores completed.
-* Family Leaderboard can be sorted either by Chores Completed or Coin Total.
-* All Day Confetti and congratulations message on Child's birthday.
-* Rewards page displays messages about which Rewards the child can afford and how many coins they will have remaining after purchase.
+* Family Leaderboard can be sorted either by chores completed or coin total.
+* All day confetti and congratulations message on child's birthday.
+* Rewards page displays messages about which rewards the child can afford and how many coins they will have remaining after purchase.
 * Child can spend coins to redeem a reward. After parent PIN approval their coin balance is reduced. 
 * Mobile / Tablet-first design. Also works on larger screen sizes.
 
@@ -103,13 +109,13 @@ This was my final solo project of the 13 week General Assembly Software Engineer
 
 ## Possible future feature additions
 
-* Edit User Profile and Change Password
-* Parent profile to show which chores are currently assigned to each Child. At present it dispays this information at the time of assignment only. The Child Dashboard is then used to see this information.
-* Bonus Coins on Child's birthday.
-* Parent feature to unassign chores.
-* Parent view of claimed rewards by each child
+* Edit User Profile and Change Password features.
+* Parent Profile to show which chores are currently assigned to each child. At present it dispays this information at the time of assignment only. The Child Dashboard is then used to see this information.
+* Bonus coins on child's birthday.
+* Parent ability to unassign chores.
+* Parent report of claimed rewards by each child
 * Parent feature to set recurring chores with a time period e.g. weekly.
-* Custom reward creation/deletion for each family. (A selection of Rewards are currently hard-coded into the app)
+* Custom reward creation/deletion for each family. (A selection of rewards are currently hard-coded into the app)
 * Customized CSS / more complex media queries for larger screen sizes to make full use of extra screen space.
 ---------------------------------------------------------------
 

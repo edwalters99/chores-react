@@ -175,6 +175,8 @@ function Login() {
             </button>
           </div>
         </form>
+        Test me out... <br/>
+        Email: joebloggs@gmail.com | Password: Password1
       </div>
     </>
   );

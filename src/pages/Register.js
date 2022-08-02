@@ -4,19 +4,14 @@ import { FaUser } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { register, reset } from "../features/auth/authSlice";
-import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
 import hero2 from "../images/hero2.jpg";
 
 function Register() {
-  const PASSWORD_REGEX1 = /^(?=.*[A-Za-z])(?=.*\d).{8,}$/;
   // Minimum eight characters, at least one letter, one number and one special character:
-  const NOSPACES__REGEX = /^\S*$/;
-  // No spaces
-
-  const PIN_REGEX = /^[0-9]*$/;
+  const PASSWORD_REGEX1 = /^(?=.*[A-Za-z])(?=.*\d).{8,}$/;
   // Numbers only
-
+  const PIN_REGEX = /^[0-9]*$/;
   const [formData, setFormData] = useState({
     email: "",
     familyname: "",
@@ -26,9 +21,8 @@ function Register() {
   });
 
   const navigate = useNavigate();
-
-  //REDUX
   const dispatch = useDispatch();
+
   const { user, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth
   ); // retrieve from global state (auth)
@@ -82,7 +76,7 @@ function Register() {
     // An email address must contain at least one full stop (.)
     const atSigns = email.split("").filter((char) => char === "@").length;
     const periods = email.split("").filter((char) => char === ".").length;
-    return atSigns === 1 && periods >= 1 && NOSPACES__REGEX.test(email); // true if email valid
+    return atSigns === 1 && periods >= 1;
   };
 
   const validateEmailErrors = () => {
@@ -104,7 +98,7 @@ function Register() {
       toast.error("Password must be entered", { toastId: "passwordNil" });
     } else if (!passwordValid) {
       toast.error(
-        "Password: Minimum 8 characters: at least 1 letter, 1 number, no spaces",
+        "Password: Minimum 8 characters: at least 1 letter and 1 number",
         { toastId: "passwordBad" }
       );
     } else if (passwordconfirm.length === 0) {
@@ -139,9 +133,7 @@ function Register() {
   };
 
   const validatePassword = () => {
-    setPasswordValid(
-      PASSWORD_REGEX1.test(password) && NOSPACES__REGEX.test(password)
-    );
+    setPasswordValid(PASSWORD_REGEX1.test(password));
   };
 
   const validatePasswordConfirmation = () => {
@@ -159,6 +151,7 @@ function Register() {
   };
 
   const onChange = (e) => {
+    if (e.target.name !== 'familyname') e.target.value = e.target.value.trim();
     setFormData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,

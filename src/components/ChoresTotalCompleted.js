@@ -29,7 +29,7 @@ function ChoresTotalCompleted({ number }) {
         <h1>{number} Completed Chores</h1>
       </div>
     );
-  } else if (number == 1) {
+  } else if (number === 1) {
     return (
       <div className="chore-total-container">
         <h1>You're doing great!</h1>

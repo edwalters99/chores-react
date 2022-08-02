@@ -20,7 +20,7 @@ function AssignChoreForm(props) {
     if (isError) {
       toast.error(message, { toastId: "ChoreMessage" });
     }
-  }, [isLoading, isSuccess, isError]);
+  }, [isLoading, isSuccess, isError, dispatch, message]);
 
   const onSubmit = (e) => {
     e.preventDefault();

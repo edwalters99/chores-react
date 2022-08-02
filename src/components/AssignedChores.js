@@ -1,20 +1,15 @@
-import React from "react";
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from 'react';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   getChoresActive,
   updateChore,
   reset as resetChores,
-} from "../features/chores/choreSlice";
-import {
-  updateChild,
-  getChildren,
-  reset as resetChild,
-} from "../features/children/childSlice";
-import { toast } from "react-toastify";
-import { css } from "@emotion/react";
-import ClipLoader from "react-spinners/ClipLoader";
-import ChoreCard from "./ChoreCard";
+} from '../features/chores/choreSlice';
+import { updateChild } from '../features/children/childSlice';
+import { toast } from 'react-toastify';
+import ClipLoader from 'react-spinners/ClipLoader';
+import ChoreCard from './ChoreCard';
 
 function AssignedChores({ childId, setCoinsEarned, setChoresToDo }) {
   const {
@@ -45,15 +40,23 @@ function AssignedChores({ childId, setCoinsEarned, setChoresToDo }) {
       setChoresToDo(chores.length); // set state in ChildHome
     }
     if (isErrorChores) {
-      toast.error(messageChores, { toastId: "tMessage" });
+      toast.error(messageChores, { toastId: 'tMessage' });
     }
-  }, [isLoadingChores, isSuccessChores, isErrorChores]);
+  }, [
+    isLoadingChores,
+    isSuccessChores,
+    isErrorChores,
+    chores.length,
+    dispatch,
+    messageChores,
+    setChoresToDo,
+  ]);
 
   useEffect(() => {
     if (isErrorChild) {
-      toast.error(messageChild, { toastId: "cMessage" });
+      toast.error(messageChild, { toastId: 'cMessage' });
     }
-  }, [isLoadingChild, isSuccessChild, isErrorChild]);
+  }, [isLoadingChild, isSuccessChild, isErrorChild, dispatch, messageChild]);
 
   const setApproved = (choreId, choreRewardValue) => {
     const data = {
@@ -102,8 +105,9 @@ function AssignedChores({ childId, setCoinsEarned, setChoresToDo }) {
       <h2>Chores to be done...</h2>
 
       <div>
-        {chores.map((chore) => {
-          if (!chore.isApproved & !chore.isCompleted)
+        {chores
+          .filter((chore) => !chore.isApproved && !chore.isCompleted)
+          .map((chore) => {
             return (
               <ChoreCard
                 chore={chore}
@@ -111,7 +115,7 @@ function AssignedChores({ childId, setCoinsEarned, setChoresToDo }) {
                 key={chore._id}
               />
             );
-        })}
+          })}
       </div>
     </div>
   );

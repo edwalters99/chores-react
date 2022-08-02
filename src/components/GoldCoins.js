@@ -1,12 +1,14 @@
-import React from "react";
-import coin from "../images/coin.png";
-import { nanoid } from "nanoid";
+import React from 'react';
+import coin from '../images/coin.png';
+import { nanoid } from 'nanoid';
 
 function GoldCoins(props) {
   const coins = (number) => {
     const output = [];
     for (let i = 0; i < number; i++) {
-      output.push(<img src={coin} key={nanoid()} className="gold-coin" />);
+      output.push(
+        <img src={coin} key={nanoid()} className="gold-coin" alt="coin" />
+      );
     }
     return output;
   };

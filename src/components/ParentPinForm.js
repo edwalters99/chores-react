@@ -13,7 +13,7 @@ function ParentPinForm({ chore, setApproved, setDone }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (Number(pinInput) == user.pin) {
+    if (Number(pinInput) === user.pin) {
       setApproved(chore._id, chore.value); // function passed down from AssignedChores.js
     } else {
       setFailed(true);

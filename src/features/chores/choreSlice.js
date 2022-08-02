@@ -152,7 +152,7 @@ export const choreSlice = createSlice({
       .addCase(updateChore.fulfilled, (state, action) => {
         state.isLoading = false;
         const index = state.chores.findIndex(
-          (chore) => chore._id == action.payload._id
+          (chore) => chore._id === action.payload._id
         );
         state.chores[index] = action.payload;
       }); // update front-end state wihtout having to re-fetch from api

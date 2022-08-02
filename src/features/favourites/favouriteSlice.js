@@ -125,7 +125,7 @@ export const favouriteSlice = createSlice({
         state.isSuccess = true;
         state.message = action.payload;
         const deleteId = action.payload._id;
-        const index = state.favourites.findIndex((fav) => fav._id == deleteId);
+        const index = state.favourites.findIndex((fav) => fav._id === deleteId);
         state.favourites.pop(index);
       })
       .addCase(deleteFavourite.rejected, (state, action) => {

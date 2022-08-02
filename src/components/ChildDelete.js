@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { deleteChild, reset } from "../features/children/childSlice";
-import { toast } from "react-toastify";
-import { css } from "@emotion/react";
-import ClipLoader from "react-spinners/ClipLoader";
-import { confirmAlert } from "react-confirm-alert";
-import "react-confirm-alert/src/react-confirm-alert.css";
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteChild, reset } from '../features/children/childSlice';
+import { toast } from 'react-toastify';
+import ClipLoader from 'react-spinners/ClipLoader';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 function ChildDelete({ childId, childName }) {
   const { isLoading, isSuccess, isError, message } = useSelector(
@@ -19,23 +18,23 @@ function ChildDelete({ childId, childName }) {
       dispatch(reset());
     }
     if (isError) {
-      toast.error(message, { toastId: "tMessage" });
+      toast.error(message, { toastId: 'tMessage' });
     }
-  }, [isLoading, isSuccess, isError]);
+  }, [isLoading, isSuccess, isError, dispatch, message]);
 
   const onClick = (e) => {
     confirmAlert({
       title: `Confirm Delete Child: ${childName}`,
-      message: "Are you sure?",
+      message: 'Are you sure?',
       buttons: [
         {
-          label: "Yes",
+          label: 'Yes',
           onClick: () => {
             dispatch(deleteChild(childId));
           },
         },
         {
-          label: "No",
+          label: 'No',
           onClick: () => {
             return;
           },

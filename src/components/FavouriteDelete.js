@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteFavourite, reset } from "../features/favourites/favouriteSlice";
 import { toast } from "react-toastify";
-import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
@@ -22,7 +21,7 @@ function FavouriteDelete({ favId, favTitle }) {
     if (isError) {
       toast.error(message, { toastId: "tMessage" });
     }
-  }, [isLoading, isSuccess, isError]);
+  }, [isLoading, isSuccess, isError, dispatch, message]);
 
   const onClick = (e) => {
     confirmAlert({

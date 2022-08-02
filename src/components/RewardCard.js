@@ -56,6 +56,7 @@ function RewardCard({ name, cost, image, child, updateChildBalance }) {
       <img
         className="reward-card-img"
         src={image}
+        alt={name}
         onClick={() => setClaimed(false)}
       />
       <GoldCoins coins={cost} titleText={"Cost"} />

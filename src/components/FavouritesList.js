@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { getFavourites, reset } from "../features/favourites/favouriteSlice";
 import { getChildren } from "../features/children/childSlice";
 import { toast } from "react-toastify";
-import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
 import FavouriteDisplay from "./FavouriteDisplay";
 
@@ -28,7 +27,7 @@ function FavouritesList() {
     if (isError) {
       toast.error(message, { toastId: "tMessage" });
     }
-  }, [isLoading, isSuccess, isError]);
+  }, [isLoading, isSuccess, isError, dispatch, message]);
 
   if (isLoading) {
     return <ClipLoader />;

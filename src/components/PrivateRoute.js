@@ -1,6 +1,5 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useAuthStatus } from "../hooks/useAuthStatus";
-import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
 
 import React from "react";

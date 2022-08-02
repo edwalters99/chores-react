@@ -12,7 +12,7 @@ function ParentPinFormReward({ setClaimed, updateChildBalance, cost }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (Number(pinInput) == user.pin) {
+    if (Number(pinInput) === user.pin) {
       updateChildBalance(cost); // function passed down from ChildRewards.js
     } else {
       setFailed(true);

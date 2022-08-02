@@ -57,6 +57,7 @@ const deleteChild = async (childId, token) => {
     },
   };
   const response = await axios.delete(API_URL + childId, config);
+  console.log(response)
   return response.data;
 };
 

@@ -12,26 +12,26 @@ function FavouriteDisplay({ fav, children }) {
   };
 
   const coinDisplay = (value) => {
-    if (value == 1)
+    if (value === 1)
       return (
         <div className="coin-container">
           <img className="coin" src={coin} alt="coin"/>
         </div>
       );
-    if (value == 2) {
+    if (value === 2) {
       return (
         <div className="coin-container">
-          <img className="coin" src={coin} />
-          <img className="coin" src={coin} />
+          <img className="coin" src={coin} alt="coin" />
+          <img className="coin" src={coin} alt="coin" />
         </div>
       );
     }
-    if (value == 3) {
+    if (value === 3) {
       return (
         <div className="coin-container">
-          <img className="coin" src={coin} />
-          <img className="coin" src={coin} />
-          <img className="coin" src={coin} />
+          <img className="coin" src={coin} alt="coin" />
+          <img className="coin" src={coin} alt="coin" />
+          <img className="coin" src={coin} alt="coin" />
         </div>
       );
     }

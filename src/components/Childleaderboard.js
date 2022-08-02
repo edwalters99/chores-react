@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import dog from "../images/dog.png";
 import cat from "../images/cat.png";
 import dino from "../images/dino.png";
@@ -26,26 +26,27 @@ function ChildLeaderboard({ child, children, familyname }) {
   );
   const [sortedByChores, setSortedByChores] = useState(true);
   const [sortedByCoins, setSortedByCoins] = useState(false);
-
-  useEffect(() => {
-    sortByChores();
-  }, [children]);
-
-  const sortByChores = () => {
+  
+  const sortByChores = useCallback(() => {
     setChildrenSorted(
       children.slice().sort((a, b) => b.choresdone - a.choresdone)
     );
     setSortedByChores(true);
     setSortedByCoins(false);
-  };
+  },[children]);
 
-  const sortByCoins = () => {
+  const sortByCoins = useCallback(() => {
     setChildrenSorted(
       children.slice().sort((a, b) => b.rewardbal - a.rewardbal)
     );
     setSortedByCoins(true);
     setSortedByChores(false);
-  };
+  },[children]);
+
+  useEffect(() => {
+    sortByChores();
+  }, [children, sortByChores]);
+
 
   const leaderboard = () => {
     return childrenSorted.map((mapchild, index) => {
@@ -60,7 +61,7 @@ function ChildLeaderboard({ child, children, familyname }) {
         >
           <h1>{mapchild.firstname}</h1>
           {index === 0 ? (
-            <img className="leaderboard-medal" src={medal} />
+            <img className="leaderboard-medal" src={medal} alt="medal"/>
           ) : (
             <></>
           )}

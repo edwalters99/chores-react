@@ -111,7 +111,6 @@ export const deleteChild = createAsyncThunk(
       // get the token for the current user
       // thunkAPI.getState() method allows access fo data from other states
       const token = thunkAPI.getState().auth.user.token;
-
       return await childService.deleteChild(childId, token);
     } catch (error) {
       const errorMessage =
@@ -186,7 +185,7 @@ export const childSlice = createSlice({
         state.isSuccess = true;
         state.child = action.payload;
         const index = state.children.findIndex(
-            (child) => child._id == action.payload._id
+            (child) => child._id === action.payload._id
           );
         state.children[index] = action.payload;
          // update front-end state without having to re-fetch from api
@@ -205,7 +204,7 @@ export const childSlice = createSlice({
         state.message = action.payload;
         const deleteId = action.payload._id;
         const index = state.children.findIndex(
-          (child) => child._id == deleteId
+          (child) => child._id === deleteId
         );
         state.children.pop(index);
       })

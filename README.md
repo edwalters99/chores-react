@@ -30,6 +30,7 @@ The app is deployed here: [Chore Tracker](https://chore-tracker0.netlify.app/).
 ### Login
 * email: joebloggs@gmail.com
 * password: Password1
+* parental pin: 1234
 
 ### Back-end server codebase
 [Chores-express GitHub repo](https://github.com/edwalters99/chores-express)

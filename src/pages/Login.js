@@ -8,31 +8,28 @@ import ClipLoader from 'react-spinners/ClipLoader';
 import hero1 from '../images/hero1.jpg';
 
 function Login() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [formData, setFormData] = useState({
     email: '',
     password: '',
     passwordconfirm: '',
   });
 
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const { email, password } = formData;
+
   const { user, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth
   ); // retrieve from global state (auth)
 
-  // const [emailValid, setEmailValid] = useState(null);
-  // const [passwordValid, setPasswordValid] = useState(null); 
-  const [formReady, setFormReady] = useState(false); // used for Login button colour
-
-  const { email, password } = formData;
+  const [formReady, setFormReady] = useState(false);
 
   useEffect(() => {
     const emailValid = validateEmailHelper(email);
     const passwordValid = password.length !== 0;
     setFormReady(emailValid && passwordValid);
   }, [email, password.length]);
-
-
 
   useEffect(() => {
     if (isError) {
@@ -46,8 +43,6 @@ function Login() {
 
     dispatch(reset()); // reset global error states
   }, [isError, isSuccess, user, message, navigate, dispatch]);
-
-  // VALIDATIONS ON FORM SUBMIT - TO TRIGGER TOAST POPUP ERRORS
 
   const validateEmailHelper = (email) => {
     // An email address must contain exactly one @
@@ -76,7 +71,7 @@ function Login() {
   const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value.trim(),
     }));
   };
 

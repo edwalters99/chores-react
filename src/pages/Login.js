@@ -1,95 +1,76 @@
-import React, { useEffect, useState } from "react";
-import { toast } from "react-toastify";
-import { FaSignInAlt } from "react-icons/fa";
-import { useSelector, useDispatch } from "react-redux";
-import { login, reset } from "../features/auth/authSlice";
-import { useNavigate } from "react-router-dom";
-import { css } from "@emotion/react";
-import ClipLoader from "react-spinners/ClipLoader";
-import hero1 from "../images/hero1.jpg";
+import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+import { FaSignInAlt } from 'react-icons/fa';
+import { useSelector, useDispatch } from 'react-redux';
+import { login, reset } from '../features/auth/authSlice';
+import { useNavigate } from 'react-router-dom';
+import ClipLoader from 'react-spinners/ClipLoader';
+import hero1 from '../images/hero1.jpg';
 
 function Login() {
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-    passwordconfirm: "",
+    email: '',
+    password: '',
+    passwordconfirm: '',
   });
 
   const navigate = useNavigate();
-  // REDUX
   const dispatch = useDispatch();
   const { user, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth
   ); // retrieve from global state (auth)
 
-  const [emailValid, setEmailValid] = useState(null);
-  const [passwordValid, setPasswordValid] = useState(null); // for shading of form input background
-  const [formReady, setFormReady] = useState(false); // for button state
+  // const [emailValid, setEmailValid] = useState(null);
+  // const [passwordValid, setPasswordValid] = useState(null); 
+  const [formReady, setFormReady] = useState(false); // used for Login button colour
 
   const { email, password } = formData;
 
   useEffect(() => {
-    validateEmail();
-    validatePassword();
-  }, [formData]);
+    const emailValid = validateEmailHelper(email);
+    const passwordValid = password.length !== 0;
+    setFormReady(emailValid && passwordValid);
+  }, [email, password.length]);
+
+
 
   useEffect(() => {
-    checkFormReady();
-  }, [emailValid, passwordValid]);
-
-  useEffect(() => {
-    //Error
     if (isError) {
-      toast.error(message, { toastId: "tMessage" });
+      toast.error(message, { toastId: 'tMessage' });
     }
 
     //Redirect when logged in
     if (isSuccess || user) {
-      navigate("/");
+      navigate('/');
     }
 
     dispatch(reset()); // reset global error states
   }, [isError, isSuccess, user, message, navigate, dispatch]);
 
+  // VALIDATIONS ON FORM SUBMIT - TO TRIGGER TOAST POPUP ERRORS
 
-  // VALIDATIONS ON FORM SUBMIT - TRIGGER TOAST POPUP ERRORS
-  
   const validateEmailHelper = (email) => {
     // An email address must contain exactly one @
     // An email address must contain at least one full stop (.)
-    const atSigns = email.split("").filter((char) => char === "@").length;
-    const periods = email.split("").filter((char) => char === ".").length;
+    const atSigns = email.split('').filter((char) => char === '@').length;
+    const periods = email.split('').filter((char) => char === '.').length;
     return atSigns === 1 && periods >= 1;
   };
 
   const validateEmailErrors = () => {
     if (email.length === 0) {
-      toast.error("Email address must be entered", { toastId: "emailNil" });
+      toast.error('Email address must be entered', { toastId: 'emailNil' });
     } else if (!validateEmailHelper(email)) {
-      toast.error("Invalid Email address", { toastId: "emailBad" });
+      toast.error('Invalid Email address', { toastId: 'emailBad' });
     }
   };
 
   const validatePasswordErrors = () => {
     if (password.length === 0) {
-      toast.error("Password must be entered", {
-        toastId: "passNil",
+      toast.error('Password must be entered', {
+        toastId: 'passNil',
       });
     }
-  };
-
-  // VALIDATIONS ON INPUT - USED FOR BOX SHADING AND FORM READINESS TO SUBMIT
-
-  const validateEmail = () => {
-    setEmailValid(validateEmailHelper(email));
-  };
-
-  const validatePassword = () => {
-    setPasswordValid(password.length !== 0);
-  };
-
-  const checkFormReady = () => {
-    setFormReady(emailValid && passwordValid);
   };
 
   const onChange = (e) => {
@@ -104,13 +85,13 @@ function Login() {
     validateEmailErrors();
     validatePasswordErrors();
 
-    const userData = {
-      email,
-      password,
-    };
-
-    if (emailValid && passwordValid) {
-      dispatch(login(userData));
+    if (formReady) {
+      dispatch(
+        login({
+          email,
+          password,
+        })
+      );
     }
   };
 
@@ -129,7 +110,7 @@ function Login() {
         <img
           className="hero-img"
           src={hero1}
-          alt="Young child helping her mum with the laundry."
+          alt="Young child helping her mother with the laundry."
         />
       </section>
 
@@ -167,8 +148,8 @@ function Login() {
             <button
               className={
                 formReady
-                  ? "btn btn-block btn-success"
-                  : "btn btn-block btn-inactive"
+                  ? 'btn btn-block btn-success'
+                  : 'btn btn-block btn-inactive'
               }
             >
               Login

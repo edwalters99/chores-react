@@ -1,22 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
-import { getChild, getChildren, reset } from "../features/children/childSlice";
-import { css } from "@emotion/react";
-import Confetti from "react-confetti";
-import ClipLoader from "react-spinners/ClipLoader";
-import GoldCoins from "../components/GoldCoins";
-import AssignedChores from "../components/AssignedChores";
-import useWindowDimensions from "../hooks/useWindowDimensions";
-import ChildHomeAvatar from "../components/ChildHomeAvatar";
-import ChildHomeRandomMessage from "../components/ChildHomeRandomMessage";
-import ChildHomeGreeting from "../components/ChildHomeGreeting";
-import ChoresTotalCompleted from "../components/ChoresTotalCompleted";
-import ChildLeaderboard from "../components/ChildLeaderboard";
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
+import { getChild, getChildren } from '../features/children/childSlice';
+import Confetti from 'react-confetti';
+import ClipLoader from 'react-spinners/ClipLoader';
+import GoldCoins from '../components/GoldCoins';
+import AssignedChores from '../components/AssignedChores';
+import useWindowDimensions from '../hooks/useWindowDimensions';
+import ChildHomeAvatar from '../components/ChildHomeAvatar';
+import ChildHomeRandomMessage from '../components/ChildHomeRandomMessage';
+import ChildHomeGreeting from '../components/ChildHomeGreeting';
+import ChoresTotalCompleted from '../components/ChoresTotalCompleted';
+import ChildLeaderboard from '../components/ChildLeaderboard';
 
 function ChildHome() {
-  const childId = JSON.parse(localStorage.getItem("childAuth")); // logged in Child
+  const childId = JSON.parse(localStorage.getItem('childAuth')); // logged in Child
   const { child, children, isLoading, isSuccess, isError, message } =
     useSelector((state) => state.child);
   const { user } = useSelector((state) => state.auth);
@@ -34,13 +33,13 @@ function ChildHome() {
     }
     dispatch(getChild(childId));
     dispatch(getChildren());
-  }, [childId, isError, message]);
+  }, [childId, isError, message, dispatch]);
 
   useEffect(() => {
     if (coinsEarned) {
       setConfettiActive(true);
     }
-    const timer = setTimeout(() => setConfettiActive(false), 30000);
+    setTimeout(() => setConfettiActive(false), 30000);
   }, [coinsEarned]);
 
   if (isLoading) {
@@ -52,10 +51,10 @@ function ChildHome() {
   }
 
   const fontColor = () => {
-    if (child.color === "pink" || child.color === "yellow") {
-      return "black";
+    if (child.color === 'pink' || child.color === 'yellow') {
+      return 'black';
     } else {
-      return "white";
+      return 'white';
     }
   };
 
@@ -89,7 +88,7 @@ function ChildHome() {
         </div>
 
         {child.rewardbal ? (
-          <GoldCoins coins={child.rewardbal} titleText={"Your Coin Bank"} />
+          <GoldCoins coins={child.rewardbal} titleText={'Your Coin Bank'} />
         ) : (
           <h2>
             Your Coin bank is empty. Complete some chores to get some shiny gold
@@ -99,17 +98,17 @@ function ChildHome() {
 
         {coinsEarned && (
           <h1>
-            Congratulations you just earned {coinsEarned} gold{" "}
-            {coinsEarned > 1 ? "coins!" : "coin!"}
+            Congratulations you just earned {coinsEarned} gold{' '}
+            {coinsEarned > 1 ? 'coins!' : 'coin!'}
           </h1>
         )}
 
         <Link
           to="/childrewards"
           className={
-            child.color == "green"
-              ? "btn btn-rewards-go black-btn"
-              : "btn btn-rewards-go"
+            child.color === 'green'
+              ? 'btn btn-rewards-go black-btn'
+              : 'btn btn-rewards-go'
           }
         >
           Spend your Coins - Get REWARDS

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 function ChildHomeRandomMessage({ child, setIsBirthday }) {
   const makeBackwardsName = () => {
-    return child.firstname.split("").reverse().join("").toLowerCase();
+    return child.firstname.split('').reverse().join('').toLowerCase();
   };
 
   const makeAvatarName = () => {
@@ -44,7 +44,7 @@ function ChildHomeRandomMessage({ child, setIsBirthday }) {
       `Reading is fun! 📚`,
       `Your name backwards is ${backwardsName}.`,
       `🎂It's ${daysToBirthday} day${
-        daysToBirthday === 1 ? "" : "s"
+        daysToBirthday === 1 ? '' : 's'
       } until your Birthday 🎂`,
     ];
     return String(messages[Math.floor(Math.random() * messages.length)]);

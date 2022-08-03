@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 function ChoresTotalCompleted({ number }) {
   if (number > 20) {

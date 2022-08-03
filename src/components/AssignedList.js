@@ -1,5 +1,5 @@
-import React from "react";
-import { nanoid } from "nanoid";
+import React from 'react';
+import { nanoid } from 'nanoid';
 
 function AssignedList({ names }) {
   if (names.length !== 0) {

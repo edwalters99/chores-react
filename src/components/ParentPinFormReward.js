@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 function ParentPinFormReward({ setClaimed, updateChildBalance, cost }) {
-  const [pinInput, setPinInput] = useState("");
+  const [pinInput, setPinInput] = useState('');
   const [failed, setFailed] = useState(false);
   const { user } = useSelector((state) => state.auth);
 

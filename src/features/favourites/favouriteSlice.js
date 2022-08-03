@@ -1,5 +1,5 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import favouriteService from "./favouriteService";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import favouriteService from './favouriteService';
 
 const initialState = {
   favourites: [],
@@ -7,12 +7,12 @@ const initialState = {
   isError: false,
   isSuccess: false,
   isLoading: false,
-  message: "",
+  message: '',
 };
 
 // Create new favourite
 export const createFavourite = createAsyncThunk(
-  "favourites/create",
+  'favourites/create',
   async (favouriteData, thunkAPI) => {
     try {
       // get the token for the currrent user
@@ -35,7 +35,7 @@ export const createFavourite = createAsyncThunk(
 
 // Get User's Favourites
 export const getFavourites = createAsyncThunk(
-  "favourites/getAll",
+  'favourites/getAll',
   async (_, thunkAPI) => {
     try {
       // get the token for the current user
@@ -58,7 +58,7 @@ export const getFavourites = createAsyncThunk(
 
 // Delete Favourite
 export const deleteFavourite = createAsyncThunk(
-  "favourite/delete",
+  'favourite/delete',
   async (favId, thunkAPI) => {
     try {
       // get the token for the current user
@@ -80,14 +80,14 @@ export const deleteFavourite = createAsyncThunk(
 );
 
 export const favouriteSlice = createSlice({
-  name: "favourite",
+  name: 'favourite',
   initialState,
   reducers: {
     reset: (state) => {
       state.isLoading = false;
       state.isError = false;
       state.isSuccess = false;
-      state.message = "";
+      state.message = '';
     },
   },
   extraReducers: (builder) => {

@@ -1,3 +1,3 @@
 export const useChildAuthStatus = () => {
-  return localStorage.getItem("childAuth") !== null;
+  return localStorage.getItem('childAuth') !== null;
 };

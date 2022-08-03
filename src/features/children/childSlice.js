@@ -1,5 +1,5 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import childService from "./childService";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import childService from './childService';
 
 const initialState = {
   children: [],
@@ -7,12 +7,12 @@ const initialState = {
   isError: false,
   isSuccess: false,
   isLoading: false,
-  message: "",
+  message: '',
 };
 
 // Create new child
 export const createChild = createAsyncThunk(
-  "children/create",
+  'children/create',
   async (childData, thunkAPI) => {
     try {
       // get the token for the currrent user
@@ -35,7 +35,7 @@ export const createChild = createAsyncThunk(
 
 // Get User's Children
 export const getChildren = createAsyncThunk(
-  "children/getAll",
+  'children/getAll',
   async (_, thunkAPI) => {
     try {
       // get the token for the current user
@@ -58,7 +58,7 @@ export const getChildren = createAsyncThunk(
 
 // Get Users Child
 export const getChild = createAsyncThunk(
-  "children/get",
+  'children/get',
   async (childId, thunkAPI) => {
     try {
       // get the token for the current user
@@ -81,7 +81,7 @@ export const getChild = createAsyncThunk(
 
 // Update child data
 export const updateChild = createAsyncThunk(
-  "chores/updateChild",
+  'chores/updateChild',
   async ({ childData, childId }, thunkAPI) => {
     try {
       // get the token for the current user
@@ -105,7 +105,7 @@ export const updateChild = createAsyncThunk(
 
 // Delete Child
 export const deleteChild = createAsyncThunk(
-  "children/deleteChild",
+  'children/deleteChild',
   async (childId, thunkAPI) => {
     try {
       // get the token for the current user
@@ -126,14 +126,14 @@ export const deleteChild = createAsyncThunk(
 );
 
 export const childSlice = createSlice({
-  name: "child",
+  name: 'child',
   initialState,
   reducers: {
     reset: (state) => {
       state.isLoading = false;
       state.isError = false;
       state.isSuccess = false;
-      state.message = "";
+      state.message = '';
     },
   },
   extraReducers: (builder) => {
@@ -185,10 +185,10 @@ export const childSlice = createSlice({
         state.isSuccess = true;
         state.child = action.payload;
         const index = state.children.findIndex(
-            (child) => child._id === action.payload._id
-          );
+          (child) => child._id === action.payload._id
+        );
         state.children[index] = action.payload;
-         // update front-end state without having to re-fetch from api
+        // update front-end state without having to re-fetch from api
       })
       .addCase(updateChild.rejected, (state, action) => {
         state.isLoading = false;

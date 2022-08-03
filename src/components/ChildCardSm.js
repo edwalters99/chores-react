@@ -1,27 +1,27 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { confirmAlert } from "react-confirm-alert";
-import "react-confirm-alert/src/react-confirm-alert.css";
-import dog from "../images/dog.png";
-import cat from "../images/cat.png";
-import dino from "../images/dino.png";
-import rabbit from "../images/rabbit.png";
-import ChildDelete from "./ChildDelete";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
+import dog from '../images/dog.png';
+import cat from '../images/cat.png';
+import dino from '../images/dino.png';
+import rabbit from '../images/rabbit.png';
+import ChildDelete from './ChildDelete';
 
 function ChildCardSm(props) {
   const navigate = useNavigate();
 
   const avatarImg = () => {
-    if (props.avatar === "cat") {
+    if (props.avatar === 'cat') {
       return <img src={cat} alt="cat" />;
     }
-    if (props.avatar === "dog") {
+    if (props.avatar === 'dog') {
       return <img src={dog} alt="dog" />;
     }
-    if (props.avatar === "dinosaur") {
+    if (props.avatar === 'dinosaur') {
       return <img src={dino} alt="dinosaur" />;
     }
-    if (props.avatar === "rabbit") {
+    if (props.avatar === 'rabbit') {
       return <img src={rabbit} alt="rabbit" />;
     }
   };
@@ -31,14 +31,14 @@ function ChildCardSm(props) {
       title: `Login ${props.firstname}?`,
       buttons: [
         {
-          label: "Yes",
+          label: 'Yes',
           onClick: () => {
-            localStorage.setItem("childAuth", JSON.stringify(props._id));
-            navigate("/childhome"); // 'log in' child by setting their id in localStorage
+            localStorage.setItem('childAuth', JSON.stringify(props._id));
+            navigate('/childhome'); // 'log in' child by setting their id in localStorage
           },
         },
         {
-          label: "No",
+          label: 'No',
           onClick: () => {
             return;
           },

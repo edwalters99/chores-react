@@ -1,17 +1,17 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import choreService from "./choreService";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import choreService from './choreService';
 
 const initialState = {
   chores: [],
   isError: false,
   isSuccess: false,
   isLoading: false,
-  message: "",
+  message: '',
 };
 
 // Get child's chores
 export const getChores = createAsyncThunk(
-  "chores/getAll",
+  'chores/getAll',
   async (childId, thunkAPI) => {
     try {
       // get the token for the current user
@@ -34,7 +34,7 @@ export const getChores = createAsyncThunk(
 
 // Get child's chores - Active only
 export const getChoresActive = createAsyncThunk(
-  "chores/getActive",
+  'chores/getActive',
   async (childId, thunkAPI) => {
     try {
       // get the token for the current user
@@ -57,7 +57,7 @@ export const getChoresActive = createAsyncThunk(
 
 // Create child's chore
 export const createChore = createAsyncThunk(
-  "chores/create",
+  'chores/create',
   async ({ choreData, childId }, thunkAPI) => {
     try {
       // get the token for the current user
@@ -80,7 +80,7 @@ export const createChore = createAsyncThunk(
 
 // Update child's chore
 export const updateChore = createAsyncThunk(
-  "chores/updateChore",
+  'chores/updateChore',
   async ({ choreData, choreId, childId }, thunkAPI) => {
     try {
       // get the token for the current user
@@ -103,14 +103,14 @@ export const updateChore = createAsyncThunk(
 );
 
 export const choreSlice = createSlice({
-  name: "chore",
+  name: 'chore',
   initialState,
   reducers: {
     reset: (state) => {
       state.isLoading = false;
       state.isError = false;
       state.isSuccess = false;
-      state.message = "";
+      state.message = '';
     },
   },
   extraReducers: (builder) => {

@@ -1,6 +1,6 @@
-import React from "react";
-import { FaArrowCircleLeft } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { FaArrowCircleLeft } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 function BackButton(props) {
   return (

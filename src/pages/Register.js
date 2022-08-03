@@ -43,7 +43,9 @@ function Register() {
       setFamilyNameValid(familyname.length !== 0);
       setPinValid(PIN_REGEX.test(pin));
       setPasswordValid(PASSWORD_REGEX.test(password));
-      setPasswordConfirmationValid(password === passwordconfirm && passwordconfirm.length > 0);
+      setPasswordConfirmationValid(
+        password === passwordconfirm && passwordconfirm.length > 0
+      );
     };
     validateFields();
   }, [email, familyname, pin, password, passwordconfirm]);

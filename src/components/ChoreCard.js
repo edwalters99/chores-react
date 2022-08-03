@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import GoldCoins from "./GoldCoins";
-import TimeAgo from "react-timeago";
-import ParentPinForm from "./ParentPinForm";
+import React, { useState } from 'react';
+import GoldCoins from './GoldCoins';
+import TimeAgo from 'react-timeago';
+import ParentPinForm from './ParentPinForm';
 
 function ChoreCard({ chore, setApproved }) {
   const [done, setDone] = useState(false);
@@ -15,7 +15,8 @@ function ChoreCard({ chore, setApproved }) {
       >
         {chore.title}
       </h2>
-      <h2 className="chore-card-icon"
+      <h2
+        className="chore-card-icon"
         onClick={() => {
           setDone(false);
         }}
@@ -29,7 +30,7 @@ function ChoreCard({ chore, setApproved }) {
       >
         {chore.desc}
       </h3>
-      <GoldCoins coins={chore.value} titleText={"Reward"} />
+      <GoldCoins coins={chore.value} titleText={'Reward'} />
       <p>
         Set <TimeAgo date={chore.createdAt} onClick={() => setDone(false)} />
       </p>

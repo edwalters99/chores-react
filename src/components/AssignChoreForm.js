@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { createChore, reset } from "../features/chores/choreSlice";
-import { toast } from "react-toastify";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { createChore, reset } from '../features/chores/choreSlice';
+import { toast } from 'react-toastify';
 
 function AssignChoreForm(props) {
   const [selectedChildId, setSelectedChildId] = useState(
-    props.children[0] === undefined ? "" : props.children[0]._id
+    props.children[0] === undefined ? '' : props.children[0]._id
   ); // Handles situation with a single child in dropdown list. Ensures ID is set for that child as onChange won't be called.
   const dispatch = useDispatch();
 
@@ -18,7 +18,7 @@ function AssignChoreForm(props) {
       dispatch(reset());
     }
     if (isError) {
-      toast.error(message, { toastId: "ChoreMessage" });
+      toast.error(message, { toastId: 'ChoreMessage' });
     }
   }, [isLoading, isSuccess, isError, dispatch, message]);
 

@@ -1,17 +1,16 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import { createChild, reset } from "../features/children/childSlice";
-import dayjs from "dayjs";
-import BackButton from "../components/BackButton";
-import ChildCard from "../components/ChildCard";
-import { css } from "@emotion/react";
-import ClipLoader from "react-spinners/ClipLoader";
+import React from 'react';
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { createChild, reset } from '../features/children/childSlice';
+import dayjs from 'dayjs';
+import BackButton from '../components/BackButton';
+import ChildCard from '../components/ChildCard';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 const todayDate = new Date().toISOString().substring(0, 10); // can't set date of birth in future!
-const minDate = dayjs().subtract(21, "year").toISOString().substring(0, 10); // no children over age 21!
+const minDate = dayjs().subtract(21, 'year').toISOString().substring(0, 10); // no children over age 21!
 
 function NewChild() {
   const { user } = useSelector((state) => state.auth);
@@ -19,26 +18,26 @@ function NewChild() {
     (state) => state.child
   );
 
-  const [firstname, setFirstName] = useState("");
-  const [dob, setDob] = useState("");
-  const [color, setColor] = useState("red");
-  const [avatar, setAvatar] = useState("cat");
+  const [firstname, setFirstName] = useState('');
+  const [dob, setDob] = useState('');
+  const [color, setColor] = useState('red');
+  const [avatar, setAvatar] = useState('cat');
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(reset());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (isError) {
-      toast.error(message, { toastId: "errMsg" });
+      toast.error(message, { toastId: 'errMsg' });
     }
 
     if (isSuccess) {
       dispatch(reset());
-      navigate("/");
+      navigate('/');
     }
 
     dispatch(reset());
@@ -123,7 +122,7 @@ function NewChild() {
 
           <div className="form-group">
             <button className="btn btn-block">
-              Add {firstname ? firstname : "Child"}
+              Add {firstname ? firstname : 'Child'}
             </button>
           </div>
         </form>

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import AssignChoreForm from "./AssignChoreForm";
-import AssignedList from "./AssignedList";
-import FavouriteDelete from "./FavouriteDelete";
-import coin from "../images/coin.png";
+import React, { useState } from 'react';
+import AssignChoreForm from './AssignChoreForm';
+import AssignedList from './AssignedList';
+import FavouriteDelete from './FavouriteDelete';
+import coin from '../images/coin.png';
 
 function FavouriteDisplay({ fav, children }) {
   const [names, setNames] = useState([]); // Assigned names to display below button
@@ -15,7 +15,7 @@ function FavouriteDisplay({ fav, children }) {
     if (value === 1)
       return (
         <div className="coin-container">
-          <img className="coin" src={coin} alt="coin"/>
+          <img className="coin" src={coin} alt="coin" />
         </div>
       );
     if (value === 2) {

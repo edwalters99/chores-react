@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import GoldCoins from "./GoldCoins";
-import ParentPinFormReward from "./ParentPinFormReward";
+import React, { useState } from 'react';
+import GoldCoins from './GoldCoins';
+import ParentPinFormReward from './ParentPinFormReward';
 
 function RewardCard({ name, cost, image, child, updateChildBalance }) {
   const [claimed, setClaimed] = useState(false);
@@ -9,9 +9,9 @@ function RewardCard({ name, cost, image, child, updateChildBalance }) {
     if (child.rewardbal < cost) {
       return (
         <h2>
-          ❌ Sorry {child.firstname} you can't afford this. You need{" "}
-          {cost - child.rewardbal} more{" "}
-          {cost - child.rewardbal > 1 ? "coins" : "coin"}. <br />
+          ❌ Sorry {child.firstname} you can't afford this. You need{' '}
+          {cost - child.rewardbal} more{' '}
+          {cost - child.rewardbal > 1 ? 'coins' : 'coin'}. <br />
           Keep saving!
         </h2>
       );
@@ -20,9 +20,9 @@ function RewardCard({ name, cost, image, child, updateChildBalance }) {
     } else {
       return (
         <h2>
-          {" "}
-          ✅ You can afford this and still have {child.rewardbal - cost}{" "}
-          {child.rewardbal - cost > 1 ? "coins" : "coin"} left.
+          {' '}
+          ✅ You can afford this and still have {child.rewardbal - cost}{' '}
+          {child.rewardbal - cost > 1 ? 'coins' : 'coin'} left.
         </h2>
       );
     }
@@ -59,7 +59,7 @@ function RewardCard({ name, cost, image, child, updateChildBalance }) {
         alt={name}
         onClick={() => setClaimed(false)}
       />
-      <GoldCoins coins={cost} titleText={"Cost"} />
+      <GoldCoins coins={cost} titleText={'Cost'} />
       <div onClick={() => setClaimed(false)}>{AffordMessage()}</div>
       {isAffordable() && buttonPinFormRender()}
     </div>

@@ -1,8 +1,8 @@
-import { Navigate, Outlet } from "react-router-dom";
-import { useAuthStatus } from "../hooks/useAuthStatus";
-import ClipLoader from "react-spinners/ClipLoader";
+import { Navigate, Outlet } from 'react-router-dom';
+import { useAuthStatus } from '../hooks/useAuthStatus';
+import ClipLoader from 'react-spinners/ClipLoader';
 
-import React from "react";
+import React from 'react';
 
 const PrivateRoute = () => {
   const { loggedIn, checkingStatus } = useAuthStatus();

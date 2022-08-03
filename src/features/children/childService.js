@@ -1,7 +1,7 @@
-import axios from "axios";
+import axios from 'axios';
 
 const SERVER_URL = process.env.REACT_APP_SERVER_URL;
-const API_URL = SERVER_URL + "/api/children/";
+const API_URL = SERVER_URL + '/api/children/';
 
 // Create new child
 const createChild = async (childData, token) => {
@@ -57,7 +57,7 @@ const deleteChild = async (childId, token) => {
     },
   };
   const response = await axios.delete(API_URL + childId, config);
-  console.log(response)
+  console.log(response);
   return response.data;
 };
 

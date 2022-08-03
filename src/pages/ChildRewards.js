@@ -1,78 +1,77 @@
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { toast } from "react-toastify";
-import { FaArrowCircleLeft } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+import { FaArrowCircleLeft } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import {
   getChild,
   getChildren,
   updateChild,
   reset,
-} from "../features/children/childSlice";
-import { css } from "@emotion/react";
-import ClipLoader from "react-spinners/ClipLoader";
-import GoldCoins from "../components/GoldCoins";
-import RewardList from "../components/RewardList";
+} from '../features/children/childSlice';
+import ClipLoader from 'react-spinners/ClipLoader';
+import GoldCoins from '../components/GoldCoins';
+import RewardList from '../components/RewardList';
 
 function ChildRewards() {
-  const childId = JSON.parse(localStorage.getItem("childAuth")); // logged in Child
+  const childId = JSON.parse(localStorage.getItem('childAuth')); // logged in Child
 
   const dispatch = useDispatch();
 
-  const { child, isLoading, isSuccess, isError, message } = useSelector(
+  const { child, isLoading, isError, message } = useSelector(
     (state) => state.child
   );
 
   const [rewards] = useState([
     {
-      name: "Pizza for dinner",
+      name: 'Pizza for dinner',
       cost: 3,
-      image: "/images/pizza.png",
+      image: '/images/pizza.png',
     },
     {
-      name: "Trip to the Park",
+      name: 'Trip to the Park',
       cost: 3,
-      image: "/images/park.png",
+      image: '/images/park.png',
     },
     {
-      name: "$2 to spend at tuck shop",
+      name: '$2 to spend at tuck shop',
       cost: 6,
-      image: "/images/dollar.png",
+      image: '/images/dollar.png',
     },
     {
-      name: "Movie Night at Home",
+      name: 'Movie Night at Home',
       cost: 6,
-      image: "/images/movie.png",
+      image: '/images/movie.png',
     },
     {
-      name: "1 hour Computer Game time",
+      name: '1 hour Computer Game time',
       cost: 3,
-      image: "/images/computer.png",
+      image: '/images/computer.png',
     },
     {
-      name: "Ice Cream at home",
+      name: 'Ice Cream at home',
       cost: 3,
-      image: "/images/icecream.png",
+      image: '/images/icecream.png',
     },
     {
-      name: "$10 Toy Shopping",
+      name: '$10 Toy Shopping',
       cost: 9,
-      image: "/images/toyshop.png",
+      image: '/images/toyshop.png',
     },
     {
-      name: "$20 Toy Shopping",
+      name: '$20 Toy Shopping',
       cost: 18,
-      image: "/images/toyshop.png",
+      image: '/images/toyshop.png',
     },
     {
-      name: "Cafe treat",
+      name: 'Cafe treat',
       cost: 6,
-      image: "/images/donut.png",
+      image: '/images/donut.png',
     },
     {
-      name: "Cafe treat for whole family",
+      name: 'Cafe treat for whole family',
       cost: 30,
-      image: "/images/donutplate.png",
+      image: '/images/donutplate.png',
     },
   ]);
 
@@ -85,7 +84,7 @@ function ChildRewards() {
     dispatch(getChild(childId));
     dispatch(getChildren());
     dispatch(reset());
-  }, [childId, isError, message]);
+  }, [childId, isError, message, dispatch]);
 
   const updateChildBalance = (deductionAmt) => {
     const currentBal = child.rewardbal;
@@ -125,7 +124,7 @@ function ChildRewards() {
         <h2>Congratulations you're claimed your reward! Enjoy!</h2>
       )}
 
-      <GoldCoins coins={child.rewardbal} titleText={"Your Coin Bank"} />
+      <GoldCoins coins={child.rewardbal} titleText={'Your Coin Bank'} />
       <h1>Let's help you spend those Shiny Gold Coins...</h1>
 
       <RewardList

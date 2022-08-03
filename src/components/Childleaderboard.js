@@ -1,22 +1,22 @@
-import React, { useEffect, useState, useCallback } from "react";
-import dog from "../images/dog.png";
-import cat from "../images/cat.png";
-import dino from "../images/dino.png";
-import rabbit from "../images/rabbit.png";
-import medal from "../images/medal.png";
+import React, { useEffect, useState, useCallback } from 'react';
+import dog from '../images/dog.png';
+import cat from '../images/cat.png';
+import dino from '../images/dino.png';
+import rabbit from '../images/rabbit.png';
+import medal from '../images/medal.png';
 
 function ChildLeaderboard({ child, children, familyname }) {
   const avatarImg = (avatar) => {
-    if (avatar === "cat") {
+    if (avatar === 'cat') {
       return <img src={cat} alt="cat" />;
     }
-    if (avatar === "dog") {
+    if (avatar === 'dog') {
       return <img src={dog} alt="dog" />;
     }
-    if (avatar === "dinosaur") {
+    if (avatar === 'dinosaur') {
       return <img src={dino} alt="dinosaur" />;
     }
-    if (avatar === "rabbit") {
+    if (avatar === 'rabbit') {
       return <img src={rabbit} alt="rabbit" />;
     }
   };
@@ -26,14 +26,14 @@ function ChildLeaderboard({ child, children, familyname }) {
   );
   const [sortedByChores, setSortedByChores] = useState(true);
   const [sortedByCoins, setSortedByCoins] = useState(false);
-  
+
   const sortByChores = useCallback(() => {
     setChildrenSorted(
       children.slice().sort((a, b) => b.choresdone - a.choresdone)
     );
     setSortedByChores(true);
     setSortedByCoins(false);
-  },[children]);
+  }, [children]);
 
   const sortByCoins = useCallback(() => {
     setChildrenSorted(
@@ -41,12 +41,11 @@ function ChildLeaderboard({ child, children, familyname }) {
     );
     setSortedByCoins(true);
     setSortedByChores(false);
-  },[children]);
+  }, [children]);
 
   useEffect(() => {
     sortByChores();
   }, [children, sortByChores]);
-
 
   const leaderboard = () => {
     return childrenSorted.map((mapchild, index) => {
@@ -54,14 +53,14 @@ function ChildLeaderboard({ child, children, familyname }) {
         <div
           className={
             mapchild._id === child._id
-              ? "leaderboard-card-accent"
-              : "leaderboard-card"
+              ? 'leaderboard-card-accent'
+              : 'leaderboard-card'
           }
           key={mapchild._id}
         >
           <h1>{mapchild.firstname}</h1>
           {index === 0 ? (
-            <img className="leaderboard-medal" src={medal} alt="medal"/>
+            <img className="leaderboard-medal" src={medal} alt="medal" />
           ) : (
             <></>
           )}

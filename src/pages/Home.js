@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { FaQuestionCircle } from "react-icons/fa";
-import ChildrenList from "../components/ChildrenList";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { FaQuestionCircle } from 'react-icons/fa';
+import ChildrenList from '../components/ChildrenList';
 
 function Home() {
   const { user } = useSelector((state) => state.auth);

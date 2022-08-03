@@ -1,15 +1,15 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import authService from "./authService";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import authService from './authService';
 
 // Get user from localstorage
-const user = JSON.parse(localStorage.getItem("user"));
+const user = JSON.parse(localStorage.getItem('user'));
 
 const initialState = {
   user: user ? user : null,
   isError: false,
   isSuccess: false,
   isLoading: false,
-  message: "",
+  message: '',
 };
 
 // AsyncThunk is a function that allows use of asynchronous data
@@ -17,7 +17,7 @@ const initialState = {
 
 // Register New User
 export const register = createAsyncThunk(
-  "auth/register",
+  'auth/register',
   async (user, thunkAPI) => {
     try {
       return await authService.register(user);
@@ -35,7 +35,7 @@ export const register = createAsyncThunk(
 );
 
 // Login User
-export const login = createAsyncThunk("auth/login", async (user, thunkAPI) => {
+export const login = createAsyncThunk('auth/login', async (user, thunkAPI) => {
   try {
     return await authService.login(user);
   } catch (error) {
@@ -50,13 +50,13 @@ export const login = createAsyncThunk("auth/login", async (user, thunkAPI) => {
 
 // Logout user
 
-export const logout = createAsyncThunk("auth/logout", async () => {
+export const logout = createAsyncThunk('auth/logout', async () => {
   await authService.logout();
 });
 
 // config/setup
 export const authSlice = createSlice({
-  name: "auth",
+  name: 'auth',
   initialState,
   // reducers perform actions that don't depend on promise fulfillment
   reducers: {
@@ -64,7 +64,7 @@ export const authSlice = createSlice({
       state.isLoading = false;
       state.isError = false;
       state.isSuccess = false;
-      state.message = "";
+      state.message = '';
     },
   },
   // extraReducers hook into pending, fulfilled states and perform actions

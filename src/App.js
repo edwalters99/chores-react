@@ -1,19 +1,19 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import Header from "./components/Header";
-import PrivateRoute from "./components/PrivateRoute";
-import PrivateRouteChild from "./components/PrivateRouteChild";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import NewChild from "./pages/NewChild";
-import Favourites from "./pages/Favourites";
-import NewFavourite from "./pages/NewFavourite";
-import ChildHome from "./pages/ChildHome";
-import ChildRewards from "./pages/ChildRewards";
-import ScrollToTop from "./hooks/scrollToTop";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Header from './components/Header';
+import PrivateRoute from './components/PrivateRoute';
+import PrivateRouteChild from './components/PrivateRouteChild';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import NewChild from './pages/NewChild';
+import Favourites from './pages/Favourites';
+import NewFavourite from './pages/NewFavourite';
+import ChildHome from './pages/ChildHome';
+import ChildRewards from './pages/ChildRewards';
+import ScrollToTop from './hooks/scrollToTop';
 
 function App() {
   return (

@@ -1,11 +1,11 @@
-import React from "react";
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { getFavourites, reset } from "../features/favourites/favouriteSlice";
-import { getChildren } from "../features/children/childSlice";
-import { toast } from "react-toastify";
-import ClipLoader from "react-spinners/ClipLoader";
-import FavouriteDisplay from "./FavouriteDisplay";
+import React from 'react';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getFavourites, reset } from '../features/favourites/favouriteSlice';
+import { getChildren } from '../features/children/childSlice';
+import { toast } from 'react-toastify';
+import ClipLoader from 'react-spinners/ClipLoader';
+import FavouriteDisplay from './FavouriteDisplay';
 
 function FavouritesList() {
   const { favourites, isLoading, isSuccess, isError, message } = useSelector(
@@ -25,7 +25,7 @@ function FavouritesList() {
       dispatch(reset());
     }
     if (isError) {
-      toast.error(message, { toastId: "tMessage" });
+      toast.error(message, { toastId: 'tMessage' });
     }
   }, [isLoading, isSuccess, isError, dispatch, message]);
 
@@ -36,7 +36,7 @@ function FavouritesList() {
   if (favourites.length === 0 && !isLoading) {
     return (
       <p className="favlist-heading">
-        No favourite chores yet. Please add one...{" "}
+        No favourite chores yet. Please add one...{' '}
       </p>
     );
   }
